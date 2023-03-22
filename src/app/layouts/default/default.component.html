@@ -1,19 +1,10 @@
-<header>
-    <div>
-        Logo
+<app-header fxLayout="column"></app-header>
+<div fxLayout="row">
+    <div fxFlex="20">
+        <app-sidebar fxFlex></app-sidebar>
     </div>
-    <div>
-        <button routerLink="">Strona główna</button>
-        <button routerLink="/products">Produkty</button>
-        <button routerLink="/login">Zaloguj</button>
-    </div>
-</header>
-<div>
-    <div>
-        Sidebar
-    </div>
-    <div>
+    <div fxFlex="80" class="content">
         <router-outlet></router-outlet>
     </div>
 </div>
-<footer>footer</footer>
+<app-footer fxLayout="column"></app-footer>
