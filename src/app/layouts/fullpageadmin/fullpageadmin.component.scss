@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+.content {
+    padding: 20px;
+}
+header {
+    background: #ddd;
+    padding: 20px;
+}
+.sidebar {
+    background: #bbb;
+    padding: 20px;
+}
