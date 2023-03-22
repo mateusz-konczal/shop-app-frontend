@@ -1,3 +1,5 @@
-<div>
-    Sidebar
-</div>
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let category of categories">
+      {{category}}
+    </mat-list-option>
+</mat-selection-list>
