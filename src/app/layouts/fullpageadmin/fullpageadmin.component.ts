@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class FullpageadminComponent {
 
+  title = "Shop panel";
+
 }
