@@ -1,4 +1,8 @@
-<h1>Lista produktów</h1>
+<h1>Lista produktów 
+  <button mat-raised-button color="accent" routerLink="/admin/products/add">Dodaj produkt 
+    <mat-icon>add</mat-icon>
+  </button>
+</h1>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
