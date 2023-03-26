@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AdminMessageService } from '../admin-message.service';
 import { AdminProductAddService } from './admin-product-add.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class AdminProductAddComponent {
     private router: Router,
     private adminProductAddService: AdminProductAddService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminMessageService: AdminMessageService
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +35,12 @@ export class AdminProductAddComponent {
   submit() {
     this.adminProductAddService
       .saveNewProduct(this.productForm.value)
-      .subscribe(product => {
-        this.router.navigate(["/admin/products/update", product.id])
-          .then(() => this.snackBar.open("Produkt został dodany", '', { duration: 3000 }));
+      .subscribe({
+        next: product => {
+          this.router.navigate(["/admin/products/update", product.id])
+            .then(() => this.snackBar.open("Produkt został dodany", '', { duration: 3000 }));
+        },
+        error: err => this.adminMessageService.addSpringErrors(err.error)
       });
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { AdminMessageService } from '../admin-message.service';
 import { AdminProductUpdateService } from './admin-product-update.service';
 import { AdminProductUpdate } from './model/adminProductUpdate';
 
@@ -18,7 +19,8 @@ export class AdminProductUpdateComponent implements OnInit {
     private router: ActivatedRoute,
     private adminProductUpdateService: AdminProductUpdateService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminMessageService: AdminMessageService
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +45,12 @@ export class AdminProductUpdateComponent implements OnInit {
     let id = Number(this.router.snapshot.params['id']);
     this.adminProductUpdateService
       .saveProduct(id, this.productForm.value as AdminProductUpdate)
-      .subscribe(product => {
-        this.mapFormValues(product);
-        this.snackBar.open("Produkt został zaktualizowany", '', { duration: 3000 });
+      .subscribe({
+        next: product => {
+          this.mapFormValues(product);
+          this.snackBar.open("Produkt został zaktualizowany", '', { duration: 3000 });
+        },
+        error: err => this.adminMessageService.addSpringErrors(err.error)
       });
   }
 
