@@ -36,6 +36,6 @@ export class AdminMessageComponent implements OnInit, OnDestroy {
         this.clearMessage();
       }
       this.clickCounter--;
-    }, 5000);
+    }, 12000);
   }
 }
