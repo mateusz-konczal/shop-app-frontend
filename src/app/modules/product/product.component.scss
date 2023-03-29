@@ -29,3 +29,12 @@ mat-card {
     margin-top: 20px;
     color: $warn;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #777;
+}

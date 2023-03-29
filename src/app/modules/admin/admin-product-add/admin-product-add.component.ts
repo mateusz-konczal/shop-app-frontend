@@ -28,7 +28,8 @@ export class AdminProductAddComponent {
       description: ['', [Validators.required, Validators.minLength(4)]],
       category: ['', [Validators.required, Validators.minLength(4)]],
       price: ['', [Validators.required, Validators.min(0)]],
-      currency: ['PLN', Validators.required]
+      currency: ['PLN', Validators.required],
+      slug: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
 
