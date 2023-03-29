@@ -26,6 +26,7 @@ export class AdminProductAddComponent {
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
       description: ['', [Validators.required, Validators.minLength(4)]],
+      fullDescription: [''],
       category: ['', [Validators.required, Validators.minLength(4)]],
       price: ['', [Validators.required, Validators.min(0)]],
       currency: ['PLN', Validators.required],
