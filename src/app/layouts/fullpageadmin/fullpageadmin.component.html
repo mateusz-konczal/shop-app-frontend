@@ -8,11 +8,12 @@
     <div class="sidebar">
         <mat-selection-list [multiple]="false">
             <mat-list-option><a routerLink="/admin">Dashboard</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin">Produkty</a></mat-list-option>
+            <mat-list-option><a routerLink="/admin/products">Produkty</a></mat-list-option>
             <mat-list-option><a routerLink="/admin">Link</a></mat-list-option>
         </mat-selection-list>
     </div>
     <div fxFlex class="content">
+        <app-admin-message></app-admin-message>
         <router-outlet></router-outlet>
     </div>
 </div>

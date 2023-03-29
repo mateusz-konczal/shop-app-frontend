@@ -1,7 +1,9 @@
-export interface Product {
+export interface AdminProductUpdate {
+    id: number,
     name: string,
-    category: string,
     description: string,
+    fullDescription: string,
+    category: string,
     price: number,
     currency: string,
     image: string,
