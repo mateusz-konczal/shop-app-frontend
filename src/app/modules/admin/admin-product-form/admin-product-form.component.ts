@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { AdminFormCategoryService } from './admin-form-category.service';
+import { AdminCategoryName } from './model/adminCategoryName';
 
 @Component({
     selector: 'app-admin-product-form',
@@ -51,13 +53,14 @@ import { FormGroup } from '@angular/forms';
 
         <mat-form-field>
             <mat-label>Kategoria</mat-label>
-            <input type="text" matInput placeholder="Podaj kategorię produktu" formControlName="category">
-            <div *ngIf="category?.invalid && (category?.dirty || category?.touched)" class="errorMessages">
-                <div *ngIf="category?.errors?.['required']">
+            <mat-select formControlName="categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+                </mat-option>
+            </mat-select>
+            <div *ngIf="categoryId?.invalid && (categoryId?.dirty || categoryId?.touched)" class="errorMessages">
+                <div *ngIf="categoryId?.errors?.['required']">
                     Kategoria jest wymagana
-                </div>
-                <div *ngIf="category?.errors?.['minlength']">
-                    Kategoria musi mieć przynajmniej 4 znaki
                 </div>
             </div>
         </mat-form-field>
@@ -94,9 +97,21 @@ import { FormGroup } from '@angular/forms';
         color: red;
     }`]
 })
-export class AdminProductFormComponent {
+export class AdminProductFormComponent implements OnInit {
 
     @Input() parentForm!: FormGroup;
+    categories: Array<AdminCategoryName> = [];
+
+    constructor(private adminFormCategoryService: AdminFormCategoryService) { }
+
+    ngOnInit(): void {
+        this.getCategories();
+    }
+
+    getCategories() {
+        this.adminFormCategoryService.getCategories()
+            .subscribe(categories => this.categories = categories);
+    }
 
     get name() {
         return this.parentForm.get("name");
@@ -110,8 +125,8 @@ export class AdminProductFormComponent {
         return this.parentForm.get("fullDescription");
     }
 
-    get category() {
-        return this.parentForm.get("category");
+    get categoryId() {
+        return this.parentForm.get("categoryId");
     }
 
     get price() {
