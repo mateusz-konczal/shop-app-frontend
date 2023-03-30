@@ -48,7 +48,7 @@ export class AdminProductUpdateComponent implements OnInit {
     let id = Number(this.router.snapshot.params['id']);
     this.adminProductUpdateService
       .getProduct(id)
-      .subscribe(product => this.mapFormValues(product));
+      .subscribe(product => this.mapToFormValues(product));
   }
 
   submit() {
@@ -64,7 +64,7 @@ export class AdminProductUpdateComponent implements OnInit {
       image: this.image
     } as AdminProductUpdate).subscribe({
       next: product => {
-        this.mapFormValues(product);
+        this.mapToFormValues(product);
         this.snackBar.open("Produkt został zaktualizowany", '', { duration: 3000 });
       },
       error: err => this.adminMessageService.addSpringErrors(err.error)
@@ -86,7 +86,7 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
 
-  private mapFormValues(product: AdminProductUpdate): void {
+  private mapToFormValues(product: AdminProductUpdate): void {
     this.productForm.setValue({
       name: product.name,
       description: product.description,
