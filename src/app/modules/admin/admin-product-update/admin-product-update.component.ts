@@ -33,7 +33,7 @@ export class AdminProductUpdateComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       description: ['', [Validators.required, Validators.minLength(4)]],
       fullDescription: [''],
-      category: ['', [Validators.required, Validators.minLength(4)]],
+      categoryId: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(4)]]
@@ -48,7 +48,7 @@ export class AdminProductUpdateComponent implements OnInit {
     let id = Number(this.router.snapshot.params['id']);
     this.adminProductUpdateService
       .getProduct(id)
-      .subscribe(product => this.mapFormValues(product));
+      .subscribe(product => this.mapToFormValues(product));
   }
 
   submit() {
@@ -57,14 +57,14 @@ export class AdminProductUpdateComponent implements OnInit {
       name: this.productForm.get('name')?.value,
       description: this.productForm.get('description')?.value,
       fullDescription: this.productForm.get('fullDescription')?.value,
-      category: this.productForm.get('category')?.value,
+      categoryId: this.productForm.get('categoryId')?.value,
       price: this.productForm.get('price')?.value,
       currency: this.productForm.get('currency')?.value,
       slug: this.productForm.get('slug')?.value,
       image: this.image
     } as AdminProductUpdate).subscribe({
       next: product => {
-        this.mapFormValues(product);
+        this.mapToFormValues(product);
         this.snackBar.open("Produkt został zaktualizowany", '', { duration: 3000 });
       },
       error: err => this.adminMessageService.addSpringErrors(err.error)
@@ -86,12 +86,12 @@ export class AdminProductUpdateComponent implements OnInit {
     }
   }
 
-  private mapFormValues(product: AdminProductUpdate): void {
+  private mapToFormValues(product: AdminProductUpdate): void {
     this.productForm.setValue({
       name: product.name,
       description: product.description,
       fullDescription: product.fullDescription,
-      category: product.category,
+      categoryId: product.categoryId,
       price: product.price,
       currency: product.currency,
       slug: product.slug

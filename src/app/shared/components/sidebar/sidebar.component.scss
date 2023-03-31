@@ -4,3 +4,12 @@
     background: $lightgray;
     padding: 20px;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #777;
+}

@@ -1,0 +1,34 @@
+<h1>Kategoria: {{categoryProducts?.category?.name}}</h1>
+<p>{{categoryProducts?.category?.description}}</p>
+<mat-card *ngFor="let product of categoryProducts?.products?.content">
+    <div flexLayout="row" class="product">
+        <div flexLayout="column" fxFlex>
+            <mat-card-title><a routerLink="{{'/products/' + product.slug}}">{{product.name}}</a></mat-card-title>
+            <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+            <div flexLayout="row">
+                <a routerLink="{{'/products/' + product.slug}}">
+                    <img *ngIf="!product.image" src="/assets/image-placeholder.png" mat-card-lg-image
+                        class="productImage">
+                    <img *ngIf="product.image" src="{{'/api/admin/products/productImage/' + product.image}}"
+                        mat-card-lg-image class="productImage">
+                </a>
+                <mat-card-content fxFlex class="productContent">{{product.description}}</mat-card-content>
+            </div>
+        </div>
+        <div>
+            <div class="productPrice">{{product.price}} {{product.currency}}</div>
+        </div>
+    </div>
+    <mat-card-actions align="end" fxLayoutGap="10">
+        <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
+        <button mat-flat-button color="primary">Do koszyka</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-paginator *ngIf="categoryProducts?.products && categoryProducts.products.totalElements > 0" 
+    [length]="categoryProducts.products.totalElements"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50, 100]"
+    aria-label="Wybierz stronę"
+    (page)="onPageEvent($event)">
+</mat-paginator>
