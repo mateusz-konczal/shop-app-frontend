@@ -24,13 +24,13 @@ export class AdminCategoryUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategory();
+
     this.categoryForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
       description: [''],
       slug: ['', [Validators.required, Validators.minLength(4)]]
     });
-
-    this.getCategory();
   }
 
   getCategory() {
