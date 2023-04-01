@@ -3,7 +3,6 @@
   <div flexLayout="row" class="product">
     <div flexLayout="column" fxFlex>
       <mat-card-title><a routerLink="{{'/products/' + product.slug}}">{{product.name}}</a></mat-card-title>
-      <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
       <div flexLayout="row">
         <a routerLink="{{'/products/' + product.slug}}">
           <img *ngIf="!product.image" src="/assets/image-placeholder.png" mat-card-lg-image class="productImage">
