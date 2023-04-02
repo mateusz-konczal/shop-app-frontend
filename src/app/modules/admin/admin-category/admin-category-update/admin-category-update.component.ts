@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { AdminMessageService } from '../../admin-message.service';
+import { AdminMessageService } from '../../common/service/admin-message.service';
 import { AdminCategoryService } from '../admin-category.service';
 import { AdminCategory } from '../model/adminCategory';
 

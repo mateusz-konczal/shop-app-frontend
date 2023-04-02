@@ -6,8 +6,8 @@ import { FullpageadminComponent } from './layouts/fullpageadmin/fullpageadmin.co
 import { AdminCategoryAddComponent } from './modules/admin/admin-category/admin-category-add/admin-category-add.component';
 import { AdminCategoryUpdateComponent } from './modules/admin/admin-category/admin-category-update/admin-category-update.component';
 import { AdminCategoryComponent } from './modules/admin/admin-category/admin-category.component';
-import { AdminProductAddComponent } from './modules/admin/admin-product-add/admin-product-add.component';
-import { AdminProductUpdateComponent } from './modules/admin/admin-product-update/admin-product-update.component';
+import { AdminProductAddComponent } from './modules/admin/admin-product/admin-product-add/admin-product-add.component';
+import { AdminProductUpdateComponent } from './modules/admin/admin-product/admin-product-update/admin-product-update.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
 import { AdminComponent } from './modules/admin/admin.component';
 import { CategoryComponent } from './modules/category/category.component';
