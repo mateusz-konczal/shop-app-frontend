@@ -6,7 +6,6 @@
         </div>
         <div fxLayout="column" fxFlex>
             <h1>{{product?.name}}</h1>
-            <small>{{product?.category}}</small>
             <div class="description">
                 {{product?.description}}
             </div>
@@ -18,5 +17,49 @@
     </div>
     <div class="fullDescription">
         {{product?.fullDescription}}
+    </div>
+    <div>
+        <h2>Opinie o produkcie</h2>
+        <div>
+            <div *ngFor="let review of product?.reviews" class="review">
+                <div>Autor: {{review.authorName}}</div>
+                <div>{{review.content}}</div>
+            </div>
+        </div>
+        <form [formGroup]="reviewForm" (submit)="submit()" fxLayout="column">
+            <mat-form-field>
+                <mat-label>Autor</mat-label>
+                <input matInput placeholder="Podaj swoje imię" formControlName="authorName">
+                <div *ngIf="authorName?.invalid && (authorName?.dirty || authorName?.touched)" class="errorMessages">
+                    <div *ngIf="authorName?.errors?.['required']">
+                        Imię jest wymagane
+                    </div>
+                    <div *ngIf="authorName?.errors?.['minlength']">
+                        Imię musi mieć przynajmniej 2 znaki
+                    </div>
+                    <div *ngIf="authorName?.errors?.['maxlength']">
+                        Imię może mieć maksymalnie 60 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Twoja opinia o produkcie</mat-label>
+                <textarea matInput rows="10" placeholder="Twoja opinia" formControlName="content"></textarea>
+                <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="errorMessages">
+                    <div *ngIf="content?.errors?.['required']">
+                        Opinia jest wymagana
+                    </div>
+                    <div *ngIf="content?.errors?.['minlength']">
+                        Opinia musi mieć przynajmniej 4 znaki
+                    </div>
+                    <div *ngIf="content?.errors?.['maxlength']">
+                        Opinia może mieć maksymalnie 600 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+            <div fxLayout="colum" fxFlexAlign="end" fxLayoutGap="10">
+                <button mat-flat-button color="primary" [disabled]="!reviewForm.valid">Zapisz</button>
+            </div>
+        </form>
     </div>
 </div>

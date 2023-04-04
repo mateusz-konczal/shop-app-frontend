@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdminCategoryName } from '../common/dto/adminCategoryName';
+import { AdminCategoryName } from '../../common/dto/adminCategoryName';
 
 @Injectable({
   providedIn: 'root'

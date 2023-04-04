@@ -8,7 +8,19 @@ html {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+table {
+    width: 100%;
+}
+
 .content {
     padding: 20px;
     background: $lightgray;
+}
+
+.mat-mdc-snack-bar-container {
+    &.snack-bar-bg-color-ok {
+        --mdc-snackbar-container-color: #087408;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
 }

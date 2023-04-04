@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AdminFormCategoryService } from './admin-form-category.service';
-import { AdminCategoryName } from '../common/dto/adminCategoryName';
+import { AdminCategoryName } from '../../common/dto/adminCategoryName';
 
 @Component({
     selector: 'app-admin-product-form',
