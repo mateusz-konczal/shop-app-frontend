@@ -16,6 +16,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
+import { CartComponent } from './modules/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductComponent },
       { path: 'products/:slug', component: ProductDetailsComponent },
-      { path: 'categories/:slug', component: CategoryComponent }
+      { path: 'categories/:slug', component: CategoryComponent },
+      { path: 'cart', component: CartComponent }
     ]
   },
   {
