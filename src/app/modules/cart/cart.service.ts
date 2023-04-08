@@ -17,4 +17,12 @@ export class CartService {
   addProductToCart(id: number, cartItem: any): Observable<CartSummary> {
     return this.http.put<CartSummary>("/api/carts/" + id, cartItem);
   }
+
+  updateCart(id: number, cartItems: any[]): Observable<CartSummary> {
+    return this.http.put<CartSummary>(`/api/carts/${id}/update`, cartItems);
+  }
+
+  deleteCartItem(itemId: number): Observable<void> {
+    return this.http.delete<void>("/api/cartItems/" + itemId);
+  }
 }
