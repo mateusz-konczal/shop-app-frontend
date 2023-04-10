@@ -9,7 +9,8 @@
         <span></span>
         <button mat-flat-button routerLink="/login">Zaloguj</button>
         <a routerLink="/cart">
-            <mat-icon color="accent" class="shoppingBasket">shopping_basket</mat-icon>
+            <mat-icon color="accent" class="shoppingBasket" matBadge="{{cartProductCounter}}"
+                matBadgeColor="warn">shopping_basket</mat-icon>
         </a>
     </div>
 </header>
