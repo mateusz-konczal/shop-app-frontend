@@ -38,6 +38,9 @@
             <div class="summary"> Wartość: </div>
             <div class="summary"> <b>{{cartSummary?.summary?.totalValue}}</b></div>
         </div>
+        <div>
+            <button mat-flat-button color="warn" (click)="back()">Powrót do zakupów</button>
+        </div>
     </div>
 </form>
 <div *ngIf="!cartSummary?.items?.length">
