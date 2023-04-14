@@ -17,6 +17,7 @@ import { ProductDetailsComponent } from './modules/product-details/product-detai
 import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
 import { CartComponent } from './modules/cart/cart.component';
+import { OrderComponent } from './modules/order/order.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: 'products', component: ProductComponent },
       { path: 'products/:slug', component: ProductDetailsComponent },
       { path: 'categories/:slug', component: CategoryComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'cart', component: CartComponent },
+      { path: 'order', component: OrderComponent }
     ]
   },
   {

@@ -1,0 +1,119 @@
+<h1>Zamówienie</h1>
+
+<div *ngIf="orderSummary">
+    <div>Nowe zamówienie o numerze: {{orderSummary.id}}</div>
+    <div>Data złożenia: {{orderSummary.placeDate}}</div>
+    <div>Status: {{orderSummary.status}}</div>
+    <div>Wartość: {{orderSummary.totalValue}}</div>
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
+    Koszyk jest pusty, nie możesz zrealizować zamówienia.
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length > 0">
+    <form [formGroup]="orderForm" (submit)="submit()">
+        <div fxLayout="column" class="orderForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Imię</mat-label>
+                <input type="text" matInput placeholder="Podaj imię" formControlName="firstName">
+                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="errorMessage">
+                    <div *ngIf="firstName?.errors?.['required']">
+                        Imię jest wymagane
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Nazwisko</mat-label>
+                <input type="text" matInput placeholder="Podaj nazwisko" formControlName="lastName">
+                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="errorMessage">
+                    <div *ngIf="lastName?.errors?.['required']">
+                        Nazwisko jest wymagane
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Ulica</mat-label>
+                <input type="text" matInput placeholder="Podaj ulicę" formControlName="street">
+                <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="errorMessage">
+                    <div *ngIf="street?.errors?.['required']">
+                        Nazwa ulicy jest wymagana
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Kod pocztowy</mat-label>
+                <input type="text" matInput placeholder="Podaj kodpocztowy" formControlName="zipCode">
+                <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessage">
+                    <div *ngIf="zipCode?.errors?.['required']">
+                        Kod pocztowy jest wymagany
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Miasto</mat-label>
+                <input type="text" matInput placeholder="Podaj miasto" formControlName="city">
+                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="errorMessage">
+                    <div *ngIf="city?.errors?.['required']">
+                        Miasto jest wymagane
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Podaj email" formControlName="email">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errorMessage">
+                    <div *ngIf="email?.errors?.['required']">
+                        Email jest wymagany
+                    </div>
+                    <div *ngIf="email?.errors?.['email']">
+                        Podaj porawny format email
+                    </div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Telefon</mat-label>
+                <input type="tel" matInput placeholder="Podaj telefon" formControlName="phone">
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="errorMessage">
+                    <div *ngIf="phone?.errors?.['required']">
+                        Telefon jest wymagany
+                    </div>
+                </div>
+            </mat-form-field>
+        </div>
+        <div>
+            <div fxLayoutGap="25px grid">
+                <div>
+                    <h2>Zamawiasz:</h2>
+                    <div fxLayout="row" fxLayoutAlign="space-between start" class="card-hrow">
+                        <div class="cart-hcol-1">Obraz</div>
+                        <div class="cart-hcol-2">Nazwa</div>
+                        <div class="cart-hcol-3">Ilość</div>
+                        <div class="cart-hcol-4">Wartość</div>
+                    </div>
+                    <div *ngFor="let item of cartSummary.items; let i = index" class="card-row">
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+                            <div class="cart-col-1">
+                                <a routerLink="{{'/products/' + item.product?.slug}}">
+                                    <img *ngIf="!item.product?.image" src="/assets/image-placeholder.png" width="100">
+                                    <img *ngIf="item.product?.image"
+                                        src="{{'/api/admin/products/productImage/' + item.product?.image}}" width="100">
+                                </a>
+                            </div>
+                            <div class="cart-col-2">{{item.product?.name}}</div>
+                            <div class="cart-col-3">{{item.quantity}}</div>
+                            <div class="cart-col-4">{{item.lineValue}}</div>
+                        </div>
+                    </div>
+                    <div fxLayoutAlign="end start">
+                        <div class="summary"> Wartość: </div>
+                        <div class="summary"> <b>{{cartSummary?.summary?.totalValue}}</b></div>
+                    </div>
+                </div>
+                <div fxLayoutAlign="end start">
+                    <button mat-flat-button color="accent" class="orderButton">Zamawiam i płacę</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
