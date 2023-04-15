@@ -16,6 +16,9 @@ export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
   cartSummary!: CartSummary;
   orderSummary!: OrderSummary;
+  private statuses = new Map<string, string>([
+    ["NEW", "Nowe"]
+  ]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,13 +50,23 @@ export class OrderComponent implements OnInit {
   submit() {
     if (this.orderForm.valid) {
       this.orderService.placeOrder({
-
-      } as Order)
-        .subscribe(orderSummary => {
-          this.orderSummary = orderSummary;
-          this.cookieService.delete("cartId");
-        });
+        firstName: this.orderForm.get('firstName')?.value,
+        lastName: this.orderForm.get('lastName')?.value,
+        street: this.orderForm.get('street')?.value,
+        zipCode: this.orderForm.get('zipCode')?.value,
+        city: this.orderForm.get('city')?.value,
+        email: this.orderForm.get('email')?.value,
+        phone: this.orderForm.get('phone')?.value,
+        cartId: Number(this.cookieService.get("cartId"))
+      } as Order).subscribe(orderSummary => {
+        this.orderSummary = orderSummary;
+        this.cookieService.delete("cartId");
+      });
     }
+  }
+
+  getStatus(status: string) {
+    return this.statuses.get(status);
   }
 
   get firstName() {

@@ -1,10 +1,10 @@
 <h1>Zamówienie</h1>
 
-<div *ngIf="orderSummary">
+<div *ngIf="orderSummary" class="orderSummary">
     <div>Nowe zamówienie o numerze: {{orderSummary.id}}</div>
-    <div>Data złożenia: {{orderSummary.placeDate}}</div>
-    <div>Status: {{orderSummary.status}}</div>
-    <div>Wartość: {{orderSummary.totalValue}}</div>
+    <div>Data złożenia: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
+    <div>Status: {{getStatus(orderSummary.status)}}</div>
+    <div>Wartość: {{orderSummary.totalValue}} PLN</div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
@@ -43,7 +43,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Kod pocztowy</mat-label>
-                <input type="text" matInput placeholder="Podaj kodpocztowy" formControlName="zipCode">
+                <input type="text" matInput placeholder="Podaj kod pocztowy" formControlName="zipCode">
                 <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessage">
                     <div *ngIf="zipCode?.errors?.['required']">
                         Kod pocztowy jest wymagany
