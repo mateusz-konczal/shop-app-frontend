@@ -18,6 +18,9 @@ import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { OrderComponent } from './modules/order/order.component';
+import { AdminShipmentComponent } from './modules/admin/admin-shipment/admin-shipment.component';
+import { AdminShipmentAddComponent } from './modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
+import { AdminShipmentUpdateComponent } from './modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
 
 const routes: Routes = [
   {
@@ -44,7 +47,10 @@ const routes: Routes = [
       { path: 'admin/categories', component: AdminCategoryComponent },
       { path: 'admin/categories/add', component: AdminCategoryAddComponent },
       { path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent },
-      { path: 'admin/reviews', component: AdminReviewComponent }
+      { path: 'admin/reviews', component: AdminReviewComponent },
+      { path: 'admin/shipments', component: AdminShipmentComponent },
+      { path: 'admin/shipments/add', component: AdminShipmentAddComponent },
+      { path: 'admin/shipments/update/:id', component: AdminShipmentUpdateComponent }
     ]
   }
 ];

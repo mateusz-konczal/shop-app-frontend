@@ -3,7 +3,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { CategoryService } from './category.service';
-import { Category } from './model/category';
 import { CategoryProducts } from './model/categoryProducts';
 
 @Component({

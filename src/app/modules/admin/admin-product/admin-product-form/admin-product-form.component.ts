@@ -67,7 +67,7 @@ import { AdminCategoryName } from '../../common/dto/adminCategoryName';
 
         <mat-form-field>
             <mat-label>Cena</mat-label>
-            <input type="number" matInput placeholder="Podaj cenę produktu" formControlName="price">
+            <input type="number" min="0" matInput placeholder="Podaj cenę produktu" formControlName="price">
             <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="errorMessages">
                 <div *ngIf="price?.errors?.['required']">
                     Cena jest wymagana

@@ -19,6 +19,10 @@ export class AdminReviewComponent implements AfterViewInit {
   displayedColumns: string[] = ["id", "authorName", "content", "moderated", "actions"];
   dataSource: AdminReview[] = [];
   totalElements: number = 0;
+  private statuses = new Map<boolean, string>([
+    [true, "tak"],
+    [false, "nie"],
+  ]);
 
   constructor(
     private adminReviewService: AdminReviewService,
@@ -71,5 +75,9 @@ export class AdminReviewComponent implements AfterViewInit {
             });
         }
       });
+  }
+
+  getStatus(status: boolean) {
+    return this.statuses.get(status);
   }
 }
