@@ -5,6 +5,7 @@ import { CartSummary } from '../common/model/cart/cartSummary';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrderSummary } from './model/orderSummary';
 import { Order } from './model/order';
+import { InitOrder } from './model/initOrder';
 
 @Component({
   selector: 'app-order',
@@ -16,6 +17,7 @@ export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
   cartSummary!: CartSummary;
   orderSummary!: OrderSummary;
+  initOrder!: InitOrder;
   private statuses = new Map<string, string>([
     ["NEW", "Nowe"]
   ]);
@@ -28,6 +30,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkIfCartIsEmpty();
+
     this.orderForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -35,8 +38,11 @@ export class OrderComponent implements OnInit {
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      phone: ['', Validators.required],
+      shipment: ['', Validators.required]
     });
+
+    this.getInitOrder();
   }
 
   checkIfCartIsEmpty() {
@@ -57,7 +63,8 @@ export class OrderComponent implements OnInit {
         city: this.orderForm.get('city')?.value,
         email: this.orderForm.get('email')?.value,
         phone: this.orderForm.get('phone')?.value,
-        cartId: Number(this.cookieService.get("cartId"))
+        cartId: Number(this.cookieService.get("cartId")),
+        shipmentId: Number(this.orderForm.get('shipment')?.value.id)
       } as Order).subscribe(orderSummary => {
         this.orderSummary = orderSummary;
         this.cookieService.delete("cartId");
@@ -67,6 +74,21 @@ export class OrderComponent implements OnInit {
 
   getStatus(status: string) {
     return this.statuses.get(status);
+  }
+
+  getInitOrder() {
+    return this.orderService.getInitOrder()
+      .subscribe(initOrder => {
+        this.initOrder = initOrder;
+        this.setDefaultShipment();
+      });
+  }
+
+  private setDefaultShipment() {
+    this.orderForm.patchValue({
+      "shipment": this.initOrder.shipments
+        .filter(shipment => shipment.defaultShipment === true)[0]
+    });
   }
 
   get firstName() {
@@ -95,5 +117,9 @@ export class OrderComponent implements OnInit {
 
   get phone() {
     return this.orderForm.get("phone");
+  }
+
+  get shipment() {
+    return this.orderForm.get("shipment");
   }
 }

@@ -4,7 +4,8 @@
     <div>Nowe zamówienie o numerze: {{orderSummary.id}}</div>
     <div>Data złożenia: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
     <div>Status: {{getStatus(orderSummary.status)}}</div>
-    <div>Wartość: {{orderSummary.totalValue}} PLN</div>
+    <div>Kwota całkowita: {{orderSummary.totalValue}} PLN</div>
+    <div>Sposób dostawy: {{orderSummary.shipmentName}}</div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
@@ -107,7 +108,22 @@
                     </div>
                     <div fxLayoutAlign="end start">
                         <div class="summary"> Wartość: </div>
-                        <div class="summary"> <b>{{cartSummary?.summary?.totalValue}}</b></div>
+                        <div class="summary"> <b>{{cartSummary?.summary?.totalValue}} PLN</b></div>
+                    </div>
+                    <div>
+                        <h2>Dostawa:</h2>
+                        <mat-radio-group fxLayout="column" formControlName="shipment">
+                            <mat-radio-button class="shipmentRadioButton" *ngFor="let shipment of initOrder?.shipments"
+                                [value]="shipment" [checked]="shipment.defaultShipment">
+                                <span class="shipmentName">{{shipment.name}}</span>
+                                <span class="shipmentPrice">{{shipment.price}} PLN</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div fxLayoutAlign="end">
+                    <div class="orderTotal">Całkowita kwota do zapłaty:
+                        <span class="orderTotalValue">{{cartSummary?.summary?.totalValue + shipment?.value.price}} PLN</span>
                     </div>
                 </div>
                 <div fxLayoutAlign="end start">
