@@ -7,5 +7,6 @@ export interface Order {
     email: string,
     phone: string,
     cartId: number,
-    shipmentId: number
+    shipmentId: number,
+    paymentId: number
 }

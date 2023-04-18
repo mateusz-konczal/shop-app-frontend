@@ -39,7 +39,8 @@ export class OrderComponent implements OnInit {
       city: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      shipment: ['', Validators.required]
+      shipment: ['', Validators.required],
+      payment: ['', Validators.required],
     });
 
     this.getInitOrder();
@@ -64,7 +65,8 @@ export class OrderComponent implements OnInit {
         email: this.orderForm.get('email')?.value,
         phone: this.orderForm.get('phone')?.value,
         cartId: Number(this.cookieService.get("cartId")),
-        shipmentId: Number(this.orderForm.get('shipment')?.value.id)
+        shipmentId: Number(this.orderForm.get('shipment')?.value.id),
+        paymentId: Number(this.orderForm.get('payment')?.value.id)
       } as Order).subscribe(orderSummary => {
         this.orderSummary = orderSummary;
         this.cookieService.delete("cartId");
@@ -81,6 +83,7 @@ export class OrderComponent implements OnInit {
       .subscribe(initOrder => {
         this.initOrder = initOrder;
         this.setDefaultShipment();
+        this.setDefaultPayment();
       });
   }
 
@@ -88,6 +91,13 @@ export class OrderComponent implements OnInit {
     this.orderForm.patchValue({
       "shipment": this.initOrder.shipments
         .filter(shipment => shipment.defaultShipment === true)[0]
+    });
+  }
+
+  private setDefaultPayment() {
+    this.orderForm.patchValue({
+      "payment": this.initOrder.payments
+        .filter(payment => payment.defaultPayment === true)[0]
     });
   }
 
@@ -121,5 +131,9 @@ export class OrderComponent implements OnInit {
 
   get shipment() {
     return this.orderForm.get("shipment");
+  }
+
+  get payment() {
+    return this.orderForm.get("payment");
   }
 }

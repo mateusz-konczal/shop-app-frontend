@@ -11,6 +11,7 @@ import { CategoryComponent } from 'src/app/modules/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
+import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OrderComponent } from 'src/app/modules/order/order.component';
     ProductDetailsComponent,
     CategoryComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    ReplacePipe
   ],
   imports: [
     CommonModule,
