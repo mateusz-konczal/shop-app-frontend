@@ -1,45 +1,45 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import { AdminShipment } from './model/adminShipment';
-import { AdminShipmentService } from './admin-shipment.service';
+import { AdminPayment } from './model/adminPayment';
+import { AdminPaymentService } from './admin-payment.service';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
 
 @Component({
-  selector: 'app-admin-shipment',
-  templateUrl: './admin-shipment.component.html',
-  styleUrls: ['./admin-shipment.component.scss']
+  selector: 'app-admin-payment',
+  templateUrl: './admin-payment.component.html',
+  styleUrls: ['./admin-payment.component.scss']
 })
-export class AdminShipmentComponent implements OnInit {
+export class AdminPaymentComponent implements OnInit {
 
   @ViewChild(MatTable) table!: MatTable<any>;
 
-  displayedColumns: string[] = ["id", "name", "price", "type", "defaultShipment", "actions"];
-  dataSource: Array<AdminShipment> = [];
+  displayedColumns: string[] = ["id", "name", "type", "defaultPayment", "note", "actions"];
+  dataSource: Array<AdminPayment> = [];
   private options = new Map<boolean, string>([
     [true, "tak"],
     [false, "nie"],
   ]);
 
   constructor(
-    private adminShipmentService: AdminShipmentService,
+    private adminPaymentService: AdminPaymentService,
     private dialogService: AdminConfirmDialogService
   ) { }
 
   ngOnInit(): void {
-    this.getShipments();
+    this.getPayments();
   }
 
-  getShipments() {
-    this.adminShipmentService.getShipments()
-      .subscribe(shipments => this.dataSource = shipments);
+  getPayments() {
+    this.adminPaymentService.getPayments()
+      .subscribe(payments => this.dataSource = payments);
   }
 
-  confirmDelete(element: AdminShipment) {
-    this.dialogService.openConfirmDialog("Czy na pewno chcesz usunąć ten sposób dostawy?")
+  confirmDelete(element: AdminPayment) {
+    this.dialogService.openConfirmDialog("Czy na pewno chcesz usunąć ten sposób płatności?")
       .afterClosed()
       .subscribe(result => {
         if (result) {
-          this.adminShipmentService.deleteShipment(element.id)
+          this.adminPaymentService.deletePayment(element.id)
             .subscribe(() => {
               this.dataSource.forEach((value, index) => {
                 if (element == value) {

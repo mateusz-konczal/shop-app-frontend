@@ -1,0 +1,30 @@
+.mat-column-id {
+    width: 60px;
+}
+
+.mat-column-name {
+    width: 200px;
+}
+
+.mat-column-defaultPayment {
+    width: 200px;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+    }
+}
+
+.mat-column-note {
+    padding: 10px 0;
+}
+
+.mat-column-actions {
+    width: 140px;
+}
+
+.mat-column-type,
+.mat-column-defaultPayment,
+.mat-column-note,
+.mat-column-actions {
+    text-align: center;
+}

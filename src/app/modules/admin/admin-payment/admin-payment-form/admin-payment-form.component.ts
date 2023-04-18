@@ -1,33 +1,20 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminShipmentType } from "../model/adminShipmentType";
+import { AdminPaymentType } from "../model/adminPaymentType";
 
 @Component({
-    selector: 'app-admin-shipment-form',
+    selector: 'app-admin-payment-form',
     template: `
     <div [formGroup]="parentForm" fxLayout="column">
         <mat-form-field>
             <mat-label>Nazwa</mat-label>
-            <input type="text" matInput placeholder="Podaj nazwę dostawy" formControlName="name">
+            <input type="text" matInput placeholder="Podaj nazwę płatności" formControlName="name">
             <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="errorMessages">
                 <div *ngIf="name?.errors?.['required']">
                     Nazwa jest wymagana
                 </div>
                 <div *ngIf="name?.errors?.['minlength']">
                     Nazwa musi mieć przynajmniej 4 znaki
-                </div>
-            </div>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Cena</mat-label>
-            <input type="number" min="0" matInput placeholder="Podaj cenę usługi" formControlName="price">
-            <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="errorMessages">
-                <div *ngIf="price?.errors?.['required']">
-                    Cena jest wymagana
-                </div>
-                <div *ngIf="price?.errors?.['min']">
-                    Cena musi być większa od zera
                 </div>
             </div>
         </mat-form-field>
@@ -47,11 +34,16 @@ import { AdminShipmentType } from "../model/adminShipmentType";
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Domyślny sposób dostawy</mat-label>
-            <mat-select formControlName="defaultShipment">
+            <mat-label>Domyślny sposób płatności</mat-label>
+            <mat-select formControlName="defaultPayment">
                 <mat-option value="false">NIE</mat-option>
                 <mat-option value="true">TAK</mat-option>
             </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Notatka</mat-label>
+            <textarea matInput rows="10" placeholder="Podaj notatkę do tego sposobu płatności" formControlName="note"></textarea>
         </mat-form-field>
 
         <div fxLayoutAlign="end">
@@ -63,24 +55,25 @@ import { AdminShipmentType } from "../model/adminShipmentType";
         color: red;
     }`]
 })
-export class AdminShipmentFormComponent {
+
+export class AdminPaymentFormComponent {
 
     @Input() parentForm!: FormGroup;
-    types: Array<string> = Object.keys(AdminShipmentType).filter(type => isNaN(Number(type)));
+    types: Array<string> = Object.keys(AdminPaymentType).filter(type => isNaN(Number(type)));
 
     get name() {
         return this.parentForm.get("name");
-    }
-
-    get price() {
-        return this.parentForm.get("price");
     }
 
     get type() {
         return this.parentForm.get("type");
     }
 
-    get defaultShipment() {
-        return this.parentForm.get("defaultShipment");
+    get defaultPayment() {
+        return this.parentForm.get("defaultPayment");
+    }
+
+    get note() {
+        return this.parentForm.get("note");
     }
 }

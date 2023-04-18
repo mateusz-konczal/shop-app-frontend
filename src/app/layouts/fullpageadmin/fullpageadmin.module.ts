@@ -21,6 +21,10 @@ import { AdminShipmentComponent } from 'src/app/modules/admin/admin-shipment/adm
 import { AdminShipmentAddComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
 import { AdminShipmentUpdateComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
 import { AdminShipmentFormComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-form/admin-shipment-form.component';
+import { AdminPaymentComponent } from 'src/app/modules/admin/admin-payment/admin-payment.component';
+import { AdminPaymentAddComponent } from 'src/app/modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
+import { AdminPaymentUpdateComponent } from 'src/app/modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
+import { AdminPaymentFormComponent } from 'src/app/modules/admin/admin-payment/admin-payment-form/admin-payment-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { AdminShipmentFormComponent } from 'src/app/modules/admin/admin-shipment
     AdminShipmentComponent,
     AdminShipmentAddComponent,
     AdminShipmentUpdateComponent,
-    AdminShipmentFormComponent
+    AdminShipmentFormComponent,
+    AdminPaymentComponent,
+    AdminPaymentAddComponent,
+    AdminPaymentUpdateComponent,
+    AdminPaymentFormComponent
   ],
   imports: [
     CommonModule,
