@@ -1,7 +1,8 @@
 <h1>Zamówienie</h1>
 
 <div *ngIf="orderSummary" class="orderSummary">
-    <div>Nowe zamówienie o numerze: {{orderSummary.id}}</div>
+    <div>Dziękujemy za złożenie zamówienia</div>
+    <div><br />Numer zamówienia: {{orderSummary.id}}</div>
     <div>Data złożenia: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
     <div>Status: {{getStatus(orderSummary.status)}}</div>
     <div>Kwota całkowita: {{orderSummary.totalValue}} PLN</div>
@@ -10,6 +11,7 @@
     <div *ngIf="orderSummary.payment.note">
         <span class="paymentNote" [innerHTML]="orderSummary.payment.note | replace: '\n': '\<br />'"></span>
     </div>
+    <div><br />Wkrótce poinformujemy Cię e-mailowo o dalszych krokach.</div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
@@ -56,23 +58,23 @@
                 </div>
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Miasto</mat-label>
-                <input type="text" matInput placeholder="Podaj miasto" formControlName="city">
+                <mat-label>Miejscowość</mat-label>
+                <input type="text" matInput placeholder="Podaj miejscowość" formControlName="city">
                 <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="errorMessage">
                     <div *ngIf="city?.errors?.['required']">
-                        Miasto jest wymagane
+                        Miejscowość jest wymagana
                     </div>
                 </div>
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput placeholder="Podaj email" formControlName="email">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput placeholder="Podaj e-mail" formControlName="email">
                 <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errorMessage">
                     <div *ngIf="email?.errors?.['required']">
-                        Email jest wymagany
+                        E-mail jest wymagany
                     </div>
                     <div *ngIf="email?.errors?.['email']">
-                        Podaj porawny format email
+                        Podaj porawny format e-mail
                     </div>
                 </div>
             </mat-form-field>
