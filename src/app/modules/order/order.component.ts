@@ -18,6 +18,7 @@ export class OrderComponent implements OnInit {
   cartSummary!: CartSummary;
   orderSummary!: OrderSummary;
   initOrder!: InitOrder;
+  isErrorMessage = false;
   private statuses = new Map<string, string>([
     ["NEW", "Nowe"]
   ]);
@@ -67,9 +68,13 @@ export class OrderComponent implements OnInit {
         cartId: Number(this.cookieService.get("cartId")),
         shipmentId: Number(this.orderForm.get('shipment')?.value.id),
         paymentId: Number(this.orderForm.get('payment')?.value.id)
-      } as Order).subscribe(orderSummary => {
-        this.orderSummary = orderSummary;
-        this.cookieService.delete("cartId");
+      } as Order).subscribe({
+        next: orderSummary => {
+          this.orderSummary = orderSummary;
+          this.cookieService.delete("cartId");
+          this.isErrorMessage = false;
+        },
+        error: err => this.isErrorMessage = true
       });
     }
   }
