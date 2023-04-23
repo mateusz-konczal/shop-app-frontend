@@ -35,15 +35,17 @@ export class OrderComponent implements OnInit {
     this.checkIfCartIsEmpty();
 
     this.orderForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      street: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      city: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.maxLength(64)]],
+      lastName: ['', [Validators.required, Validators.maxLength(64)]],
+      street: ['', [Validators.required, Validators.maxLength(80)]],
+      houseNumber: ['', [Validators.required, Validators.maxLength(6)]],
+      apartmentNumber: ['', Validators.maxLength(6)],
+      zipCode: ['', [Validators.required, Validators.maxLength(6)]],
+      city: ['', [Validators.required, Validators.maxLength(64)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(64)]],
+      phone: ['', [Validators.required, Validators.maxLength(16)]],
       shipment: ['', Validators.required],
-      payment: ['', Validators.required],
+      payment: ['', Validators.required]
     });
 
     this.getInitOrder();
@@ -64,6 +66,8 @@ export class OrderComponent implements OnInit {
         lastName: this.orderForm.get('lastName')?.value,
         street: this.orderForm.get('street')?.value,
         zipCode: this.orderForm.get('zipCode')?.value,
+        houseNumber: this.orderForm.get('houseNumber')?.value,
+        apartmentNumber: this.orderForm.get('apartmentNumber')?.value,
         city: this.orderForm.get('city')?.value,
         email: this.orderForm.get('email')?.value,
         phone: this.orderForm.get('phone')?.value,
@@ -119,6 +123,14 @@ export class OrderComponent implements OnInit {
 
   get street() {
     return this.orderForm.get("street");
+  }
+
+  get houseNumber() {
+    return this.orderForm.get("houseNumber");
+  }
+
+  get apartmentNumber() {
+    return this.orderForm.get("apartmentNumber");
   }
 
   get zipCode() {

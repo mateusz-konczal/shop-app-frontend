@@ -24,66 +24,117 @@
             <mat-form-field appearance="fill">
                 <mat-label>Imię</mat-label>
                 <input type="text" matInput placeholder="Podaj imię" formControlName="firstName">
-                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="errorMessage">
+                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="errorMessages">
                     <div *ngIf="firstName?.errors?.['required']">
                         Imię jest wymagane
                     </div>
+                    <div *ngIf="firstName?.errors?.['maxlength']">
+                        Imię może zawierać maksymalnie 64 znaki
+                    </div>
                 </div>
             </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Nazwisko</mat-label>
                 <input type="text" matInput placeholder="Podaj nazwisko" formControlName="lastName">
-                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="errorMessage">
+                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="errorMessages">
                     <div *ngIf="lastName?.errors?.['required']">
                         Nazwisko jest wymagane
                     </div>
+                    <div *ngIf="lastName?.errors?.['maxlength']">
+                        Nazwisko może zawierać maksymalnie 64 znaki
+                    </div>
                 </div>
             </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Ulica</mat-label>
                 <input type="text" matInput placeholder="Podaj ulicę" formControlName="street">
-                <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="errorMessage">
+                <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="errorMessages">
                     <div *ngIf="street?.errors?.['required']">
                         Nazwa ulicy jest wymagana
                     </div>
+                    <div *ngIf="street?.errors?.['maxlength']">
+                        Nazwa ulicy może zawierać maksymalnie 80 znaków
+                    </div>
                 </div>
             </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Numer domu</mat-label>
+                <input type="text" matInput placeholder="Podaj numer domu" formControlName="houseNumber">
+                <div *ngIf="houseNumber?.invalid && (houseNumber?.dirty || houseNumber?.touched)" class="errorMessages">
+                    <div *ngIf="houseNumber?.errors?.['required']">
+                        Numer domu jest wymagany
+                    </div>
+                    <div *ngIf="houseNumber?.errors?.['maxlength']">
+                        Numer domu może zawierać maksymalnie 6 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Numer lokalu</mat-label>
+                <input type="text" matInput placeholder="Podaj numer lokalu" formControlName="apartmentNumber">
+                <div *ngIf="apartmentNumber?.invalid && (apartmentNumber?.dirty || apartmentNumber?.touched)" class="errorMessages">
+                    <div *ngIf="apartmentNumber?.errors?.['maxlength']">
+                        Numer lokalu może zawierać maksymalnie 6 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>Kod pocztowy</mat-label>
-                <input type="text" matInput placeholder="Podaj kod pocztowy" formControlName="zipCode">
-                <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessage">
+                <input type="text" pattern="[0-9]{2}-[0-9]{3}" matInput 
+                    placeholder="Podaj kod pocztowy w formacie 00-000" formControlName="zipCode">
+                <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessages">
                     <div *ngIf="zipCode?.errors?.['required']">
                         Kod pocztowy jest wymagany
                     </div>
-                </div>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Miejscowość</mat-label>
-                <input type="text" matInput placeholder="Podaj miejscowość" formControlName="city">
-                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="errorMessage">
-                    <div *ngIf="city?.errors?.['required']">
-                        Miejscowość jest wymagana
+                    <div *ngIf="zipCode?.errors?.['maxlength']">
+                        Kod pocztowy może zawierać maksymalnie 6 znaków
                     </div>
                 </div>
             </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Miejscowość</mat-label>
+                <input type="text" matInput placeholder="Podaj miejscowość" formControlName="city">
+                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="errorMessages">
+                    <div *ngIf="city?.errors?.['required']">
+                        Nazwa miejscowości jest wymagana
+                    </div>
+                    <div *ngIf="city?.errors?.['maxlength']">
+                        Nazwa miejscowości może zawierać maksymalnie 64 znaki
+                    </div>
+                </div>
+            </mat-form-field>
+
             <mat-form-field appearance="fill">
                 <mat-label>E-mail</mat-label>
                 <input type="email" matInput placeholder="Podaj e-mail" formControlName="email">
-                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errorMessage">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errorMessages">
                     <div *ngIf="email?.errors?.['required']">
                         E-mail jest wymagany
                     </div>
                     <div *ngIf="email?.errors?.['email']">
                         Podaj porawny format e-mail
                     </div>
+                    <div *ngIf="email?.errors?.['maxlength']">
+                        E-mail może zawierać maksymalnie 64 znaki
+                    </div>
                 </div>
             </mat-form-field>
+            
             <mat-form-field appearance="fill">
                 <mat-label>Telefon</mat-label>
                 <input type="tel" matInput placeholder="Podaj telefon" formControlName="phone">
-                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="errorMessage">
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="errorMessages">
                     <div *ngIf="phone?.errors?.['required']">
-                        Telefon jest wymagany
+                        Numer telefonu jest wymagany
+                    </div>
+                    <div *ngIf="phone?.errors?.['maxlength']">
+                        Numer telefonu może zawierać maksymalnie 16 znaków
                     </div>
                 </div>
             </mat-form-field>
@@ -141,7 +192,7 @@
                         <span class="orderTotalValue">{{cartSummary?.summary?.totalValue + shipment?.value.price}} PLN</span>
                     </div>
                 </div>
-                <div *ngIf="isErrorMessage" class="errorMessage" fxLayoutAlign="end start">
+                <div *ngIf="isErrorMessage" class="errorMessages" fxLayoutAlign="end start">
                     Ups... Coś poszło nie tak! Spróbuj ponownie póżniej.
                 </div>
                 <div fxLayoutAlign="end start">
