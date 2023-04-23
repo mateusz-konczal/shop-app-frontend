@@ -17,6 +17,13 @@ import { ProductDetailsComponent } from './modules/product-details/product-detai
 import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
 import { CartComponent } from './modules/cart/cart.component';
+import { OrderComponent } from './modules/order/order.component';
+import { AdminShipmentComponent } from './modules/admin/admin-shipment/admin-shipment.component';
+import { AdminShipmentAddComponent } from './modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
+import { AdminShipmentUpdateComponent } from './modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
+import { AdminPaymentComponent } from './modules/admin/admin-payment/admin-payment.component';
+import { AdminPaymentAddComponent } from './modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
+import { AdminPaymentUpdateComponent } from './modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
 
 const routes: Routes = [
   {
@@ -25,7 +32,8 @@ const routes: Routes = [
       { path: 'products', component: ProductComponent },
       { path: 'products/:slug', component: ProductDetailsComponent },
       { path: 'categories/:slug', component: CategoryComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'cart', component: CartComponent },
+      { path: 'order', component: OrderComponent }
     ]
   },
   {
@@ -42,7 +50,13 @@ const routes: Routes = [
       { path: 'admin/categories', component: AdminCategoryComponent },
       { path: 'admin/categories/add', component: AdminCategoryAddComponent },
       { path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent },
-      { path: 'admin/reviews', component: AdminReviewComponent }
+      { path: 'admin/reviews', component: AdminReviewComponent },
+      { path: 'admin/shipments', component: AdminShipmentComponent },
+      { path: 'admin/shipments/add', component: AdminShipmentAddComponent },
+      { path: 'admin/shipments/update/:id', component: AdminShipmentUpdateComponent },
+      { path: 'admin/payments', component: AdminPaymentComponent },
+      { path: 'admin/payments/add', component: AdminPaymentAddComponent },
+      { path: 'admin/payments/update/:id', component: AdminPaymentUpdateComponent }
     ]
   }
 ];

@@ -41,6 +41,9 @@
         <div>
             <button mat-flat-button color="warn" (click)="back()">Powrót do zakupów</button>
         </div>
+        <div fxLayoutAlign="end start">
+            <button type="button" mat-flat-button color="accent" class="orderButton" routerLink="/order">Zamawiam</button>
+        </div>
     </div>
 </form>
 <div *ngIf="!cartSummary?.items?.length">

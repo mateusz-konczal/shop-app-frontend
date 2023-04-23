@@ -1,0 +1,47 @@
+<h1>Lista sposobów płatności
+    <button mat-raised-button color="accent" routerLink="/admin/payments/add">Dodaj płatność
+        <mat-icon>add</mat-icon>
+    </button>
+</h1>
+
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Typ </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="defaultPayment">
+        <th mat-header-cell *matHeaderCellDef> Domyślna płatność </th>
+        <td mat-cell *matCellDef="let element"> {{getOption(element.defaultPayment)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef> Notatka </th>
+        <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Akcje </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/admin/payments/update', element.id]">
+                <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="confirmDelete(element)">
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

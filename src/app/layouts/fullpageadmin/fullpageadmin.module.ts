@@ -17,6 +17,14 @@ import { AdminCategoryAddComponent } from 'src/app/modules/admin/admin-category/
 import { AdminCategoryUpdateComponent } from 'src/app/modules/admin/admin-category/admin-category-update/admin-category-update.component';
 import { AdminCategoryFormComponent } from 'src/app/modules/admin/admin-category/admin-category-form/admin-category-form.component';
 import { AdminReviewComponent } from 'src/app/modules/admin/admin-review/admin-review.component';
+import { AdminShipmentComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment.component';
+import { AdminShipmentAddComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
+import { AdminShipmentUpdateComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
+import { AdminShipmentFormComponent } from 'src/app/modules/admin/admin-shipment/admin-shipment-form/admin-shipment-form.component';
+import { AdminPaymentComponent } from 'src/app/modules/admin/admin-payment/admin-payment.component';
+import { AdminPaymentAddComponent } from 'src/app/modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
+import { AdminPaymentUpdateComponent } from 'src/app/modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
+import { AdminPaymentFormComponent } from 'src/app/modules/admin/admin-payment/admin-payment-form/admin-payment-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,15 @@ import { AdminReviewComponent } from 'src/app/modules/admin/admin-review/admin-r
     AdminCategoryAddComponent,
     AdminCategoryUpdateComponent,
     AdminCategoryFormComponent,
-    AdminReviewComponent
+    AdminReviewComponent,
+    AdminShipmentComponent,
+    AdminShipmentAddComponent,
+    AdminShipmentUpdateComponent,
+    AdminShipmentFormComponent,
+    AdminPaymentComponent,
+    AdminPaymentAddComponent,
+    AdminPaymentUpdateComponent,
+    AdminPaymentFormComponent
   ],
   imports: [
     CommonModule,

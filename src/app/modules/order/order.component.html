@@ -1,0 +1,204 @@
+<h1>Zamówienie</h1>
+
+<div *ngIf="orderSummary" class="orderSummary">
+    <div>Dziękujemy za złożenie zamówienia</div>
+    <div><br />Numer zamówienia: {{orderSummary.id}}</div>
+    <div>Data złożenia: {{orderSummary.placeDate | date: 'yyyy-MM-dd HH:mm'}}</div>
+    <div>Status: {{getStatus(orderSummary.status)}}</div>
+    <div>Kwota całkowita: {{orderSummary.totalValue}} PLN</div>
+    <div>Sposób dostawy: {{orderSummary.shipment.name}}</div>
+    <div>Sposób płatności: {{orderSummary.payment.name}}</div>
+    <div *ngIf="orderSummary.payment.note">
+        <span class="paymentNote" [innerHTML]="orderSummary.payment.note | replace: '\n': '\<br />'"></span>
+    </div>
+    <div><br />Wkrótce poinformujemy Cię e-mailowo o dalszych krokach.</div>
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
+    Koszyk jest pusty, nie możesz zrealizować zamówienia.
+</div>
+
+<div *ngIf="!orderSummary && cartSummary && cartSummary.items.length > 0">
+    <form [formGroup]="orderForm" (submit)="submit()">
+        <div fxLayout="column" class="orderForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Imię</mat-label>
+                <input type="text" matInput placeholder="Podaj imię" formControlName="firstName">
+                <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="errorMessages">
+                    <div *ngIf="firstName?.errors?.['required']">
+                        Imię jest wymagane
+                    </div>
+                    <div *ngIf="firstName?.errors?.['maxlength']">
+                        Imię może zawierać maksymalnie 64 znaki
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Nazwisko</mat-label>
+                <input type="text" matInput placeholder="Podaj nazwisko" formControlName="lastName">
+                <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="errorMessages">
+                    <div *ngIf="lastName?.errors?.['required']">
+                        Nazwisko jest wymagane
+                    </div>
+                    <div *ngIf="lastName?.errors?.['maxlength']">
+                        Nazwisko może zawierać maksymalnie 64 znaki
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Ulica</mat-label>
+                <input type="text" matInput placeholder="Podaj ulicę" formControlName="street">
+                <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="errorMessages">
+                    <div *ngIf="street?.errors?.['required']">
+                        Nazwa ulicy jest wymagana
+                    </div>
+                    <div *ngIf="street?.errors?.['maxlength']">
+                        Nazwa ulicy może zawierać maksymalnie 80 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Numer domu</mat-label>
+                <input type="text" matInput placeholder="Podaj numer domu" formControlName="houseNumber">
+                <div *ngIf="houseNumber?.invalid && (houseNumber?.dirty || houseNumber?.touched)" class="errorMessages">
+                    <div *ngIf="houseNumber?.errors?.['required']">
+                        Numer domu jest wymagany
+                    </div>
+                    <div *ngIf="houseNumber?.errors?.['maxlength']">
+                        Numer domu może zawierać maksymalnie 6 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Numer lokalu</mat-label>
+                <input type="text" matInput placeholder="Podaj numer lokalu" formControlName="apartmentNumber">
+                <div *ngIf="apartmentNumber?.invalid && (apartmentNumber?.dirty || apartmentNumber?.touched)" class="errorMessages">
+                    <div *ngIf="apartmentNumber?.errors?.['maxlength']">
+                        Numer lokalu może zawierać maksymalnie 6 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Kod pocztowy</mat-label>
+                <input type="text" pattern="[0-9]{2}-[0-9]{3}" matInput 
+                    placeholder="Podaj kod pocztowy w formacie 00-000" formControlName="zipCode">
+                <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessages">
+                    <div *ngIf="zipCode?.errors?.['required']">
+                        Kod pocztowy jest wymagany
+                    </div>
+                    <div *ngIf="zipCode?.errors?.['maxlength']">
+                        Kod pocztowy może zawierać maksymalnie 6 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Miejscowość</mat-label>
+                <input type="text" matInput placeholder="Podaj miejscowość" formControlName="city">
+                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="errorMessages">
+                    <div *ngIf="city?.errors?.['required']">
+                        Nazwa miejscowości jest wymagana
+                    </div>
+                    <div *ngIf="city?.errors?.['maxlength']">
+                        Nazwa miejscowości może zawierać maksymalnie 64 znaki
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput placeholder="Podaj e-mail" formControlName="email">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errorMessages">
+                    <div *ngIf="email?.errors?.['required']">
+                        E-mail jest wymagany
+                    </div>
+                    <div *ngIf="email?.errors?.['email']">
+                        Podaj porawny format e-mail
+                    </div>
+                    <div *ngIf="email?.errors?.['maxlength']">
+                        E-mail może zawierać maksymalnie 64 znaki
+                    </div>
+                </div>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Telefon</mat-label>
+                <input type="tel" matInput placeholder="Podaj telefon" formControlName="phone">
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="errorMessages">
+                    <div *ngIf="phone?.errors?.['required']">
+                        Numer telefonu jest wymagany
+                    </div>
+                    <div *ngIf="phone?.errors?.['maxlength']">
+                        Numer telefonu może zawierać maksymalnie 16 znaków
+                    </div>
+                </div>
+            </mat-form-field>
+        </div>
+        <div>
+            <div fxLayoutGap="25px grid">
+                <div>
+                    <h2>Zamawiasz:</h2>
+                    <div fxLayout="row" fxLayoutAlign="space-between start" class="card-hrow">
+                        <div class="cart-hcol-1">Obraz</div>
+                        <div class="cart-hcol-2">Nazwa</div>
+                        <div class="cart-hcol-3">Ilość</div>
+                        <div class="cart-hcol-4">Wartość</div>
+                    </div>
+                    <div *ngFor="let item of cartSummary.items; let i = index" class="card-row">
+                        <div fxLayout="row" fxLayoutAlign="space-between start">
+                            <div class="cart-col-1">
+                                <a routerLink="{{'/products/' + item.product?.slug}}">
+                                    <img *ngIf="!item.product?.image" src="/assets/image-placeholder.png" width="100">
+                                    <img *ngIf="item.product?.image"
+                                        src="{{'/api/admin/products/productImage/' + item.product?.image}}" width="100">
+                                </a>
+                            </div>
+                            <div class="cart-col-2">{{item.product?.name}}</div>
+                            <div class="cart-col-3">{{item.quantity}}</div>
+                            <div class="cart-col-4">{{item.lineValue}}</div>
+                        </div>
+                    </div>
+                    <div fxLayoutAlign="end start">
+                        <div class="summary"> Wartość: </div>
+                        <div class="summary"> <b>{{cartSummary?.summary?.totalValue}} PLN</b></div>
+                    </div>
+                    <div>
+                        <h2>Dostawa:</h2>
+                        <mat-radio-group fxLayout="column" formControlName="shipment">
+                            <mat-radio-button class="shipmentRadioButton" *ngFor="let shipment of initOrder?.shipments"
+                                [value]="shipment" [checked]="shipment.defaultShipment">
+                                <span class="shipmentName">{{shipment.name}}</span>
+                                <span class="shipmentPrice">{{shipment.price}} PLN</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div>
+                        <h2 class="paymentHeader">Płatność:</h2>
+                        <mat-radio-group fxLayout="column" formControlName="payment">
+                            <mat-radio-button class="paymentRadioButton" *ngFor="let payment of initOrder?.payments"
+                                [value]="payment" [checked]="payment.defaultPayment">
+                                <span class="paymentName">{{payment.name}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div fxLayoutAlign="end">
+                    <div class="orderTotal">Całkowita kwota do zapłaty:
+                        <span class="orderTotalValue">{{cartSummary?.summary?.totalValue + shipment?.value.price}} PLN</span>
+                    </div>
+                </div>
+                <div *ngIf="isErrorMessage" class="errorMessages" fxLayoutAlign="end start">
+                    Ups... Coś poszło nie tak! Spróbuj ponownie póżniej.
+                </div>
+                <div fxLayoutAlign="end start">
+                    <button mat-flat-button color="accent" class="orderButton">Zamawiam i płacę</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

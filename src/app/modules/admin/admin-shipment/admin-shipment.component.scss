@@ -1,0 +1,22 @@
+.mat-column-id {
+    width: 60px;
+}
+
+.mat-column-defaultShipment {
+    width: 200px;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+    }
+}
+
+.mat-column-actions {
+    width: 140px;
+}
+
+.mat-column-price,
+.mat-column-type,
+.mat-column-defaultShipment,
+.mat-column-actions {
+    text-align: center;
+}

@@ -1,0 +1,112 @@
+// order form
+.errorMessages {
+    color: red;
+}
+
+.orderForm {
+    width: 400px;
+}
+
+.orderButton {
+    font-size: 22px;
+    width: 250px;
+}
+
+// cart
+.cart-hcol-1,
+.cart-hcol-2,
+.cart-hcol-3,
+.cart-hcol-4 {
+    padding: 7px;
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 110px;
+    text-align: center;
+}
+
+.cart-col-1,
+.cart-col-2,
+.cart-col-3,
+.cart-col-4 {
+    padding: 7px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+}
+
+.cart-hcol-2,
+.cart-col-2 {
+    min-width: 250px;
+}
+
+.card-hrow,
+.card-row {
+    background: white;
+    padding: 4px;
+    border-bottom: 1px solid #eee;
+}
+
+.summary {
+    padding: 7px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+    background: white;
+    padding: 11px;
+    border-bottom: 1px solid #eee;
+}
+
+// order summary
+.orderSummary {
+    font-size: 18px;
+}
+
+.orderSummary div {
+    margin-bottom: 12px;
+}
+
+.paymentNote {
+    font-weight: 700;
+}
+
+// order shipment
+.shipmentRadioButton {
+    margin: 5px 0;
+}
+
+.shipmentName {
+    font-size: 18px;
+}
+
+.shipmentPrice {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+// order total
+.orderTotal {
+    background: white;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.orderTotalValue {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+// order payment
+.paymentHeader {
+    margin-top: 25px;
+}
+
+.paymentRadioButton {
+    margin: 5px 0;
+}
+
+.paymentName {
+    font-size: 18px;
+}

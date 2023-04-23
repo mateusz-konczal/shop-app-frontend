@@ -1,0 +1,47 @@
+<h1>Lista sposobów dostawy
+    <button mat-raised-button color="accent" routerLink="/admin/shipments/add">Dodaj dostawę
+        <mat-icon>add</mat-icon>
+    </button>
+</h1>
+
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Cena </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Typ </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="defaultShipment">
+        <th mat-header-cell *matHeaderCellDef> Domyślna dostawa</th>
+        <td mat-cell *matCellDef="let element"> {{getOption(element.defaultShipment)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Akcje </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/admin/shipments/update', element.id]">
+                <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="confirmDelete(element)">
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

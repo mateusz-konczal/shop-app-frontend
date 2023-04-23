@@ -1,0 +1,4 @@
+<h1>Edycja sposobu płatności</h1>
+<form fxLayout="column" [formGroup]="paymentForm" (submit)="submit()">
+    <app-admin-payment-form [parentForm]="paymentForm"></app-admin-payment-form>
+</form>
