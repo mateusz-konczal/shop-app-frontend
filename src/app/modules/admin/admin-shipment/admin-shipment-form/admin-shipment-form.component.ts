@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminShipmentType } from "../model/adminShipmentType";
+import { AdminShipmentType } from "../../common/model/adminShipmentType";
 
 @Component({
     selector: 'app-admin-shipment-form',

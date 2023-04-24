@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminShipmentService } from '../admin-shipment.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminMessageService } from '../../common/service/admin-message.service';
-import { AdminShipment } from '../model/adminShipment';
+import { AdminShipment } from '../../common/model/adminShipment';
 
 @Component({
   selector: 'app-admin-shipment-update',

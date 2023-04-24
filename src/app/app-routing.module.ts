@@ -24,6 +24,8 @@ import { AdminShipmentUpdateComponent } from './modules/admin/admin-shipment/adm
 import { AdminPaymentComponent } from './modules/admin/admin-payment/admin-payment.component';
 import { AdminPaymentAddComponent } from './modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
 import { AdminPaymentUpdateComponent } from './modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
+import { AdminOrderComponent } from './modules/admin/admin-order/admin-order.component';
+import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
 
 const routes: Routes = [
   {
@@ -56,7 +58,9 @@ const routes: Routes = [
       { path: 'admin/shipments/update/:id', component: AdminShipmentUpdateComponent },
       { path: 'admin/payments', component: AdminPaymentComponent },
       { path: 'admin/payments/add', component: AdminPaymentAddComponent },
-      { path: 'admin/payments/update/:id', component: AdminPaymentUpdateComponent }
+      { path: 'admin/payments/update/:id', component: AdminPaymentUpdateComponent },
+      { path: 'admin/orders', component: AdminOrderComponent },
+      { path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent }
     ]
   }
 ];

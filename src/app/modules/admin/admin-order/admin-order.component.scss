@@ -1,0 +1,18 @@
+.mat-column-id {
+    width: 60px;
+}
+
+.mat-column-actions {
+    width: 120px;
+}
+
+.mat-column-orderStatus,
+.mat-column-totalValue,
+.mat-column-actions {
+    text-align: center;
+}
+
+.status-NEW {
+    background-color: rgb(217, 252, 223);
+    padding: 7px;
+}

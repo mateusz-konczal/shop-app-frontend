@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminPaymentType } from "../model/adminPaymentType";
+import { AdminPaymentType } from "../../common/model/adminPaymentType";
 
 @Component({
     selector: 'app-admin-payment-form',

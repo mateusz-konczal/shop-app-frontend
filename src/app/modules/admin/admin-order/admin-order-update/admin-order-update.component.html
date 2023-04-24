@@ -1,0 +1,46 @@
+<h1>Edycja zamówienia</h1>
+
+<div>
+    <h2>Dane zamówienia</h2>
+    Numer zamówienia: {{order?.id}}<br /><br />
+    Data złożenia: {{order?.placeDate | date: 'yyyy-MM-dd HH:mm'}}<br />
+    Forma płatności: {{order?.payment?.name}}<br /><br />
+
+    <form fxLayout="row" fxLayoutAlign="space-between start">
+        <div>Status: {{order?.orderStatus}}</div>
+        <button mat-flat-button color="primary">Zapisz</button>
+    </form>
+</div>
+
+<div>
+    <h2>Pozycje</h2>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div class="order-hcol-1">Nazwa</div>
+        <div class="order-hcol-2">Ilość</div>
+        <div class="order-hcol-3">Wartość</div>
+    </div>
+    <div *ngFor="let orderRow of order?.orderRows" fxLayout="row" fxLayoutAlign="space-between start">
+        <div class="order-col-1">
+            <span *ngIf="orderRow.product">{{orderRow.product.name}}</span>
+            <span *ngIf="orderRow.shipment">{{orderRow.shipment.name}}</span>
+        </div>
+        <div>{{orderRow.quantity}}</div>
+        <div>{{orderRow.quantity * orderRow.price}}</div>
+    </div>
+    <div fxLayoutAlign="end end">
+        <b>Wartość: {{order?.totalValue}}</b>
+    </div>
+</div>
+
+<div>
+    <h2>Dane klienta</h2>
+    <div>Imię: {{order?.firstName}}</div>
+    <div>Nazwisko: {{order?.lastName}}</div>
+    <div>Ulica: {{order?.street}}</div>
+    <div>Numer domu: {{order?.houseNumber}}</div>
+    <div>Numer lokalu: {{order?.apartmentNumber}}</div>
+    <div>Kod pocztowy: {{order?.zipCode}}</div>
+    <div>Miejscowość: {{order?.city}}</div>
+    <div>E-mail: {{order?.email}}</div>
+    <div>Telefon: {{order?.phone}}</div>
+</div>
