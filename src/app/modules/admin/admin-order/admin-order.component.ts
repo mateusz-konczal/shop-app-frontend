@@ -39,7 +39,7 @@ export class AdminOrderComponent implements AfterViewInit {
       .subscribe(data => this.statuses = new Map(Object.entries(data.orderStatuses)));
   }
 
-  resolveStatus(status: string) {
+  getStatus(status: string) {
     return this.statuses.get(status);
   }
 }

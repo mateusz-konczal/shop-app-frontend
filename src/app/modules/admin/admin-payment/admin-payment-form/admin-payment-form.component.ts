@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminPaymentType } from "../../common/model/adminPaymentType";
+import { AdminPaymentService } from "../admin-payment.service";
 
 @Component({
     selector: 'app-admin-payment-form',
@@ -59,7 +59,18 @@ import { AdminPaymentType } from "../../common/model/adminPaymentType";
 export class AdminPaymentFormComponent {
 
     @Input() parentForm!: FormGroup;
-    types: Array<string> = Object.keys(AdminPaymentType).filter(type => isNaN(Number(type)));
+    types: Array<string> = [];
+
+    constructor(private adminPaymentService: AdminPaymentService) { }
+
+    ngOnInit(): void {
+        this.getPaymentTypes();
+    }
+
+    getPaymentTypes() {
+        this.adminPaymentService.getPaymentTypes()
+            .subscribe(types => this.types = types);
+    }
 
     get name() {
         return this.parentForm.get("name");
