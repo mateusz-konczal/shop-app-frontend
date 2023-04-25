@@ -55,7 +55,7 @@ import { AdminCategoryName } from '../../common/dto/adminCategoryName';
             <mat-label>Kategoria</mat-label>
             <mat-select formControlName="categoryId">
                 <mat-option *ngFor="let category of categories" [value]="category.id">
-                {{category.name}}
+                    {{category.name}}
                 </mat-option>
             </mat-select>
             <div *ngIf="categoryId?.invalid && (categoryId?.dirty || categoryId?.touched)" class="errorMessages">

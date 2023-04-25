@@ -23,7 +23,7 @@ import { AdminPaymentType } from "../../common/model/adminPaymentType";
             <mat-label>Typ</mat-label>
             <mat-select formControlName="type">
                 <mat-option *ngFor="let type of types" [value]="type">
-                {{type}}
+                    {{type}}
                 </mat-option>
             </mat-select>
             <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="errorMessages">

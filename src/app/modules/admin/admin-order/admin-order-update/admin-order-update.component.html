@@ -6,8 +6,16 @@
     Data złożenia: {{order?.placeDate | date: 'yyyy-MM-dd HH:mm'}}<br />
     Forma płatności: {{order?.payment?.name}}<br /><br />
 
-    <form fxLayout="row" fxLayoutAlign="space-between start">
-        <div>Status: {{order?.orderStatus}}</div>
+    <form [formGroup]="orderStatusForm" fxLayout="row" fxLayoutAlign="space-between start"
+        (submit)="changeOrderStatus()">
+        <mat-form-field class="orderStatus">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="orderStatus">
+                <mat-option *ngFor="let status of statuses | keyvalue" [value]="status.key">
+                    {{status.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <button mat-flat-button color="primary">Zapisz</button>
     </form>
 </div>

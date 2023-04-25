@@ -36,7 +36,7 @@ import { AdminShipmentType } from "../../common/model/adminShipmentType";
             <mat-label>Typ</mat-label>
             <mat-select formControlName="type">
                 <mat-option *ngFor="let type of types" [value]="type">
-                {{type}}
+                    {{type}}
                 </mat-option>
             </mat-select>
             <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="errorMessages">

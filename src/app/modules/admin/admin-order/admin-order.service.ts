@@ -15,8 +15,16 @@ export class AdminOrderService {
   getOrders(page: number, size: number): Observable<Page<AdminOrder>> {
     return this.http.get<Page<AdminOrder>>(`/api/admin/orders?page=${page}&size=${size}`);
   }
-  
+
   getOrder(id: number): Observable<AdminOrderUpdate> {
     return this.http.get<AdminOrderUpdate>("/api/admin/orders/" + id);
+  }
+
+  getOrderStatuses(): Observable<any> {
+    return this.http.get<any>("/api/admin/orders/initStatuses");
+  }
+
+  saveOrderStatus(id: number, status: string): Observable<void> {
+    return this.http.patch<void>("/api/admin/orders/" + id, status);
   }
 }
