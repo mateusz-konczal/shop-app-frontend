@@ -1,4 +1,5 @@
 import { AdminPayment } from "../../common/model/adminPayment";
+import { AdminOrderLog } from "./adminOrderLog";
 import { AdminOrderRow } from "./adminOrderRow";
 
 export interface AdminOrderUpdate {
@@ -16,5 +17,6 @@ export interface AdminOrderUpdate {
     email: string,
     phone: string,
     orderRows: Array<AdminOrderRow>,
-    payment: AdminPayment
+    payment: AdminPayment,
+    orderLogs: Array<AdminOrderLog>
 }

@@ -10,6 +10,16 @@
     padding: 4px 0;
 }
 
+.orderLog {
+    background: white;
+    padding: 7px;
+    margin: 15px 0;
+}
+
 .orderStatus {
     width: 270px;
+}
+
+:host>div {
+    margin-bottom: 10px;
 }

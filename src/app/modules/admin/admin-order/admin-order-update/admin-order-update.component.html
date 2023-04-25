@@ -52,3 +52,13 @@
     <div>E-mail: {{order?.email}}</div>
     <div>Telefon: {{order?.phone}}</div>
 </div>
+
+<div>
+    <h2>Log zdarzeń</h2>
+    <div>
+        <div *ngFor="let log of order?.orderLogs" class="orderLog">
+            <div>{{log?.created | date: 'yyyy-MM-dd HH:mm'}}</div>
+            <div>{{log?.note}}</div>
+        </div>
+    </div>
+</div>
