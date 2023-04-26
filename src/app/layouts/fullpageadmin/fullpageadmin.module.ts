@@ -27,6 +27,7 @@ import { AdminPaymentUpdateComponent } from 'src/app/modules/admin/admin-payment
 import { AdminPaymentFormComponent } from 'src/app/modules/admin/admin-payment/admin-payment-form/admin-payment-form.component';
 import { AdminOrderComponent } from 'src/app/modules/admin/admin-order/admin-order.component';
 import { AdminOrderUpdateComponent } from 'src/app/modules/admin/admin-order/admin-order-update/admin-order-update.component';
+import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/admin-order-export/admin-order-export.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AdminOrderUpdateComponent } from 'src/app/modules/admin/admin-order/adm
     AdminPaymentUpdateComponent,
     AdminPaymentFormComponent,
     AdminOrderComponent,
-    AdminOrderUpdateComponent
+    AdminOrderUpdateComponent,
+    AdminOrderExportComponent
   ],
   imports: [
     CommonModule,

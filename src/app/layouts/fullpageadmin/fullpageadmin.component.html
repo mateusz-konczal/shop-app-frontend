@@ -8,7 +8,10 @@
     <div class="sidebar">
         <mat-selection-list [multiple]="false">
             <mat-list-option><a routerLink="/admin">Dashboard</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/orders">Zamówienia</a></mat-list-option>
+            <mat-list-option>
+                <a routerLink="/admin/orders">Zamówienia</a><br />
+                <span class="subMenuLink"> | <a routerLink="/admin/orders/export">Eksport</a></span>
+            </mat-list-option>
             <mat-list-option><a routerLink="/admin/payments">Płatności</a></mat-list-option>
             <mat-list-option><a routerLink="/admin/shipments">Dostawy</a></mat-list-option>
             <mat-list-option><a routerLink="/admin/products">Produkty</a></mat-list-option>

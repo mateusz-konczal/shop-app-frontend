@@ -27,4 +27,9 @@ export class AdminOrderService {
   saveOrderStatus(id: number, status: string): Observable<void> {
     return this.http.patch<void>("/api/admin/orders/" + id, status);
   }
+
+  exportOrders(from: string, to: string, orderStatus: string): Observable<any> {
+    return this.http.get(`/api/admin/orders/export?from=${from}&to=${to}&orderStatus=${orderStatus}`,
+      { responseType: 'blob', observe: 'response' });
+  }
 }

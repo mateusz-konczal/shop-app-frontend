@@ -1,0 +1,30 @@
+<h1>Eksport zamówień</h1>
+
+<form [formGroup]="exportForm" fxLayoutAlign="space-around center" (submit)="export()">
+    <mat-form-field appearance="fill">
+        <mat-label>Od</mat-label>
+        <input matInput placeholder="Podaj datę początkową " formControlName="from" [matDatepicker]="from">
+        <mat-hint>DD.MM.RRRR</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker #from></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Do</mat-label>
+        <input matInput placeholder="Podaj datę końcową" formControlName="to" [matDatepicker]="to">
+        <mat-hint>DD.MM.RRRR</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+        <mat-datepicker #to></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="orderStatus">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="orderStatus">
+            <mat-option *ngFor="let status of statuses | keyvalue" [value]="status.key">
+                {{status.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary">Eksportuj</button>
+</form>

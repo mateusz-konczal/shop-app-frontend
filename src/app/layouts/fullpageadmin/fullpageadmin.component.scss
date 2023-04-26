@@ -5,14 +5,15 @@
 }
 
 header {
-    background: #292b31;;
+    background: #292b31;
     padding: 20px;
     color: #fff;
 }
 
 .sidebar {
-    background: #292b31;;
+    background: #292b31;
     padding: 20px;
+
     a {
         color: #fff;
     }
@@ -20,4 +21,8 @@ header {
 
 .content {
     background: #f9f9f9;
+}
+
+.subMenuLink {
+    color: gray;
 }
