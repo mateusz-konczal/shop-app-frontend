@@ -10,6 +10,14 @@ header {
     color: #fff;
 }
 
+.content {
+    background: #f9f9f9;
+}
+
+.orders {
+    min-height: 100px;
+}
+
 .sidebar {
     background: #292b31;
     padding: 20px;
@@ -17,10 +25,6 @@ header {
     a {
         color: #fff;
     }
-}
-
-.content {
-    background: #f9f9f9;
 }
 
 .subMenuLink {
