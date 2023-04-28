@@ -4,14 +4,18 @@
     height: 100%
 }
 
+.content {
+    background: #f9f9f9;
+}
+
 header {
     background: #292b31;
     padding: 20px;
     color: #fff;
 }
 
-.content {
-    background: #f9f9f9;
+.logo {
+    font-size: 22px;
 }
 
 .orders {
@@ -29,4 +33,5 @@ header {
 
 .subMenuLink {
     color: gray;
+    margin-top: 5px;
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Page } from '../../common/model/page';
 import { AdminOrder } from './model/adminOrder';
 import { AdminOrderUpdate } from './model/adminOrderUpdate';
+import { AdminOrderStats } from './admin-order-stats/model/adminOrderStats';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class AdminOrderService {
       { responseType: 'blob', observe: 'response' });
   }
 
-  getSalesStatistics(): Observable<any> {
-    return this.http.get<any>("/api/admin/orders/stats");
+  getSalesStatistics(): Observable<AdminOrderStats> {
+    return this.http.get<AdminOrderStats>("/api/admin/orders/stats");
   }
 }

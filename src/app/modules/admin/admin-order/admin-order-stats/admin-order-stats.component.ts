@@ -55,11 +55,19 @@ export class AdminOrderStatsComponent implements AfterViewInit {
         responsive: true,
         plugins: {
           legend: {
-            position: 'top'
+            position: 'top',
+            labels: {
+              font: {
+                size: 16
+              }
+            }
           },
           title: {
             display: true,
-            text: 'Wykres sprzedaży'
+            text: 'Wykres sprzedaży',
+            font: {
+              size: 28
+            }
           }
         },
         scales: {
@@ -80,6 +88,15 @@ export class AdminOrderStatsComponent implements AfterViewInit {
             },
             grid: {
               drawOnChartArea: false
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Dzień aktualnego miesiąca',
+              font: {
+                size: 15
+              }
             }
           }
         }

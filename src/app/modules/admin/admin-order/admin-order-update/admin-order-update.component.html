@@ -6,7 +6,7 @@
     Data złożenia: {{order?.placeDate | date: 'yyyy-MM-dd HH:mm'}}<br />
     Forma płatności: {{order?.payment?.name}}<br /><br />
 
-    <form [formGroup]="orderStatusForm" fxLayout="row" fxLayoutAlign="space-between start"
+    <form [formGroup]="orderStatusForm" fxLayout="column" fxLayoutAlign="space-between start" class="orderStatusForm"
         (submit)="changeOrderStatus()">
         <mat-form-field class="orderStatus">
             <mat-label>Status</mat-label>
