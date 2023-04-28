@@ -1,5 +1,7 @@
 export interface AdminOrderStats {
-    labels: Array<number>,
-    orders: Array<number>,
-    sales: Array<number>
+    labelsSet: Array<number>,
+    ordersList: Array<number>,
+    salesList: Array<number>,
+    totalNumberOfOrders: number,
+    totalSales: number
 }

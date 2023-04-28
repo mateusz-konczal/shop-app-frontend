@@ -12,7 +12,7 @@ export class AdminOrderStatsComponent implements AfterViewInit {
   @ViewChild("stats") private stats!: ElementRef;
 
   chart!: Chart;
-  numberOfOrders: number = 0;
+  totalNumberOfOrders: number = 0;
   totalSales: number = 0;
 
   private data = {
@@ -107,12 +107,12 @@ export class AdminOrderStatsComponent implements AfterViewInit {
   private getSalesStatistics() {
     this.adminOrderService.getSalesStatistics()
       .subscribe(stats => {
-        this.data.labels = stats.labels;
-        this.data.datasets[0].data = stats.orders;
-        this.data.datasets[1].data = stats.sales;
+        this.data.labels = stats.labelsSet;
+        this.data.datasets[0].data = stats.ordersList;
+        this.data.datasets[1].data = stats.salesList;
         this.chart.update();
-        this.numberOfOrders = stats.orders.reduce((acc: number, value: number) => acc + value);
-        this.totalSales = stats.sales.reduce((acc: number, value: number) => acc + value);
+        this.totalNumberOfOrders = stats.totalNumberOfOrders;
+        this.totalSales = stats.totalSales;
       });
   }
 }
