@@ -33,6 +33,12 @@ export class AdminOrderUpdateComponent implements OnInit {
     });
   }
 
+  getOrderStatuses() {
+    this.adminOrderService
+      .getOrderStatuses()
+      .subscribe(data => this.statuses = data.orderStatuses);
+  }
+
   getOrder() {
     let id = Number(this.router.snapshot.params['id']);
     this.adminOrderService
@@ -46,17 +52,14 @@ export class AdminOrderUpdateComponent implements OnInit {
       });
   }
 
-  getOrderStatuses() {
-    this.adminOrderService
-      .getOrderStatuses()
-      .subscribe(data => this.statuses = data.orderStatuses);
-  }
-
   changeOrderStatus() {
     this.adminOrderService
       .saveOrderStatus(this.order.id, this.orderStatusForm.value)
       .subscribe({
-        next: () => this.snackBar.open("Status zamówienia został zaktualizowany", '', { duration: 3000 }),
+        next: () => {
+          this.snackBar.open("Status zamówienia został zaktualizowany", '', { duration: 3000 });
+          this.getOrder();
+        },
         error: err => this.adminMessageService.addSpringErrors(err.error)
       });
   }
