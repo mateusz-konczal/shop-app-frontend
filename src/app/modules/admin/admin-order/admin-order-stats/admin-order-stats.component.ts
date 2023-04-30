@@ -107,7 +107,7 @@ export class AdminOrderStatsComponent implements AfterViewInit {
   private getSalesStatistics() {
     this.adminOrderService.getSalesStatistics()
       .subscribe(stats => {
-        this.data.labels = stats.labelsSet;
+        this.data.labels = stats.labelsList;
         this.data.datasets[0].data = stats.ordersList;
         this.data.datasets[1].data = stats.salesList;
         this.chart.update();
