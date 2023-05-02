@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdminPayment } from './model/adminPayment';
+import { AdminPayment } from '../common/model/adminPayment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,10 @@ export class AdminPaymentService {
 
   getPayment(id: number): Observable<AdminPayment> {
     return this.http.get<AdminPayment>("/api/admin/payments/" + id);
+  }
+
+  getPaymentTypes(): Observable<Array<string>> {
+    return this.http.get<Array<string>>("api/admin/payments/initTypes");
   }
 
   savePayment(id: number, payment: AdminPayment): Observable<AdminPayment> {

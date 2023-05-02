@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminShipmentType } from "../model/adminShipmentType";
+import { AdminShipmentService } from "../admin-shipment.service";
 
 @Component({
     selector: 'app-admin-shipment-form',
@@ -36,7 +36,7 @@ import { AdminShipmentType } from "../model/adminShipmentType";
             <mat-label>Typ</mat-label>
             <mat-select formControlName="type">
                 <mat-option *ngFor="let type of types" [value]="type">
-                {{type}}
+                    {{type}}
                 </mat-option>
             </mat-select>
             <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="errorMessages">
@@ -66,7 +66,18 @@ import { AdminShipmentType } from "../model/adminShipmentType";
 export class AdminShipmentFormComponent {
 
     @Input() parentForm!: FormGroup;
-    types: Array<string> = Object.keys(AdminShipmentType).filter(type => isNaN(Number(type)));
+    types: Array<string> = [];
+
+    constructor(private adminShipmentService: AdminShipmentService) { }
+
+    ngOnInit(): void {
+        this.getShipmentTypes();
+    }
+
+    getShipmentTypes() {
+        this.adminShipmentService.getShipmentTypes()
+            .subscribe(types => this.types = types);
+    }
 
     get name() {
         return this.parentForm.get("name");

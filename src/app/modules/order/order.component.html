@@ -85,7 +85,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Kod pocztowy</mat-label>
-                <input type="text" pattern="[0-9]{2}-[0-9]{3}" matInput 
+                <input type="text" pattern="[0-9]{2}-[0-9]{3}" matInput
                     placeholder="Podaj kod pocztowy w formacie 00-000" formControlName="zipCode">
                 <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessages">
                     <div *ngIf="zipCode?.errors?.['required']">
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </mat-form-field>
-            
+
             <mat-form-field appearance="fill">
                 <mat-label>Telefon</mat-label>
                 <input type="tel" matInput placeholder="Podaj telefon" formControlName="phone">
@@ -189,7 +189,9 @@
                 </div>
                 <div fxLayoutAlign="end">
                     <div class="orderTotal">Całkowita kwota do zapłaty:
-                        <span class="orderTotalValue">{{cartSummary?.summary?.totalValue + shipment?.value.price}} PLN</span>
+                        <span class="orderTotalValue">
+                            {{calculateTotalCost(cartSummary?.summary?.totalValue, shipment?.value.price)}} PLN
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="isErrorMessage" class="errorMessages" fxLayoutAlign="end start">

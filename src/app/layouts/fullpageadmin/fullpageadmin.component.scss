@@ -4,20 +4,34 @@
     height: 100%
 }
 
+.content {
+    background: #f9f9f9;
+}
+
 header {
-    background: #292b31;;
+    background: #292b31;
     padding: 20px;
     color: #fff;
 }
 
+.logo {
+    font-size: 22px;
+}
+
+.orders {
+    min-height: 100px;
+}
+
 .sidebar {
-    background: #292b31;;
+    background: #292b31;
     padding: 20px;
+
     a {
         color: #fff;
     }
 }
 
-.content {
-    background: #f9f9f9;
+.subMenuLink {
+    color: gray;
+    margin-top: 5px;
 }

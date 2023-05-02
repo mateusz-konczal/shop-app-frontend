@@ -4,7 +4,7 @@ import { AdminPaymentService } from '../admin-payment.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminMessageService } from '../../common/service/admin-message.service';
-import { AdminPayment } from '../model/adminPayment';
+import { AdminPayment } from '../../common/model/adminPayment';
 
 @Component({
   selector: 'app-admin-payment-update',

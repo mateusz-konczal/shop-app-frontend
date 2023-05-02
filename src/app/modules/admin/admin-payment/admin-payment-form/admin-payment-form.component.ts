@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AdminPaymentType } from "../model/adminPaymentType";
+import { AdminPaymentService } from "../admin-payment.service";
 
 @Component({
     selector: 'app-admin-payment-form',
@@ -23,7 +23,7 @@ import { AdminPaymentType } from "../model/adminPaymentType";
             <mat-label>Typ</mat-label>
             <mat-select formControlName="type">
                 <mat-option *ngFor="let type of types" [value]="type">
-                {{type}}
+                    {{type}}
                 </mat-option>
             </mat-select>
             <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="errorMessages">
@@ -59,7 +59,18 @@ import { AdminPaymentType } from "../model/adminPaymentType";
 export class AdminPaymentFormComponent {
 
     @Input() parentForm!: FormGroup;
-    types: Array<string> = Object.keys(AdminPaymentType).filter(type => isNaN(Number(type)));
+    types: Array<string> = [];
+
+    constructor(private adminPaymentService: AdminPaymentService) { }
+
+    ngOnInit(): void {
+        this.getPaymentTypes();
+    }
+
+    getPaymentTypes() {
+        this.adminPaymentService.getPaymentTypes()
+            .subscribe(types => this.types = types);
+    }
 
     get name() {
         return this.parentForm.get("name");

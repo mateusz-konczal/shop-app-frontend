@@ -7,6 +7,7 @@ import { OrderSummary } from './model/orderSummary';
 import { Order } from './model/order';
 import { InitOrder } from './model/initOrder';
 import { CartIconService } from '../common/service/cart-icon.service';
+import Big from 'big.js';
 
 @Component({
   selector: 'app-order',
@@ -57,6 +58,14 @@ export class OrderComponent implements OnInit {
       this.orderService.getCart(cartId)
         .subscribe(cartSummary => this.cartSummary = cartSummary);
     }
+  }
+
+  calculateTotalCost(totalValue: number | undefined, shipmentPrice: number) {
+    if (typeof totalValue == "number" && typeof shipmentPrice == "number") {
+      return Big(totalValue).add(Big(shipmentPrice));
+    }
+
+    return 0;
   }
 
   submit() {

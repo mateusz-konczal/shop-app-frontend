@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdminShipment } from './model/adminShipment';
+import { AdminShipment } from '../common/model/adminShipment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,10 @@ export class AdminShipmentService {
 
   getShipment(id: number): Observable<AdminShipment> {
     return this.http.get<AdminShipment>("/api/admin/shipments/" + id);
+  }
+
+  getShipmentTypes(): Observable<Array<string>> {
+    return this.http.get<Array<string>>("api/admin/shipments/initTypes");
   }
 
   saveShipment(id: number, shipment: AdminShipment): Observable<AdminShipment> {

@@ -1,0 +1,42 @@
+:host>div {
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.order-hcol-1,
+.order-hcol-2,
+.order-hcol-3 {
+    font-weight: 600;
+}
+
+.order-col-1,
+.order-hcol-1 {
+    min-width: 450px;
+}
+
+.order-col-3,
+.order-hcol-3 {
+    min-width: 100px;
+    text-align: end;
+}
+
+.orderLog {
+    background: white;
+    padding: 7px;
+    margin: 15px 0;
+}
+
+.orderRow {
+    padding: 4px 0;
+}
+
+.orderStatus {
+    width: 270px;
+}
+
+.orderStatusForm {
+    margin-bottom: 30px;
+}

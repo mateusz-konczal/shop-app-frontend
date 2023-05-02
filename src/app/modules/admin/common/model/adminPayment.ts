@@ -1,9 +1,7 @@
-import { AdminPaymentType } from "./adminPaymentType";
-
 export interface AdminPayment {
     id: number,
     name: string,
-    type: AdminPaymentType,
+    type: string,
     defaultPayment: boolean,
     note: string
 }

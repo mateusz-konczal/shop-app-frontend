@@ -4,7 +4,7 @@ import { MatTable } from '@angular/material/table';
 import { startWith, switchMap } from 'rxjs';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
 import { AdminProductService } from './admin-product.service';
-import { AdminProduct } from './model/adminProduct';
+import { AdminProduct } from '../common/model/adminProduct';
 
 @Component({
   selector: 'app-admin-product',
