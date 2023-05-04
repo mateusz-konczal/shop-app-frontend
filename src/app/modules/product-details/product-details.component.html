@@ -2,7 +2,7 @@
     <div fxLayout="row" fxFlex fxLayoutGap="20">
         <div>
             <img *ngIf="!product?.image" src="/assets/image-placeholder.png" width="350">
-            <img *ngIf="product?.image" src="{{'/api/admin/products/productImage/' + product.image}}" width="350">
+            <img *ngIf="product?.image" src="{{'/api/products/productImage/' + product.image}}" width="350">
         </div>
         <div fxLayout="column" fxFlex>
             <h1>{{product?.name}}</h1>

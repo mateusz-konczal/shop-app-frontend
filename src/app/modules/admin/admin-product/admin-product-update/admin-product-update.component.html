@@ -2,7 +2,7 @@
 <form fxLayout="column" [formGroup]="productForm" (submit)="submit()">
     <app-admin-product-form [parentForm]="productForm"></app-admin-product-form>
 </form>
-<img *ngIf="image" src="{{'/api/admin/products/productImage/' + image}}" width="200">
+<img *ngIf="image" src="{{'/api/products/productImage/' + image}}" width="200">
 <form [formGroup]="imageForm" (submit)="uploadFile()">
     <input type="file" [accept]="requiredFileTypes" (change)="onFileChange($event)">
     <button mat-flat-button color="basic">Prześlij</button>

@@ -16,7 +16,7 @@
                         <a routerLink="{{'/products/' + item.value?.product?.slug}}">
                             <img *ngIf="!item.value?.product?.image" src="/assets/image-placeholder.png" width="100">
                             <img *ngIf="item.value?.product?.image"
-                                src="{{'/api/admin/products/productImage/' + item.value?.product?.image}}" width="100">
+                                src="{{'/api/products/productImage/' + item.value?.product?.image}}" width="100">
                         </a>
                     </div>
                     <div class="cart-col-2">{{item.value?.product?.name}}</div>
