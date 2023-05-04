@@ -13,8 +13,8 @@ export class AdminOrderExportComponent implements OnInit {
   statuses!: Map<string, string>;
 
   constructor(
-    private adminOrderService: AdminOrderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private adminOrderService: AdminOrderService
   ) { }
 
   ngOnInit(): void {
