@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginCredentials } from './model/loginCredentials';
+import { Token } from './model/token';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AdminLoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(credentials: LoginCredentials): Observable<any> {
-    return this.http.post<any>("/api/login", credentials)
+  login(credentials: LoginCredentials): Observable<Token> {
+    return this.http.post<Token>("/api/login", credentials)
   }
 }
