@@ -23,6 +23,8 @@ export class AdminLoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.jwtService.removeToken();
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
