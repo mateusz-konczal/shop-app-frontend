@@ -30,7 +30,7 @@ import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-ord
 import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-order-export/admin-order-export.component';
 import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
 import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.component';
-import { AdminAuthorizeGuard } from './modules/admin/common/guard/adminAuthorizeGuard';
+import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
 
 const routes: Routes = [
   {
@@ -50,24 +50,24 @@ const routes: Routes = [
   },
   {
     path: '', component: FullpageadminComponent, children: [
-      { path: 'admin', component: AdminComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/products', component: AdminProductComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/products/update/:id', component: AdminProductUpdateComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/products/add', component: AdminProductAddComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/categories', component: AdminCategoryComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/categories/add', component: AdminCategoryAddComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/reviews', component: AdminReviewComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/shipments', component: AdminShipmentComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/shipments/add', component: AdminShipmentAddComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/shipments/update/:id', component: AdminShipmentUpdateComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/payments', component: AdminPaymentComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/payments/add', component: AdminPaymentAddComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/payments/update/:id', component: AdminPaymentUpdateComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/orders', component: AdminOrderComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/orders/export', component: AdminOrderExportComponent, canActivate: [AdminAuthorizeGuard] },
-      { path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [AdminAuthorizeGuard] }
+      { path: 'admin', component: AdminComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/products', component: AdminProductComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/products/update/:id', component: AdminProductUpdateComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/products/add', component: AdminProductAddComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/categories', component: AdminCategoryComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/categories/add', component: AdminCategoryAddComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/reviews', component: AdminReviewComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/shipments', component: AdminShipmentComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/shipments/add', component: AdminShipmentAddComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/shipments/update/:id', component: AdminShipmentUpdateComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/payments', component: AdminPaymentComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/payments/add', component: AdminPaymentAddComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/payments/update/:id', component: AdminPaymentUpdateComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/orders', component: AdminOrderComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/orders/export', component: AdminOrderExportComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [adminAuthorizationGuard] }
     ]
   },
   {
