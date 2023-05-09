@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div fxLayout="row">
+    <div fxFlex>
+        <h2 class="header">Logowanie</h2>
+        <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="form">
+            <div *ngIf="isLoginError" class="error">
+                Podaj poprawne dane logowania
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput placeholder="Podaj swój e-mail" formControlName="username">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hasło</mat-label>
+                <input type="password" matInput placeholder="Podaj swoje hasło" formControlName="password">
+            </mat-form-field>
+            <button mat-flat-button color="primary">Zaloguj się</button>
+        </form>
+    </div>
+
+    <div fxFlex>
+        <h2 class="header">Rejestracja</h2>
+        <form [formGroup]="registerForm" fxLayout="column" (submit)="register()" class="form">
+            <div *ngIf="isRegisterError" class="error">
+                {{registerErrorMessage}}
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput placeholder="Podaj swój e-mail" formControlName="username">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hasło</mat-label>
+                <input type="password" matInput placeholder="Podaj swoje hasło" formControlName="password">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Powtórz hasło</mat-label>
+                <input type="password" matInput placeholder="Powtórz hasło" formControlName="repeatPassword">
+            </mat-form-field>
+            <button mat-flat-button color="primary">Zarejestruj się</button>
+        </form>
+    </div>
+</div>

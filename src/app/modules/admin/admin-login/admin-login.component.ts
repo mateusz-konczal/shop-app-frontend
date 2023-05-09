@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminLoginService } from './admin-login.service';
-import { LoginCredentials } from './model/loginCredentials';
+import { LoginCredentials } from '../../common/model/security/loginCredentials';
 import { JwtService } from '../../common/service/jwt.service';
 import { Router } from '@angular/router';
 
