@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      repeatPassword: ['', Validators.required]
+      repeatedPassword: ['', Validators.required]
     });
   }
 
@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value as LoginCredentials)
         .subscribe({
-          next: response => {
+          next: token => {
             this.isLoginError = false;
-            this.jwtService.setToken(response.token);
+            this.jwtService.setToken(token.token);
             this.router.navigate(["/"]);
           },
           error: () => this.isLoginError = true
@@ -58,14 +58,18 @@ export class LoginComponent implements OnInit {
     if (this.registerForm.valid && this.isPasswordIdentical(credentials)) {
       this.loginService.register(credentials)
         .subscribe({
-          next: response => {
+          next: token => {
             this.isRegisterError = false;
-            this.jwtService.setToken(response.token);
+            this.jwtService.setToken(token.token);
             this.router.navigate(["/"]);
           },
-          error: () => {
+          error: err => {
             this.isRegisterError = true;
-            this.registerErrorMessage = "Coś poszło nie tak. Spróbuj ponownie później.";
+            if (err.error.message) {
+              this.registerErrorMessage = err.error.message;
+            } else {
+              this.registerErrorMessage = "Coś poszło nie tak, spróbuj ponownie później";
+            }
           }
         });
     }
