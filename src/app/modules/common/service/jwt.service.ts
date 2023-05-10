@@ -6,7 +6,17 @@ import jwt_decode from 'jwt-decode';
 })
 export class JwtService {
 
+  adminAccess = false;
+
   constructor() { }
+
+  getAdminAccess(): boolean {
+    return this.adminAccess;
+  }
+
+  setAdminAccess(adminAccess: boolean) {
+    this.adminAccess = adminAccess;
+  }
 
   getToken(): string | null {
     return localStorage.getItem("token");

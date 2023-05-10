@@ -6,7 +6,7 @@ export const adminAuthorizationGuard: CanActivateFn = (route: ActivatedRouteSnap
     const jwtService = inject(JwtService);
     const router = inject(Router);
 
-    if (!jwtService.isTokenValid()) {
+    if (!(jwtService.isTokenValid() && jwtService.getAdminAccess())) {
         router.navigate(["/admin/login"]);
     }
 

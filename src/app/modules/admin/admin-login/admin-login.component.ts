@@ -24,6 +24,7 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.jwtService.removeToken();
+    this.jwtService.setAdminAccess(false);
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -37,7 +38,10 @@ export class AdminLoginComponent implements OnInit {
         .subscribe({
           next: token => {
             this.isLoginError = false;
-            this.jwtService.setToken(token.token);
+            if (token.adminAccess) {
+              this.jwtService.setToken(token.token);
+              this.jwtService.setAdminAccess(true);
+            }
             this.router.navigate(["/admin"]);
           },
           error: () => this.isLoginError = true
