@@ -13,6 +13,7 @@ import { LoginCredentials } from '../common/model/security/loginCredentials';
 })
 export class LoginComponent implements OnInit {
 
+  private readonly REDIRECT_ROUTE = "/profile";
   loginForm!: FormGroup;
   isLoginError = false
   registerForm!: FormGroup;
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.jwtService.isTokenValid()) {
+      this.router.navigate([this.REDIRECT_ROUTE]);
+    }
+
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -46,7 +51,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.isLoginError = false;
             this.jwtService.setToken(token.token);
-            this.router.navigate(["/"]);
+            this.router.navigate([this.REDIRECT_ROUTE]);
           },
           error: () => this.isLoginError = true
         });
@@ -61,7 +66,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.isRegisterError = false;
             this.jwtService.setToken(token.token);
-            this.router.navigate(["/"]);
+            this.router.navigate([this.REDIRECT_ROUTE]);
           },
           error: err => {
             this.isRegisterError = true;
