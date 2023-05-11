@@ -7,6 +7,7 @@ import { OrderSummary } from './model/orderSummary';
 import { Order } from './model/order';
 import { InitOrder } from './model/initOrder';
 import { CartIconService } from '../common/service/cart-icon.service';
+import { JwtService } from '../common/service/jwt.service';
 import Big from 'big.js';
 
 @Component({
@@ -21,6 +22,7 @@ export class OrderComponent implements OnInit {
   orderSummary!: OrderSummary;
   initOrder!: InitOrder;
   isErrorMessage = false;
+  isLoggedIn = false;
   private statuses = new Map<string, string>([
     ["NEW", "Nowe"]
   ]);
@@ -29,7 +31,8 @@ export class OrderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private orderService: OrderService,
     private cookieService: CookieService,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +53,7 @@ export class OrderComponent implements OnInit {
     });
 
     this.getInitOrder();
+    this.isLoggedIn = this.jwtService.isTokenValid();
   }
 
   checkIfCartIsEmpty() {

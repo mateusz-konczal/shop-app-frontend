@@ -1,4 +1,5 @@
-<h1>Zamówienie</h1>
+<h1 *ngIf="isLoggedIn">Zamówienie</h1>
+<h1 *ngIf="!isLoggedIn">Zamówienie (<a routerLink="/login">zaloguj się</a>, aby śledzić swoje zamówienie)</h1>
 
 <div *ngIf="orderSummary" class="orderSummary">
     <div>Dziękujemy za złożenie zamówienia</div>
@@ -12,6 +13,9 @@
         <span class="paymentNote" [innerHTML]="orderSummary.payment.note | replace: '\n': '\<br />'"></span>
     </div>
     <div><br />Wkrótce poinformujemy Cię e-mailowo o dalszych krokach.</div>
+    <div *ngIf="isLoggedIn">
+        Status zamówienia możesz śledzić na stronie swojego <a routerLink="/profile">profilu</a>.
+    </div>
 </div>
 
 <div *ngIf="!orderSummary && cartSummary && cartSummary.items.length <= 0">
@@ -76,7 +80,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Numer lokalu</mat-label>
                 <input type="text" matInput placeholder="Podaj numer lokalu" formControlName="apartmentNumber">
-                <div *ngIf="apartmentNumber?.invalid && (apartmentNumber?.dirty || apartmentNumber?.touched)" class="errorMessages">
+                <div *ngIf="apartmentNumber?.invalid && (apartmentNumber?.dirty || apartmentNumber?.touched)"
+                    class="errorMessages">
                     <div *ngIf="apartmentNumber?.errors?.['maxlength']">
                         Numer lokalu może zawierać maksymalnie 6 znaków
                     </div>
