@@ -32,6 +32,7 @@ import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-orde
 import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.component';
 import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
 import { ProfileComponent } from './modules/profile/profile.component';
+import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
       { path: 'categories/:slug', component: CategoryComponent },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent, canActivate: [profileAuthorizationGuard] }
     ]
   },
   {
