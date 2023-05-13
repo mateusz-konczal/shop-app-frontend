@@ -11,6 +11,9 @@
             <span *ngIf="!isLoggedIn">Zaloguj się</span>
             <span *ngIf="isLoggedIn">Mój profil</span>
         </button>
+        <div *ngIf="isLoggedIn">
+            <button mat-flat-button (click)="logout()">Wyloguj się</button>
+        </div>
         <a routerLink="/cart">
             <mat-icon color="accent" class="shoppingBasket" matBadge="{{cartProductCounter}}"
                 matBadgeColor="warn">shopping_basket</mat-icon>

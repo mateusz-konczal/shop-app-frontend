@@ -34,4 +34,9 @@ export class HeaderComponent implements OnInit {
     this.headerService.getNumberOfProductsInCart(cartId)
       .subscribe(counter => this.cartProductCounter = String(counter > 0 ? counter : ""));
   }
+
+  logout() {
+    this.jwtService.removeToken();
+    window.location.reload();
+  }
 }
