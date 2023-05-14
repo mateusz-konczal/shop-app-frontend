@@ -4,6 +4,7 @@ import { LoginService } from './login.service';
 import { RegisterCredentials } from './model/registerCredentials';
 import { JwtService } from '../common/service/jwt.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { LoginCredentials } from '../common/model/security/loginCredentials';
 
 @Component({
@@ -13,7 +14,6 @@ import { LoginCredentials } from '../common/model/security/loginCredentials';
 })
 export class LoginComponent implements OnInit {
 
-  private readonly REDIRECT_ROUTE = "/profile";
   loginForm!: FormGroup;
   isLoginError = false
   registerForm!: FormGroup;
@@ -24,12 +24,13 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private jwtService: JwtService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     if (this.jwtService.isTokenValid()) {
-      this.router.navigate([this.REDIRECT_ROUTE]);
+      this.location.back();
     }
 
     this.loginForm = this.formBuilder.group({
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.isLoginError = false;
             this.jwtService.setToken(token.token);
-            this.router.navigate([this.REDIRECT_ROUTE]);
+            window.location.reload();
           },
           error: () => this.isLoginError = true
         });
@@ -66,7 +67,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.isRegisterError = false;
             this.jwtService.setToken(token.token);
-            this.router.navigate([this.REDIRECT_ROUTE]);
+            this.router.navigate(["/profile"]);
           },
           error: err => {
             this.isRegisterError = true;

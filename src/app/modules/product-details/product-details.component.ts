@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductDetails } from './model/productDetails';
 import { Review } from './model/review';
 import { ProductDetailsService } from './product-details.service';
+import { JwtService } from '../common/service/jwt.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,21 +16,24 @@ export class ProductDetailsComponent implements OnInit {
 
   product!: ProductDetails;
   reviewForm!: FormGroup;
+  isLoggedIn = false;
 
   constructor(
     private router: ActivatedRoute,
     private productDetailsService: ProductDetailsService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
     this.getProductDetails();
+    this.isLoggedIn = this.jwtService.isTokenValid();
 
     this.reviewForm = this.formBuilder.group({
       authorName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(60)]],
       content: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(600)]]
-    })
+    });
   }
 
   getProductDetails() {

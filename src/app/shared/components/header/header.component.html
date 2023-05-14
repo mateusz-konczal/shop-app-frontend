@@ -7,9 +7,9 @@
         <button mat-flat-button routerLink="">Strona główna</button>
         <button mat-flat-button routerLink="/products">Produkty</button>
         <span></span>
-        <button mat-flat-button routerLink="/login">
-            <span *ngIf="!isLoggedIn">Zaloguj się</span>
-            <span *ngIf="isLoggedIn">Mój profil</span>
+        <button mat-flat-button>
+            <span *ngIf="!isLoggedIn" routerLink="/login">Zaloguj się</span>
+            <span *ngIf="isLoggedIn" routerLink="/profile">Mój profil</span>
         </button>
         <div *ngIf="isLoggedIn">
             <button mat-flat-button (click)="logout()">Wyloguj się</button>
