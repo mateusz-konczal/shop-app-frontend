@@ -33,6 +33,7 @@ import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.com
 import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
+import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,8 @@ const routes: Routes = [
   },
   {
     path: '', component: FullpageComponent, children: [
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'lostPassword', component: LostPasswordComponent }
     ]
   },
   {
