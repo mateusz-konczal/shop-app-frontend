@@ -2,7 +2,7 @@
     <div fxFlex>
         <h2 class="header">Logowanie</h2>
         <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="form">
-            <div *ngIf="isLoginError" class="error">
+            <div *ngIf="isLoginError" class="formError">
                 Podaj poprawne dane logowania
             </div>
             <mat-form-field appearance="fill">
@@ -23,7 +23,7 @@
     <div fxFlex>
         <h2 class="header">Rejestracja</h2>
         <form [formGroup]="registerForm" fxLayout="column" (submit)="register()" class="form">
-            <div *ngIf="isRegisterError" class="error">
+            <div *ngIf="registerErrorMessage" class="formError">
                 {{registerErrorMessage}}
             </div>
             <mat-form-field appearance="fill">

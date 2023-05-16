@@ -50,7 +50,8 @@ const routes: Routes = [
   {
     path: '', component: FullpageComponent, children: [
       { path: 'login', component: LoginComponent },
-      { path: 'lostPassword', component: LostPasswordComponent }
+      { path: 'lostPassword', component: LostPasswordComponent },
+      { path: 'lostPassword/:hash', component: LostPasswordComponent }
     ]
   },
   {

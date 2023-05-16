@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   isLoginError = false
   registerForm!: FormGroup;
-  isRegisterError = false;
   registerErrorMessage = "";
 
   constructor(
@@ -65,12 +64,11 @@ export class LoginComponent implements OnInit {
       this.loginService.register(credentials)
         .subscribe({
           next: token => {
-            this.isRegisterError = false;
+            this.registerErrorMessage = "";
             this.jwtService.setToken(token.token);
             this.router.navigate(["/profile"]);
           },
           error: err => {
-            this.isRegisterError = true;
             if (err.error.message) {
               this.registerErrorMessage = err.error.message;
             } else {
@@ -83,10 +81,9 @@ export class LoginComponent implements OnInit {
 
   private isPasswordIdentical(credentials: RegisterCredentials): boolean {
     if (credentials.password === credentials.repeatedPassword) {
-      this.isRegisterError = false;
+      this.registerErrorMessage = "";
       return true;
     }
-    this.isRegisterError = true;
     this.registerErrorMessage = "Hasła nie są identyczne";
     return false;
   }
