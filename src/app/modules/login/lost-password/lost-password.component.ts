@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Email } from '../model/email';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewPassword } from '../model/newPassword';
 
 @Component({
@@ -23,7 +23,8 @@ export class LostPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private snackBar: MatSnackBar
   ) { }
 
@@ -37,7 +38,7 @@ export class LostPasswordComponent implements OnInit {
       repeatedPassword: ['', Validators.required]
     });
 
-    this.hash = this.router.snapshot.params['hash'];
+    this.hash = this.route.snapshot.params['hash'];
   }
 
   sendRequest() {
@@ -71,9 +72,8 @@ export class LostPasswordComponent implements OnInit {
       this.loginService.changePassword(newPassword)
         .subscribe({
           next: () => {
-            this.newPasswordFormError = "";
-            this.newPasswordForm.reset();
-            this.snackBar.open("Hasło zostało zmienione", '', { duration: 5000, panelClass: "snack-bar-bg-color-ok" });
+            this.router.navigate(["/login"])
+              .then(() => this.snackBar.open("Hasło zostało zmienione", '', { duration: 5000, panelClass: "snack-bar-bg-color-ok" }));
           },
           error: err => {
             if (err.error.message) {

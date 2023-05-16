@@ -4,8 +4,8 @@ import { LoginService } from './login.service';
 import { RegisterCredentials } from './model/registerCredentials';
 import { JwtService } from '../common/service/jwt.service';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { LoginCredentials } from '../common/model/security/loginCredentials';
+import { NavigationService } from '../common/service/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import { LoginCredentials } from '../common/model/security/loginCredentials';
 })
 export class LoginComponent implements OnInit {
 
+  private readonly PROFILE_URL = "/profile";
   loginForm!: FormGroup;
   isLoginError = false
   registerForm!: FormGroup;
@@ -23,13 +24,13 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private jwtService: JwtService,
+    private navigationService: NavigationService,
     private router: Router,
-    private location: Location
   ) { }
 
   ngOnInit(): void {
     if (this.jwtService.isTokenValid()) {
-      this.location.back();
+      this.router.navigate([this.PROFILE_URL]);
     }
 
     this.loginForm = this.formBuilder.group({
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.isLoginError = false;
             this.jwtService.setToken(token.token);
-            window.location.reload();
+            this.navigationService.back();
           },
           error: () => this.isLoginError = true
         });
@@ -66,7 +67,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.registerErrorMessage = "";
             this.jwtService.setToken(token.token);
-            this.router.navigate(["/profile"]);
+            this.router.navigate([this.PROFILE_URL]);
           },
           error: err => {
             if (err.error.message) {
