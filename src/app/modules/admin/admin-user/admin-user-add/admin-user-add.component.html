@@ -1,0 +1,33 @@
+<h1 class="header">Tworzenie użytkownika</h1>
+
+<form [formGroup]="userForm" fxLayout="column" (submit)="submit()" class="form">
+    <div *ngIf="userFormError" class="formError">
+        {{userFormError}}
+    </div>
+
+    <mat-form-field>
+        <mat-label>Nazwa użytkownika</mat-label>
+        <input type="text" matInput placeholder="Podaj nazwę użytkownika" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput placeholder="Podaj hasło" formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Powtórz hasło</mat-label>
+        <input type="password" matInput placeholder="Powtórz hasło" formControlName="repeatedPassword">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Rola</mat-label>
+        <mat-select formControlName="userRole">
+            <mat-option *ngFor="let role of roles | keyvalue" [value]="role.key">
+                {{role.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <button mat-flat-button color="primary">Zapisz</button>
+</form>

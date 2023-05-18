@@ -34,6 +34,8 @@ import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAutho
 import { ProfileComponent } from './modules/profile/profile.component';
 import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
 import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
+import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
+import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add/admin-user-add.component';
 
 const routes: Routes = [
   {
@@ -73,7 +75,9 @@ const routes: Routes = [
       { path: 'admin/orders', component: AdminOrderComponent, canActivate: [adminAuthorizationGuard] },
       { path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent, canActivate: [adminAuthorizationGuard] },
       { path: 'admin/orders/export', component: AdminOrderExportComponent, canActivate: [adminAuthorizationGuard] },
-      { path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [adminAuthorizationGuard] }
+      { path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/users', component: AdminUserComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/users/add', component: AdminUserAddComponent, canActivate: [adminAuthorizationGuard] }
     ]
   },
   {

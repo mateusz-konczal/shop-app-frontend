@@ -1,0 +1,57 @@
+<h1>Lista użytkowników
+    <button mat-raised-button color="accent" routerLink="/admin/users/add">Utwórz użytkownika
+        <mat-icon>add</mat-icon>
+    </button>
+</h1>
+
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Nazwa użytkownika </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userRoles">
+        <th mat-header-cell *matHeaderCellDef> Rola </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div *ngFor="let userRole of element.userRoles">
+                {{getRole(userRole)}} 
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="enabled">
+        <th mat-header-cell *matHeaderCellDef> Aktywny </th>
+        <td mat-cell *matCellDef="let element"  
+            [class.enabled-false]="element.enabled == false"
+            [class.enabled-true]="element.enabled == true"> 
+            {{getStatus(element.enabled)}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Edycja aktywności </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="confirmEnablingUser(element)">
+                <mat-icon color="primary">done</mat-icon>
+            </button>
+            <button mat-icon-button (click)="confirmDisablingUser(element)">
+                <mat-icon color="warn">cancel</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator 
+  [pageSize]="25" 
+  [pageSizeOptions]="[25, 50, 100]" 
+  showFirstLastButtons
+  [length]="totalElements">
+</mat-paginator>

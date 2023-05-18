@@ -1,0 +1,30 @@
+.mat-column-id {
+    width: 60px;
+}
+
+.mat-column-userRoles {
+    width: 200px;
+}
+
+.mat-column-enabled {
+    width: 160px;
+    text-align: center;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+.mat-column-actions {
+    width: 200px;
+    text-align: center;
+}
+
+.enabled-false {
+    color: red;
+}
+
+.enabled-true {
+    color: green;
+}
