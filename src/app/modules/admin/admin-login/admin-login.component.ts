@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AdminLoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  isLoginError = false
+  loginErrorMessage = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,14 +37,20 @@ export class AdminLoginComponent implements OnInit {
       this.adminLoginService.login(this.loginForm.value as LoginCredentials)
         .subscribe({
           next: token => {
-            this.isLoginError = false;
+            this.loginErrorMessage = "";
             if (token.adminAccess) {
               this.jwtService.setToken(token.token);
               this.jwtService.setAdminAccess(true);
             }
             this.router.navigate(["/admin"]);
           },
-          error: () => this.isLoginError = true
+          error: err => {
+            if (err.error.message) {
+              this.loginErrorMessage = err.error.message;
+            } else {
+              this.loginErrorMessage = "Coś poszło nie tak, spróbuj ponownie później";
+            }
+          }
         });
     }
   }

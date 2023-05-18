@@ -15,8 +15,9 @@ import { NavigationService } from '../common/service/navigation.service';
 export class LoginComponent implements OnInit {
 
   private readonly PROFILE_URL = "/profile";
+  private readonly GENERAL_ERROR_MESSAGE = "Coś poszło nie tak, spróbuj ponownie później";
   loginForm!: FormGroup;
-  isLoginError = false
+  loginErrorMessage = "";
   registerForm!: FormGroup;
   registerErrorMessage = "";
 
@@ -50,11 +51,17 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.loginForm.value as LoginCredentials)
         .subscribe({
           next: token => {
-            this.isLoginError = false;
+            this.loginErrorMessage = "";
             this.jwtService.setToken(token.token);
             this.navigationService.back();
           },
-          error: () => this.isLoginError = true
+          error: err => {
+            if (err.error.message) {
+              this.loginErrorMessage = err.error.message;
+            } else {
+              this.loginErrorMessage = this.GENERAL_ERROR_MESSAGE;
+            }
+          }
         });
     }
   }
@@ -73,7 +80,7 @@ export class LoginComponent implements OnInit {
             if (err.error.message) {
               this.registerErrorMessage = err.error.message;
             } else {
-              this.registerErrorMessage = "Coś poszło nie tak, spróbuj ponownie później";
+              this.registerErrorMessage = this.GENERAL_ERROR_MESSAGE;
             }
           }
         });

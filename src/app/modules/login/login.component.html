@@ -2,8 +2,8 @@
     <div fxFlex>
         <h2 class="header">Logowanie</h2>
         <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="form">
-            <div *ngIf="isLoginError" class="formError">
-                Podaj poprawne dane logowania
+            <div *ngIf="loginErrorMessage" class="formError">
+                {{loginErrorMessage}}
             </div>
             <mat-form-field appearance="fill">
                 <mat-label>E-mail</mat-label>
