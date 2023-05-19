@@ -36,6 +36,7 @@ import { profileAuthorizationGuard } from './modules/common/guard/profileAuthori
 import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
 import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
 import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add/admin-user-add.component';
+import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
 
 const routes: Routes = [
   {
@@ -77,7 +78,8 @@ const routes: Routes = [
       { path: 'admin/orders/export', component: AdminOrderExportComponent, canActivate: [adminAuthorizationGuard] },
       { path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [adminAuthorizationGuard] },
       { path: 'admin/users', component: AdminUserComponent, canActivate: [adminAuthorizationGuard] },
-      { path: 'admin/users/add', component: AdminUserAddComponent, canActivate: [adminAuthorizationGuard] }
+      { path: 'admin/users/add', component: AdminUserAddComponent, canActivate: [adminAuthorizationGuard] },
+      { path: 'admin/account', component: AdminAccountComponent, canActivate: [adminAuthorizationGuard] }
     ]
   },
   {

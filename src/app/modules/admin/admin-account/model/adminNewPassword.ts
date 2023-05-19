@@ -1,5 +1,4 @@
-export interface NewPassword {
-    hash: string,
+export interface AdminNewPassword {
     password: string,
     repeatedPassword: string
 }

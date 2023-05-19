@@ -4,7 +4,7 @@ import { LoginService } from '../login.service';
 import { Email } from '../model/email';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NewPassword } from '../model/newPassword';
+import { ResetPassword } from '../model/resetPassword';
 
 @Component({
   selector: 'app-lost-password',
@@ -16,8 +16,8 @@ export class LostPasswordComponent implements OnInit {
   private readonly GENERAL_ERROR_MESSAGE = "Coś poszło nie tak, spróbuj ponownie później";
   lostPasswordForm!: FormGroup;
   lostPasswordFormError = "";
-  newPasswordForm!: FormGroup;
-  newPasswordFormError = "";
+  resetPasswordForm!: FormGroup;
+  resetPasswordFormError = "";
   hash = "";
 
   constructor(
@@ -33,7 +33,7 @@ export class LostPasswordComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
 
-    this.newPasswordForm = this.formBuilder.group({
+    this.resetPasswordForm = this.formBuilder.group({
       password: ['', Validators.required],
       repeatedPassword: ['', Validators.required]
     });
@@ -61,15 +61,15 @@ export class LostPasswordComponent implements OnInit {
     }
   }
 
-  sendNewPassword() {
-    let newPassword: NewPassword = {
+  sendResetPassword() {
+    let resetPassword: ResetPassword = {
       hash: this.hash,
-      password: this.newPasswordForm.get('password')?.value,
-      repeatedPassword: this.newPasswordForm.get('repeatedPassword')?.value
+      password: this.resetPasswordForm.get('password')?.value,
+      repeatedPassword: this.resetPasswordForm.get('repeatedPassword')?.value
     };
 
-    if (this.newPasswordForm.valid && this.isPasswordIdentical(newPassword)) {
-      this.loginService.changePassword(newPassword)
+    if (this.resetPasswordForm.valid && this.isPasswordIdentical(resetPassword)) {
+      this.loginService.changePassword(resetPassword)
         .subscribe({
           next: () => {
             this.router.navigate(["/login"])
@@ -77,21 +77,21 @@ export class LostPasswordComponent implements OnInit {
           },
           error: err => {
             if (err.error.message) {
-              this.newPasswordFormError = err.error.message;
+              this.resetPasswordFormError = err.error.message;
             } else {
-              this.newPasswordFormError = this.GENERAL_ERROR_MESSAGE;
+              this.resetPasswordFormError = this.GENERAL_ERROR_MESSAGE;
             }
           }
         });
     }
   }
 
-  private isPasswordIdentical(newPassword: NewPassword): boolean {
-    if (newPassword.password === newPassword.repeatedPassword) {
-      this.newPasswordFormError = ""
+  private isPasswordIdentical(resetPassword: ResetPassword): boolean {
+    if (resetPassword.password === resetPassword.repeatedPassword) {
+      this.resetPasswordFormError = ""
       return true;
     }
-    this.newPasswordFormError = "Hasła nie są identyczne";
+    this.resetPasswordFormError = "Hasła nie są identyczne";
     return false;
   }
 }

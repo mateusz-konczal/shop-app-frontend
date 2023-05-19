@@ -5,7 +5,7 @@ import { RegisterCredentials } from './model/registerCredentials';
 import { LoginCredentials } from '../common/model/security/loginCredentials';
 import { Token } from '../common/model/security/token';
 import { Email } from './model/email';
-import { NewPassword } from './model/newPassword';
+import { ResetPassword } from './model/resetPassword';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class LoginService {
     return this.http.post<void>("/api/lostPassword", email);
   }
 
-  changePassword(newPassword: NewPassword): Observable<void> {
-    return this.http.post<void>("/api/newPassword", newPassword);
+  changePassword(resetPassword: ResetPassword): Observable<void> {
+    return this.http.post<void>("/api/resetPassword", resetPassword);
   }
 }

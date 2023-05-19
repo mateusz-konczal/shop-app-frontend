@@ -31,6 +31,7 @@ import { AdminOrderExportComponent } from 'src/app/modules/admin/admin-order/adm
 import { AdminOrderStatsComponent } from 'src/app/modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
 import { AdminUserComponent } from 'src/app/modules/admin/admin-user/admin-user.component';
 import { AdminUserAddComponent } from 'src/app/modules/admin/admin-user/admin-user-add/admin-user-add.component';
+import { AdminAccountComponent } from 'src/app/modules/admin/admin-account/admin-account.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AdminUserAddComponent } from 'src/app/modules/admin/admin-user/admin-us
     AdminOrderExportComponent,
     AdminOrderStatsComponent,
     AdminUserComponent,
-    AdminUserAddComponent
+    AdminUserAddComponent,
+    AdminAccountComponent
   ],
   imports: [
     CommonModule,
