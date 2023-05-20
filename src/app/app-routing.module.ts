@@ -37,6 +37,7 @@ import { LostPasswordComponent } from './modules/login/lost-password/lost-passwo
 import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
 import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add/admin-user-add.component';
 import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
+import { AccountComponent } from './modules/account/account.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
       { path: 'categories/:slug', component: CategoryComponent },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
-      { path: 'profile', component: ProfileComponent, canActivate: [profileAuthorizationGuard] }
+      { path: 'profile', component: ProfileComponent, canActivate: [profileAuthorizationGuard] },
+      { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] }
     ]
   },
   {

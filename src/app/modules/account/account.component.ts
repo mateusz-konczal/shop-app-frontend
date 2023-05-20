@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AdminAccountService } from './admin-account.service';
-import { JwtService } from '../../common/service/jwt.service';
+import { AccountService } from './account.service';
+import { JwtService } from '../common/service/jwt.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminNewPassword } from './model/adminNewPassword';
-import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { NewPassword } from './model/newPassword';
+import { ConfirmDialogService } from '../common/service/confirm-dialog.service';
 
 @Component({
-  selector: 'app-admin-account',
-  templateUrl: './admin-account.component.html',
-  styleUrls: ['./admin-account.component.scss']
+  selector: 'app-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss']
 })
-export class AdminAccountComponent implements OnInit {
+export class AccountComponent implements OnInit {
 
   newPasswordForm!: FormGroup;
   newPasswordFormError = "";
 
   constructor(
     private formBuilder: FormBuilder,
-    private adminAccountService: AdminAccountService,
-    private dialogService: AdminConfirmDialogService,
+    private accountService: AccountService,
+    private dialogService: ConfirmDialogService,
     private jwtService: JwtService,
     private router: Router,
     private snackBar: MatSnackBar
@@ -34,30 +34,29 @@ export class AdminAccountComponent implements OnInit {
   }
 
   confirmDeleteAccount() {
-    this.dialogService.openConfirmDialog("Czy na pewno chcesz usunąć swoje konto z uprawnieniami administratora?")
+    this.dialogService.openConfirmDialog("Czy na pewno chcesz usunąć swoje konto?")
       .afterClosed()
       .subscribe(result => {
         if (result) {
-          this.adminAccountService.deleteAccount()
+          this.accountService.deleteAccount()
             .subscribe(() => {
               this.jwtService.removeToken();
-              this.jwtService.setAdminAccess(false);
-              this.router.navigate(["/admin/login"])
-                .then(() => this.snackBar.open("Twoje konto zostało usunięte", '', { duration: 3000 }));
+              this.router.navigate(["/login"])
+                .then(() => this.snackBar.open("Twoje konto zostało usunięte", '', { duration: 5000, panelClass: "snack-bar-bg-color-ok" }));
             });
         }
       });
   }
 
   sendNewPassword() {
-    let newPassword = this.newPasswordForm.value as AdminNewPassword;
+    let newPassword = this.newPasswordForm.value as NewPassword;
     if (this.newPasswordForm.valid && this.isPasswordIdentical(newPassword)) {
-      this.adminAccountService.changePassword(newPassword)
+      this.accountService.changePassword(newPassword)
         .subscribe({
           next: () => {
             this.newPasswordFormError = "";
             this.newPasswordForm.reset();
-            this.snackBar.open("Hasło zostało zaktualizowane", '', { duration: 3000 });
+            this.snackBar.open("Hasło zostało zaktualizowane", '', { duration: 5000, panelClass: "snack-bar-bg-color-ok" });
           },
           error: err => {
             if (err.error.message) {
@@ -70,7 +69,7 @@ export class AdminAccountComponent implements OnInit {
     }
   }
 
-  private isPasswordIdentical(newPassword: AdminNewPassword): boolean {
+  private isPasswordIdentical(newPassword: NewPassword): boolean {
     if (newPassword.password === newPassword.repeatedPassword) {
       this.newPasswordFormError = ""
       return true;

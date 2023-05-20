@@ -13,6 +13,8 @@ import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
 import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
 import { ProfileComponent } from 'src/app/modules/profile/profile.component';
+import { AccountComponent } from 'src/app/modules/account/account.component';
+import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProfileComponent } from 'src/app/modules/profile/profile.component';
     CartComponent,
     OrderComponent,
     ReplacePipe,
-    ProfileComponent
+    ProfileComponent,
+    AccountComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
