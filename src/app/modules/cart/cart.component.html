@@ -20,8 +20,9 @@
                         </a>
                     </div>
                     <div class="cart-col-2">{{item.value?.product?.name}}</div>
-                    <div class="cart-col-3"><input type="number" min="1" formControlName="quantity"
-                            class="quantityInput"></div>
+                    <div class="cart-col-3">
+                        <input type="number" min="1" formControlName="quantity" class="quantityInput">
+                    </div>
                     <div class="cart-col-4">{{item.value?.lineValue}}</div>
                     <div class="cart-col-5">
                         <button mat-icon-button (click)="deleteItem(item.value?.id)">

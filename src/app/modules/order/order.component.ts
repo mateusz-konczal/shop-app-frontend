@@ -44,7 +44,7 @@ export class OrderComponent implements OnInit {
       street: ['', [Validators.required, Validators.maxLength(80)]],
       houseNumber: ['', [Validators.required, Validators.maxLength(6)]],
       apartmentNumber: ['', Validators.maxLength(6)],
-      zipCode: ['', [Validators.required, Validators.maxLength(6)]],
+      zipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
       city: ['', [Validators.required, Validators.maxLength(64)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(64)]],
       phone: ['', [Validators.required, Validators.maxLength(16)]],

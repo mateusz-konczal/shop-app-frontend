@@ -90,14 +90,13 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Kod pocztowy</mat-label>
-                <input type="text" pattern="[0-9]{2}-[0-9]{3}" matInput
-                    placeholder="Podaj kod pocztowy w formacie 00-000" formControlName="zipCode">
+                <input type="text" matInput placeholder="Podaj kod pocztowy w formacie 00-000" formControlName="zipCode">
                 <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="errorMessages">
                     <div *ngIf="zipCode?.errors?.['required']">
                         Kod pocztowy jest wymagany
                     </div>
-                    <div *ngIf="zipCode?.errors?.['maxlength']">
-                        Kod pocztowy może zawierać maksymalnie 6 znaków
+                    <div *ngIf="zipCode?.errors?.['pattern']">
+                        Podaj kod pocztowy w poprawnym formacie
                     </div>
                 </div>
             </mat-form-field>
@@ -123,7 +122,7 @@
                         E-mail jest wymagany
                     </div>
                     <div *ngIf="email?.errors?.['email']">
-                        Podaj porawny format e-mail
+                        Podaj e-mail w poprawnym formacie
                     </div>
                     <div *ngIf="email?.errors?.['maxlength']">
                         E-mail może zawierać maksymalnie 64 znaki
