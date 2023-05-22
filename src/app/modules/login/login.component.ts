@@ -6,6 +6,7 @@ import { JwtService } from '../common/service/jwt.service';
 import { Router } from '@angular/router';
 import { LoginCredentials } from '../common/model/security/loginCredentials';
 import { NavigationService } from '../common/service/navigation.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     private jwtService: JwtService,
     private navigationService: NavigationService,
     private router: Router,
+    private app: AppComponent
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern(this.app.PASSWORD_REGEX)]],
       repeatedPassword: ['', Validators.required]
     });
   }

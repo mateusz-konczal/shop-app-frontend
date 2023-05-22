@@ -4,6 +4,7 @@ import { AdminUserService } from '../admin-user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminUser } from '../model/adminUser';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-admin-user-add',
@@ -20,14 +21,15 @@ export class AdminUserAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private adminUserService: AdminUserService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private app: AppComponent
   ) { }
 
   ngOnInit(): void {
     this.getUserRoles();
     this.userForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern(this.app.PASSWORD_REGEX)]],
       repeatedPassword: ['', Validators.required],
       userRole: ['', Validators.required]
     });

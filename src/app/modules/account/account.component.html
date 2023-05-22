@@ -4,6 +4,9 @@
     <div *ngIf="newPasswordFormError" class="formError">
         {{newPasswordFormError}}
     </div>
+    <div class="formPassword">
+        Hasło musi zawierać minimum 8 znaków, małe i wielkie litery oraz cyfrę
+    </div>
     <mat-form-field appearance="outline">
         <mat-label>Nowe hasło</mat-label>
         <input type="password" matInput placeholder="Podaj nowe hasło" formControlName="password">

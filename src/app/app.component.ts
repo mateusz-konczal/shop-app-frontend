@@ -9,6 +9,7 @@ import { NavigationService } from './modules/common/service/navigation.service';
 export class AppComponent {
 
   title = 'Shop';
+  readonly PASSWORD_REGEX = "^(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)[a-ząćęłńóśźżA-ZĄĆĘŁŃÓŚŹŻ\\d\\S]{8,}$";
 
   constructor(navigationService: NavigationService) { }
 }

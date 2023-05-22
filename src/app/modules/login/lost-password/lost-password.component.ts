@@ -5,6 +5,7 @@ import { Email } from '../model/email';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResetPassword } from '../model/resetPassword';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-lost-password',
@@ -25,7 +26,8 @@ export class LostPasswordComponent implements OnInit {
     private loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private app: AppComponent
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class LostPasswordComponent implements OnInit {
     });
 
     this.resetPasswordForm = this.formBuilder.group({
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern(this.app.PASSWORD_REGEX)]],
       repeatedPassword: ['', Validators.required]
     });
 

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminNewPassword } from './model/adminNewPassword';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-admin-account',
@@ -23,12 +24,13 @@ export class AdminAccountComponent implements OnInit {
     private dialogService: AdminConfirmDialogService,
     private jwtService: JwtService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private app: AppComponent
   ) { }
 
   ngOnInit(): void {
     this.newPasswordForm = this.formBuilder.group({
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.pattern(this.app.PASSWORD_REGEX)]],
       repeatedPassword: ['', Validators.required]
     });
   }
