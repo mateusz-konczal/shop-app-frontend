@@ -19,7 +19,7 @@ export class AdminPaymentService {
   }
 
   getPaymentTypes(): Observable<Array<string>> {
-    return this.http.get<Array<string>>("api/admin/payments/initTypes");
+    return this.http.get<Array<string>>("/api/admin/payments/initTypes");
   }
 
   savePayment(id: number, payment: AdminPayment): Observable<AdminPayment> {

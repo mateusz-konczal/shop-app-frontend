@@ -19,7 +19,7 @@ export class AdminShipmentService {
   }
 
   getShipmentTypes(): Observable<Array<string>> {
-    return this.http.get<Array<string>>("api/admin/shipments/initTypes");
+    return this.http.get<Array<string>>("/api/admin/shipments/initTypes");
   }
 
   saveShipment(id: number, shipment: AdminShipment): Observable<AdminShipment> {
