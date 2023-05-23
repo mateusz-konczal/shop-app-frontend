@@ -15,7 +15,7 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class LoginComponent implements OnInit {
 
-  private readonly PROFILE_URL = "/profile";
+  private readonly USER_ORDERS_URL = "/my-orders";
   private readonly GENERAL_ERROR_MESSAGE = "Coś poszło nie tak, spróbuj ponownie później";
   loginForm!: FormGroup;
   loginErrorMessage = "";
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.jwtService.isTokenValid()) {
-      this.router.navigate([this.PROFILE_URL]);
+      this.router.navigate([this.USER_ORDERS_URL]);
     }
 
     this.loginForm = this.formBuilder.group({
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           next: token => {
             this.registerErrorMessage = "";
             this.jwtService.setToken(token.token);
-            this.router.navigate([this.PROFILE_URL]);
+            this.router.navigate([this.USER_ORDERS_URL]);
           },
           error: err => {
             if (err.error.message) {

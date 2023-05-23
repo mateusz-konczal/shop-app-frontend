@@ -31,7 +31,7 @@ import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-ord
 import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
 import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.component';
 import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
-import { ProfileComponent } from './modules/profile/profile.component';
+import { UserOrdersComponent } from './modules/user-orders/user-orders.component';
 import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
 import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
 import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
@@ -48,7 +48,7 @@ const routes: Routes = [
       { path: 'categories/:slug', component: CategoryComponent },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
-      { path: 'profile', component: ProfileComponent, canActivate: [profileAuthorizationGuard] },
+      { path: 'my-orders', component: UserOrdersComponent, canActivate: [profileAuthorizationGuard] },
       { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] }
     ]
   },

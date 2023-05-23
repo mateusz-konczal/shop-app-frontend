@@ -94,7 +94,7 @@ export class OrderComponent implements OnInit {
           this.cookieService.delete("cartId");
           this.isErrorMessage = false;
         },
-        error: err => this.isErrorMessage = true
+        error: () => this.isErrorMessage = true
       });
     }
   }

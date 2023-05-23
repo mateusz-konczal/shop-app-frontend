@@ -8,7 +8,7 @@ import { filter, map, pairwise } from 'rxjs';
 })
 export class NavigationService {
 
-  private readonly PROFILE_URL = "/profile";
+  private readonly USER_ORDERS_URL = "/my-orders";
   private previousUrl: string | undefined;
 
   constructor(
@@ -33,7 +33,7 @@ export class NavigationService {
     if (this.previousUrl !== undefined) {
       this.location.back();
     } else {
-      this.router.navigate([this.PROFILE_URL]);
+      this.router.navigate([this.USER_ORDERS_URL]);
     }
   }
 }
