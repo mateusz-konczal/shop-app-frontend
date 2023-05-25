@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+
+    div {
+        margin-top: 25px;
+    }
+}
+
+.content {
+    width: 350px;
+}
+
+.logo {
+    font-size: 22px;
+}

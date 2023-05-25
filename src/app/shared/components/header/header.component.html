@@ -7,7 +7,29 @@
         <button mat-flat-button routerLink="">Strona główna</button>
         <button mat-flat-button routerLink="/products">Produkty</button>
         <span></span>
-        <button mat-flat-button routerLink="/login">Zaloguj</button>
+        <div *ngIf="!isLoggedIn">
+            <button mat-flat-button routerLink="/login">Zaloguj się</button>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <button mat-flat-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+                <span>Mój profil</span>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/my-orders">
+                    <mat-icon>shopping_cart</mat-icon>
+                    <span>Zamówienia</span>
+                </button>
+                <button mat-menu-item routerLink="/account">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Konto</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Wyloguj się</span>
+                </button>
+            </mat-menu>
+        </div>
         <a routerLink="/cart">
             <mat-icon color="accent" class="shoppingBasket" matBadge="{{cartProductCounter}}"
                 matBadgeColor="warn">shopping_basket</mat-icon>

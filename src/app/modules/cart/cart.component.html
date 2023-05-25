@@ -16,12 +16,13 @@
                         <a routerLink="{{'/products/' + item.value?.product?.slug}}">
                             <img *ngIf="!item.value?.product?.image" src="/assets/image-placeholder.png" width="100">
                             <img *ngIf="item.value?.product?.image"
-                                src="{{'/api/admin/products/productImage/' + item.value?.product?.image}}" width="100">
+                                src="{{'/api/products/productImage/' + item.value?.product?.image}}" width="100">
                         </a>
                     </div>
                     <div class="cart-col-2">{{item.value?.product?.name}}</div>
-                    <div class="cart-col-3"><input type="number" min="1" formControlName="quantity"
-                            class="quantityInput"></div>
+                    <div class="cart-col-3">
+                        <input type="number" min="1" formControlName="quantity" class="quantityInput">
+                    </div>
                     <div class="cart-col-4">{{item.value?.lineValue}}</div>
                     <div class="cart-col-5">
                         <button mat-icon-button (click)="deleteItem(item.value?.id)">

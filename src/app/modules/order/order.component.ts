@@ -7,6 +7,7 @@ import { OrderSummary } from './model/orderSummary';
 import { Order } from './model/order';
 import { InitOrder } from './model/initOrder';
 import { CartIconService } from '../common/service/cart-icon.service';
+import { JwtService } from '../common/service/jwt.service';
 import Big from 'big.js';
 
 @Component({
@@ -21,6 +22,7 @@ export class OrderComponent implements OnInit {
   orderSummary!: OrderSummary;
   initOrder!: InitOrder;
   isErrorMessage = false;
+  isLoggedIn = false;
   private statuses = new Map<string, string>([
     ["NEW", "Nowe"]
   ]);
@@ -29,7 +31,8 @@ export class OrderComponent implements OnInit {
     private formBuilder: FormBuilder,
     private orderService: OrderService,
     private cookieService: CookieService,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +44,7 @@ export class OrderComponent implements OnInit {
       street: ['', [Validators.required, Validators.maxLength(80)]],
       houseNumber: ['', [Validators.required, Validators.maxLength(6)]],
       apartmentNumber: ['', Validators.maxLength(6)],
-      zipCode: ['', [Validators.required, Validators.maxLength(6)]],
+      zipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
       city: ['', [Validators.required, Validators.maxLength(64)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(64)]],
       phone: ['', [Validators.required, Validators.maxLength(16)]],
@@ -50,6 +53,7 @@ export class OrderComponent implements OnInit {
     });
 
     this.getInitOrder();
+    this.isLoggedIn = this.jwtService.isTokenValid();
   }
 
   checkIfCartIsEmpty() {
@@ -90,7 +94,7 @@ export class OrderComponent implements OnInit {
           this.cookieService.delete("cartId");
           this.isErrorMessage = false;
         },
-        error: err => this.isErrorMessage = true
+        error: () => this.isErrorMessage = true
       });
     }
   }

@@ -10,7 +10,7 @@
     <td mat-cell *matCellDef="let element">
       <a routerLink="{{'/admin/products/update/' + element.id}}">
         <img *ngIf="!element.image" src="/assets/image-placeholder.png" class="productImage">
-        <img *ngIf="element.image" src="{{'/api/admin/products/productImage/' + element.image}}" class="productImage">
+        <img *ngIf="element.image" src="{{'/api/products/productImage/' + element.image}}" class="productImage">
       </a>
     </td>
   </ng-container>

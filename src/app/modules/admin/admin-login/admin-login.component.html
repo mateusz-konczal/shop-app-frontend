@@ -1,0 +1,14 @@
+<form [formGroup]="loginForm" fxLayout="column" (submit)="submit()">
+    <div *ngIf="loginErrorMessage" class="loginError">
+        {{loginErrorMessage}}
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Login</mat-label>
+        <input type="text" matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+    <button mat-flat-button color="primary">Zaloguj się</button>
+</form>

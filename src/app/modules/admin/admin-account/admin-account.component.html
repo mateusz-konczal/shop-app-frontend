@@ -1,0 +1,25 @@
+<h1 class="header">Edycja hasła</h1>
+
+<form [formGroup]="newPasswordForm" fxLayout="column" (submit)="sendNewPassword()" class="form">
+    <div *ngIf="newPasswordFormError" class="formError">
+        {{newPasswordFormError}}
+    </div>
+    <div class="formPassword">
+        Hasło musi zawierać minimum 8 znaków, małe i wielkie litery oraz cyfrę
+    </div>
+    <mat-form-field appearance="outline">
+        <mat-label>Nowe hasło</mat-label>
+        <input type="password" matInput placeholder="Podaj nowe hasło" formControlName="password">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Powtórz hasło</mat-label>
+        <input type="password" matInput placeholder="Powtórz hasło" formControlName="repeatedPassword">
+    </mat-form-field>
+    <button mat-flat-button color="primary">Zaktualizuj hasło</button>
+</form>
+
+<div fxLayoutAlign="center">
+    <button mat-flat-button color="warn" class="deleteAccountButton" (click)="confirmDeleteAccount()">
+        Usuń konto
+    </button>
+</div>

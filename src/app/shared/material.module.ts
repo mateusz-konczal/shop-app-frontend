@@ -15,6 +15,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -33,7 +34,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatBadgeModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatMenuModule
   ],
   exports: [
     MatIconModule,
@@ -49,7 +51,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatBadgeModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatMenuModule
   ],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },

@@ -19,6 +19,7 @@ export class SidebarComponent implements OnInit {
 
   getCategories() {
     this.sidebarService.getCategories()
-      .subscribe(categories => this.categories = categories);
+      .subscribe(categories =>
+        this.categories = categories.sort((el1, el2) => (el1.name < el2.name ? -1 : 1)));
   }
 }
