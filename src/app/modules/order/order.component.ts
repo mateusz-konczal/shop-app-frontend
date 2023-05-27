@@ -89,10 +89,14 @@ export class OrderComponent implements OnInit {
         paymentId: Number(this.orderForm.get('payment')?.value.id)
       } as Order).subscribe({
         next: orderSummary => {
-          this.orderSummary = orderSummary;
           this.cartIconService.cartChanged(0);
           this.cookieService.delete("cartId");
           this.isErrorMessage = false;
+          if (orderSummary.redirectUrl) {
+            window.location.href = orderSummary.redirectUrl;
+          } else {
+            this.orderSummary = orderSummary;
+          }
         },
         error: () => this.isErrorMessage = true
       });

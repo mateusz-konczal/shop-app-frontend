@@ -7,5 +7,6 @@ export interface OrderSummary {
     status: string,
     totalValue: number,
     shipment: Shipment,
-    payment: Payment
+    payment: Payment,
+    redirectUrl: string
 }
