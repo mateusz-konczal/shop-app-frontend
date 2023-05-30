@@ -19,6 +19,7 @@ import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { OrderComponent } from './modules/order/order.component';
+import { OrderNotificationComponent } from './modules/order/order-notification/order-notification.component';
 import { AdminShipmentComponent } from './modules/admin/admin-shipment/admin-shipment.component';
 import { AdminShipmentAddComponent } from './modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
 import { AdminShipmentUpdateComponent } from './modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'categories/:slug', component: CategoryComponent },
       { path: 'cart', component: CartComponent },
       { path: 'order', component: OrderComponent },
+      { path: 'order/notification/:orderHash', component: OrderNotificationComponent },
       { path: 'my-orders', component: UserOrdersComponent, canActivate: [profileAuthorizationGuard] },
       { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] }
     ]
