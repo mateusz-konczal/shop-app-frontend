@@ -1,3 +1,6 @@
 <h1>Dziękujemy za zakupy</h1>
 
-<div>Status zamówienia: <span *ngIf="isPaid" class="orderPaid">Opłacone</span></div>
+<div fxLayout="row">Status zamówienia: 
+    <mat-spinner *ngIf="!isPaid" [diameter]="20" class="spinner"></mat-spinner>
+    <span *ngIf="isPaid" class="orderPaid">Opłacone</span>
+</div>
