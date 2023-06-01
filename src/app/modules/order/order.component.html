@@ -1,5 +1,5 @@
-<h1 *ngIf="isLoggedIn">Zamówienie</h1>
-<h1 *ngIf="!isLoggedIn">Zamówienie (<a routerLink="/login">zaloguj się</a>, aby śledzić swoje zamówienie)</h1>
+<h1 *ngIf="isLoggedIn || orderSummary">Zamówienie</h1>
+<h1 *ngIf="!isLoggedIn && !orderSummary">Zamówienie (<a routerLink="/login">zaloguj się</a>, aby śledzić swoje zamówienie)</h1>
 
 <div *ngIf="orderSummary" class="orderSummary">
     <div>Dziękujemy za złożenie zamówienia</div>

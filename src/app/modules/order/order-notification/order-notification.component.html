@@ -1,6 +1,12 @@
 <h1>Dziękujemy za zakupy</h1>
 
-<div fxLayout="row">Status zamówienia: 
-    <mat-spinner *ngIf="!isPaid" [diameter]="20" class="spinner"></mat-spinner>
-    <span *ngIf="isPaid" class="orderPaid">Opłacone</span>
+<div class="orderSummary">
+    <div fxLayout="row">Status zamówienia:
+        <mat-spinner *ngIf="!isPaid" [diameter]="22" class="spinner"></mat-spinner>
+        <span *ngIf="isPaid" class="orderPaid">Opłacone</span>
+    </div>
+    <div *ngIf="isPaid"><br />Wkrótce poinformujemy Cię e-mailowo o dalszych krokach.</div>
+    <div *ngIf="isPaid && isLoggedIn">
+        Status zamówienia możesz śledzić w swoim <a routerLink="/my-orders">profilu</a>.
+    </div>
 </div>

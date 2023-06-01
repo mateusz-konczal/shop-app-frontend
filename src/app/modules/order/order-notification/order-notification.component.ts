@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../order.service';
 import { ActivatedRoute } from '@angular/router';
 import { interval, mergeMap, takeUntil, takeWhile, timer } from 'rxjs';
+import { JwtService } from '../../common/service/jwt.service';
 
 @Component({
   selector: 'app-order-notification',
@@ -11,14 +12,17 @@ import { interval, mergeMap, takeUntil, takeWhile, timer } from 'rxjs';
 export class OrderNotificationComponent implements OnInit {
 
   isPaid = false;
+  isLoggedIn = false;
 
   constructor(
     private router: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
     this.getPaymentNotification();
+    this.isLoggedIn = this.jwtService.isTokenValid();
   }
 
   getPaymentNotification() {
