@@ -6,8 +6,9 @@ orders and users. The customer can browse products by category, add opinions, ad
 and place orders. The admin can also export orders from a selected period to a CSV file and view a 
 sales chart for the current month (using Chart.js). Admins and customers have dedicated login and 
 password change pages. The customer can also reset the password by providing an e-mail address and 
-obtaining a special link valid for a certain period of time. Work in progress on integration with a 
-payment gateway.
+obtaining a special link valid for a certain period of time. The online shop was integrated with the 
+Przelewy24 online payment system. Currently, the project is being refined and then it will be deployed 
+on a cloud platform.
 - --
 ## Technologies
 * Node.js 18.15.0
@@ -17,6 +18,7 @@ payment gateway.
 * HTML
 * SCSS
 * Git
+* ngrok 3.3.0
 
 ## Usage
 ```
@@ -25,7 +27,7 @@ cd shop-app-frontend
 npm start (alias for command: ng serve --proxy-config proxy.config.json)
 ```
 * Access to the shop as a customer: [localhost:4200](http://localhost:4200/)
-* Access to the shop admin panel: [localhost:4200/admin](http://localhost:4200/admin)
+* Access to the shop admin panel: [localhost:4200/admin](http://localhost:4200/admin) (default login: admin, password: test)
 
 ## Demo
 
@@ -34,6 +36,18 @@ npm start (alias for command: ng serve --proxy-config proxy.config.json)
 
 ### Customer's cart page after adding products:
 ![screenshot_cart](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_cart.png?raw=true)
+
+### Customer's order page:
+![screenshot_order](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_order.png?raw=true)
+
+### Przelewy24 panel with payment methods:
+![screenshot_przelewy24_panel](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_przelewy24_panel.png?raw=true)
+
+### Payment confirmation available in an email:
+![screenshot_przelewy24_confirmation](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_przelewy24_confirmation.png?raw=true)
+
+### Return page after online payment:
+![screenshot_return_page](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_return_page.png?raw=true)
 
 ### Listing of orders in shop admin panel:
 ![screenshot_admin_orders](https://github.com/mateusz-konczal/shop-app-frontend/blob/master/readme/screenshot_admin_orders.png?raw=true)

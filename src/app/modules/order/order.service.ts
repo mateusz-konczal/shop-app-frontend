@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { OrderSummary } from './model/orderSummary';
 import { Order } from './model/order';
 import { InitOrder } from './model/initOrder';
+import { PaymentNotification } from './model/paymentNotification';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class OrderService {
 
   getInitOrder(): Observable<InitOrder> {
     return this.http.get<InitOrder>("/api/orders/initOrder");
+  }
+
+  getPaymentNotification(orderHash: string): Observable<PaymentNotification> {
+    return this.http.get<PaymentNotification>("/api/orders/notification/" + orderHash);
   }
 }

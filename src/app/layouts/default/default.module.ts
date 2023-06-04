@@ -11,6 +11,7 @@ import { CategoryComponent } from 'src/app/modules/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from 'src/app/modules/cart/cart.component';
 import { OrderComponent } from 'src/app/modules/order/order.component';
+import { OrderNotificationComponent } from 'src/app/modules/order/order-notification/order-notification.component';
 import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
 import { UserOrdersComponent } from 'src/app/modules/user-orders/user-orders.component';
 import { AccountComponent } from 'src/app/modules/account/account.component';
@@ -25,6 +26,7 @@ import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm
     CategoryComponent,
     CartComponent,
     OrderComponent,
+    OrderNotificationComponent,
     ReplacePipe,
     UserOrdersComponent,
     AccountComponent,
