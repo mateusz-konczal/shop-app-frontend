@@ -24,8 +24,22 @@
     color: $warn;
 }
 
+.priceDisable {
+    color: lightgray;
+    font-size: 22px;
+    text-decoration: line-through;
+}
+
 .review {
     background-color: white;
     margin: 20px 0;
     padding: 7px;
+}
+
+.salePrice {
+    color: green;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-left: 5px;
 }

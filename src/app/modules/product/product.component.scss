@@ -5,6 +5,15 @@
     flex-direction: column;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #777;
+}
+
 mat-card {
     margin-bottom: 25px;
 }
@@ -24,17 +33,21 @@ mat-card {
 }
 
 .productPrice {
+    color: $warn;
     font-size: 30px;
     font-weight: 500;
     margin-top: 20px;
-    color: $warn;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+.productPriceDisable {
+    color: lightgray;
+    font-size: 22px;
+    text-decoration: line-through;
 }
 
-a:hover {
-    color: #777;
+.productSalePrice {
+    color: green;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 20px;
 }

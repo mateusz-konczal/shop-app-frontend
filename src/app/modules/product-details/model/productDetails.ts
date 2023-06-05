@@ -6,6 +6,7 @@ export interface ProductDetails {
     description: string,
     fullDescription: string,
     price: number,
+    salePrice: number,
     currency: string,
     image: string,
     slug: string,
