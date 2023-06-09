@@ -39,6 +39,7 @@ import { AdminUserComponent } from './modules/admin/admin-user/admin-user.compon
 import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add/admin-user-add.component';
 import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
 import { AccountComponent } from './modules/account/account.component';
+import { ContactComponent } from './modules/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,8 @@ const routes: Routes = [
       { path: 'order', component: OrderComponent },
       { path: 'order/notification/:orderHash', component: OrderNotificationComponent },
       { path: 'my-orders', component: UserOrdersComponent, canActivate: [profileAuthorizationGuard] },
-      { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] }
+      { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] },
+      { path: 'contact', component: ContactComponent }
     ]
   },
   {

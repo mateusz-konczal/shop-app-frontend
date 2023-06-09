@@ -16,6 +16,7 @@ import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
 import { UserOrdersComponent } from 'src/app/modules/user-orders/user-orders.component';
 import { AccountComponent } from 'src/app/modules/account/account.component';
 import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm-dialog/confirm-dialog.component';
+import { ContactComponent } from 'src/app/modules/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm
     ReplacePipe,
     UserOrdersComponent,
     AccountComponent,
+    ContactComponent,
     ConfirmDialogComponent
   ],
   imports: [
