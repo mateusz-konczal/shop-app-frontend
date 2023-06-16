@@ -5,6 +5,7 @@ import { AdminService } from './admin.service';
 import { AdminConfirmDialogService } from './common/service/admin-confirm-dialog.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { startWith, switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin',
@@ -22,7 +23,8 @@ export class AdminComponent implements AfterViewInit {
 
   constructor(
     private adminService: AdminService,
-    private dialogService: AdminConfirmDialogService
+    private dialogService: AdminConfirmDialogService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngAfterViewInit(): void {
@@ -54,5 +56,10 @@ export class AdminComponent implements AfterViewInit {
             });
         }
       });
+  }
+
+  clearAllCaches() {
+    this.adminService.clearAllCaches()
+      .subscribe(() => this.snackBar.open("Pamięć podręczna została wyczyszczona", '', { duration: 3000 }));
   }
 }

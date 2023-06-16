@@ -18,4 +18,8 @@ export class AdminService {
   deleteSaleProduct(id: number): Observable<void> {
     return this.http.delete<void>("/api/admin/dashboard/saleProducts/" + id);
   }
+
+  clearAllCaches(): Observable<void> {
+    return this.http.get<void>("/api/admin/dashboard/caches/clearAll");
+  }
 }
