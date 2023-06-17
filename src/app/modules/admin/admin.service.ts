@@ -15,8 +15,8 @@ export class AdminService {
     return this.http.get<Page<AdminProduct>>(`/api/admin/dashboard/saleProducts?page=${page}&size=${size}`);
   }
 
-  deleteSaleProduct(id: number): Observable<void> {
-    return this.http.delete<void>("/api/admin/dashboard/saleProducts/" + id);
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>("/api/admin/products/" + id);
   }
 
   clearAllCaches(): Observable<void> {

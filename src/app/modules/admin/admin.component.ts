@@ -44,7 +44,7 @@ export class AdminComponent implements AfterViewInit {
       .afterClosed()
       .subscribe(result => {
         if (result) {
-          this.adminService.deleteSaleProduct(element.id)
+          this.adminService.deleteProduct(element.id)
             .subscribe(() => {
               this.dataSource.forEach((value, index) => {
                 if (element == value) {
