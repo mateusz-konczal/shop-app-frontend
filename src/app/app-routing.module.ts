@@ -40,6 +40,7 @@ import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add
 import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
 import { AccountComponent } from './modules/account/account.component';
 import { ContactComponent } from './modules/contact/contact.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,9 @@ const routes: Routes = [
     path: '', component: FullpageadminemptyComponent, children: [
       { path: 'admin/login', component: AdminLoginComponent }
     ]
+  },
+  {
+    path: '**', pathMatch: 'full', component: PageNotFoundComponent
   }
 ];
 
