@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { AdminPayment } from '../common/model/adminPayment';
-import { AdminPaymentService } from './admin-payment.service';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminPaymentService } from './admin-payment.service';
 
 @Component({
   selector: 'app-admin-payment',

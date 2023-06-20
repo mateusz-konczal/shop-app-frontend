@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { AdminShipment } from '../common/model/adminShipment';
-import { AdminShipmentService } from './admin-shipment.service';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminShipmentService } from './admin-shipment.service';
 
 @Component({
   selector: 'app-admin-shipment',

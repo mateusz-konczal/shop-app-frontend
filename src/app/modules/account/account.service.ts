@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NewPassword } from './model/newPassword';
 import { Observable } from 'rxjs';
+import { NewPassword } from './model/newPassword';
 
 @Injectable({
   providedIn: 'root'

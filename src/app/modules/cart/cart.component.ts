@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from './cart.service';
-import { CookieService } from 'ngx-cookie-service';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { CartItemSummary } from '../common/model/cart/cartItemSummary';
-import { CartIconService } from '../common/service/cart-icon.service';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { CartItemSummary } from '../common/model/cart/cartItemSummary';
 import { CartSummary } from '../common/model/cart/cartSummary';
+import { CartIconService } from '../common/service/cart-icon.service';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',

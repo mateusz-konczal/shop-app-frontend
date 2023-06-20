@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
 import { ActivatedRoute } from '@angular/router';
 import { interval, mergeMap, takeUntil, takeWhile, timer } from 'rxjs';
 import { JwtService } from '../../common/service/jwt.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-order-notification',

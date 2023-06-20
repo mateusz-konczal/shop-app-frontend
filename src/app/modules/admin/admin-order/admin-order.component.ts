@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { AdminOrder } from './model/adminOrder';
-import { AdminOrderService } from './admin-order.service';
 import { startWith, switchMap } from 'rxjs';
+import { AdminOrderService } from './admin-order.service';
+import { AdminOrder } from './model/adminOrder';
 
 @Component({
   selector: 'app-admin-order',

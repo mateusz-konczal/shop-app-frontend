@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminMessageService } from '../../common/service/admin-message.service';
+import { AdminProductImageService } from '../admin-product-image.service';
 import { AdminProductUpdate } from '../model/adminProductUpdate';
 import { AdminProductAddService } from './admin-product-add.service';
-import { AdminProductImageService } from '../admin-product-image.service';
 
 @Component({
   selector: 'app-admin-product-add',

@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../../common/model/page';
+import { AdminOrderStats } from './admin-order-stats/model/adminOrderStats';
 import { AdminOrder } from './model/adminOrder';
 import { AdminOrderUpdate } from './model/adminOrderUpdate';
-import { AdminOrderStats } from './admin-order-stats/model/adminOrderStats';
 
 @Injectable({
   providedIn: 'root'

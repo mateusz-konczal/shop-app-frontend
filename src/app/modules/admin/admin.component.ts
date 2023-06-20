@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
-import { AdminProduct } from './common/model/adminProduct';
-import { AdminService } from './admin.service';
-import { AdminConfirmDialogService } from './common/service/admin-confirm-dialog.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { startWith, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTable } from '@angular/material/table';
+import { startWith, switchMap } from 'rxjs';
+import { AdminService } from './admin.service';
+import { AdminProduct } from './common/model/adminProduct';
+import { AdminConfirmDialogService } from './common/service/admin-confirm-dialog.service';
 
 @Component({
   selector: 'app-admin',

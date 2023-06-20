@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AdminUserService } from '../admin-user.service';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminUser } from '../model/adminUser';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { AdminUserService } from '../admin-user.service';
+import { AdminUser } from '../model/adminUser';
 
 @Component({
   selector: 'app-admin-user-add',

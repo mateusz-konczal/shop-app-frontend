@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
-import { AdminReview } from './model/adminReview';
-import { AdminReviewService } from './admin-review.service';
-import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
 import { startWith, switchMap } from 'rxjs';
+import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminReviewService } from './admin-review.service';
+import { AdminReview } from './model/adminReview';
 
 @Component({
   selector: 'app-admin-review',

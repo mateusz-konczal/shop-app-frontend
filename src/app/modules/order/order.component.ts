@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { OrderService } from './order.service';
-import { CartSummary } from '../common/model/cart/cartSummary';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OrderSummary } from './model/orderSummary';
-import { Order } from './model/order';
-import { InitOrder } from './model/initOrder';
+import Big from 'big.js';
+import { CookieService } from 'ngx-cookie-service';
+import { CartSummary } from '../common/model/cart/cartSummary';
 import { CartIconService } from '../common/service/cart-icon.service';
 import { JwtService } from '../common/service/jwt.service';
-import Big from 'big.js';
+import { InitOrder } from './model/initOrder';
+import { Order } from './model/order';
+import { OrderSummary } from './model/orderSummary';
+import { OrderService } from './order.service';
 
 @Component({
   selector: 'app-order',

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AdminAccountService } from './admin-account.service';
-import { JwtService } from '../../common/service/jwt.service';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminNewPassword } from './model/adminNewPassword';
-import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { JwtService } from '../../common/service/jwt.service';
+import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminAccountService } from './admin-account.service';
+import { AdminNewPassword } from './model/adminNewPassword';
 
 @Component({
   selector: 'app-admin-account',
