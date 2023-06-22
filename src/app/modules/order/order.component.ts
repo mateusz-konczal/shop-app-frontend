@@ -21,6 +21,7 @@ export class OrderComponent implements OnInit {
   cartSummary!: CartSummary;
   orderSummary!: OrderSummary;
   initOrder!: InitOrder;
+  currencies: Array<string> = [];
   isErrorMessage = false;
   isLoggedIn = false;
   private statuses = new Map<string, string>([
@@ -52,6 +53,7 @@ export class OrderComponent implements OnInit {
       payment: ['', Validators.required]
     });
 
+    this.getProductCurrencies();
     this.getInitOrder();
     this.isLoggedIn = this.jwtService.isTokenValid();
   }
@@ -101,6 +103,11 @@ export class OrderComponent implements OnInit {
         error: () => this.isErrorMessage = true
       });
     }
+  }
+
+  getProductCurrencies() {
+    this.orderService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 
   getStatus(status: string) {

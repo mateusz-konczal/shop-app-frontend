@@ -16,6 +16,7 @@ export class AdminOrderUpdateComponent implements OnInit {
   order!: AdminOrderUpdate;
   orderStatusForm!: FormGroup;
   statuses!: Map<string, string>;
+  currencies: Array<string> = [];
 
   constructor(
     private router: ActivatedRoute,
@@ -27,7 +28,9 @@ export class AdminOrderUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrderStatuses();
+    this.getProductCurrencies();
     this.getOrder();
+
     this.orderStatusForm = this.formBuilder.group({
       orderStatus: ['', Validators.required]
     });
@@ -37,6 +40,11 @@ export class AdminOrderUpdateComponent implements OnInit {
     this.adminOrderService
       .getOrderStatuses()
       .subscribe(data => this.statuses = data.orderStatuses);
+  }
+
+  getProductCurrencies() {
+    this.adminOrderService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 
   getOrder() {

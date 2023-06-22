@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
 
   cartForm!: FormGroup;
   cartSummary!: CartSummary;
+  currencies: Array<string> = [];
   private isProductAdded = false;
 
   constructor(
@@ -46,6 +47,8 @@ export class CartComponent implements OnInit {
     this.cartForm = this.formBuilder.group({
       items: this.formBuilder.array([])
     });
+
+    this.getProductCurrencies();
   }
 
   getCart() {
@@ -58,6 +61,11 @@ export class CartComponent implements OnInit {
           this.cartIconService.cartChanged(cartSummary.items.length);
         });
     }
+  }
+
+  getProductCurrencies() {
+    this.cartService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 
   addProductToCart(productId: number) {

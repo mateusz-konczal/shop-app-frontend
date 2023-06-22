@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../../common/model/page';
+import { CurrencyCommonService } from '../../common/service/currency-common.service';
 import { AdminOrderStats } from './admin-order-stats/model/adminOrderStats';
 import { AdminOrder } from './model/adminOrder';
 import { AdminOrderUpdate } from './model/adminOrderUpdate';
@@ -11,7 +12,10 @@ import { AdminOrderUpdate } from './model/adminOrderUpdate';
 })
 export class AdminOrderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private currencyCommonService: CurrencyCommonService
+  ) { }
 
   getOrders(page: number, size: number): Observable<Page<AdminOrder>> {
     return this.http.get<Page<AdminOrder>>(`/api/admin/orders?page=${page}&size=${size}`);
@@ -36,5 +40,9 @@ export class AdminOrderService {
 
   getSalesStatistics(): Observable<AdminOrderStats> {
     return this.http.get<AdminOrderStats>("/api/admin/orders/stats");
+  }
+
+  getProductCurrencies(): Observable<Array<string>> {
+    return this.currencyCommonService.getProductCurrencies();
   }
 }

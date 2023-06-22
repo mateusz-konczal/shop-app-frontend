@@ -17,11 +17,14 @@ export class AdminOrderComponent implements AfterViewInit {
   dataSource: Array<AdminOrder> = [];
   totalElements: number = 0;
   statuses!: Map<string, string>;
+  currencies: Array<string> = [];
 
   constructor(private adminOrderService: AdminOrderService) { }
 
   ngAfterViewInit(): void {
     this.getOrderStatuses();
+    this.getProductCurrencies();
+
     this.paginator.page.pipe(
       startWith({}),
       switchMap(() => {
@@ -34,12 +37,16 @@ export class AdminOrderComponent implements AfterViewInit {
   }
 
   getOrderStatuses() {
-    this.adminOrderService
-      .getOrderStatuses()
+    this.adminOrderService.getOrderStatuses()
       .subscribe(data => this.statuses = new Map(Object.entries(data.orderStatuses)));
   }
 
   getStatus(status: string) {
     return this.statuses.get(status);
+  }
+
+  getProductCurrencies() {
+    this.adminOrderService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 }
