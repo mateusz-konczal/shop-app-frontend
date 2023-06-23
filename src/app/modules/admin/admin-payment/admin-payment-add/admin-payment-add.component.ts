@@ -28,6 +28,7 @@ export class AdminPaymentAddComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       type: ['', Validators.required],
       defaultPayment: ['false'],
+      enabled: ['true'],
       note: ['']
     });
   }

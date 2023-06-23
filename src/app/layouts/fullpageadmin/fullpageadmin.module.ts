@@ -29,6 +29,7 @@ import { AdminUserAddComponent } from 'src/app/modules/admin/admin-user/admin-us
 import { AdminUserComponent } from 'src/app/modules/admin/admin-user/admin-user.component';
 import { AdminComponent } from 'src/app/modules/admin/admin.component';
 import { AdminConfirmDialogComponent } from 'src/app/modules/admin/common/component/admin-confirm-dialog/admin-confirm-dialog.component';
+import { AdminInfoDialogComponent } from 'src/app/modules/admin/common/component/admin-info-dialog/admin-info-dialog.component';
 import { AdminMessageComponent } from 'src/app/modules/admin/common/component/admin-message/admin-message.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { FullpageadminComponent } from './fullpageadmin.component';
@@ -43,6 +44,7 @@ import { FullpageadminComponent } from './fullpageadmin.component';
     AdminProductFormComponent,
     AdminMessageComponent,
     AdminConfirmDialogComponent,
+    AdminInfoDialogComponent,
     AdminCategoryComponent,
     AdminCategoryAddComponent,
     AdminCategoryUpdateComponent,

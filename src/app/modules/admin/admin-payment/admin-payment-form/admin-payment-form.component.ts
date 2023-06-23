@@ -41,6 +41,14 @@ import { AdminPaymentService } from "../admin-payment.service";
             </mat-select>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+            <mat-label>Aktywna płatność</mat-label>
+            <mat-select formControlName="enabled">
+                <mat-option value="true">TAK</mat-option>
+                <mat-option value="false">NIE</mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field>
             <mat-label>Notatka</mat-label>
             <textarea matInput rows="10" placeholder="Podaj notatkę do tego sposobu płatności" formControlName="note"></textarea>
@@ -78,13 +86,5 @@ export class AdminPaymentFormComponent {
 
     get type() {
         return this.parentForm.get("type");
-    }
-
-    get defaultPayment() {
-        return this.parentForm.get("defaultPayment");
-    }
-
-    get note() {
-        return this.parentForm.get("note");
     }
 }

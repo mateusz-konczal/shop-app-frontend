@@ -30,6 +30,7 @@ export class AdminPaymentUpdateComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       type: ['', Validators.required],
       defaultPayment: ['false'],
+      enabled: ['true'],
       note: ['']
     });
   }
@@ -59,6 +60,7 @@ export class AdminPaymentUpdateComponent implements OnInit {
       name: payment.name,
       type: payment.type,
       defaultPayment: String(payment.defaultPayment),
+      enabled: String(payment.enabled),
       note: payment.note
     });
   }

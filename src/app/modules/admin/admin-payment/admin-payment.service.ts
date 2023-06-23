@@ -26,6 +26,14 @@ export class AdminPaymentService {
     return this.http.put<AdminPayment>("/api/admin/payments/" + id, payment);
   }
 
+  enablePayment(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/payments/${id}/enable`, '');
+  }
+
+  disablePayment(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/payments/${id}/disable`, '');
+  }
+
   saveNewPayment(payment: AdminPayment): Observable<AdminPayment> {
     return this.http.post<AdminPayment>("/api/admin/payments", payment);
   }

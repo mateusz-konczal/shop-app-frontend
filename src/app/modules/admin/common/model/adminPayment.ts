@@ -3,5 +3,6 @@ export interface AdminPayment {
     name: string,
     type: string,
     defaultPayment: boolean,
+    enabled: boolean,
     note: string
 }
