@@ -47,10 +47,18 @@ import { AdminShipmentService } from "../admin-shipment.service";
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Domyślny sposób dostawy</mat-label>
+            <mat-label>Czy jest to domyślny sposób dostawy?</mat-label>
             <mat-select formControlName="defaultShipment">
                 <mat-option value="false">NIE</mat-option>
                 <mat-option value="true">TAK</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Czy aktywować ten sposób dostawy?</mat-label>
+            <mat-select formControlName="enabled">
+                <mat-option value="true">TAK</mat-option>
+                <mat-option value="false">NIE</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -89,9 +97,5 @@ export class AdminShipmentFormComponent {
 
     get type() {
         return this.parentForm.get("type");
-    }
-
-    get defaultShipment() {
-        return this.parentForm.get("defaultShipment");
     }
 }

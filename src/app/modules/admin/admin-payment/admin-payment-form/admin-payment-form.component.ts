@@ -34,7 +34,7 @@ import { AdminPaymentService } from "../admin-payment.service";
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Domyślny sposób płatności</mat-label>
+            <mat-label>Czy jest to domyślny sposób płatności?</mat-label>
             <mat-select formControlName="defaultPayment">
                 <mat-option value="false">NIE</mat-option>
                 <mat-option value="true">TAK</mat-option>
@@ -42,7 +42,7 @@ import { AdminPaymentService } from "../admin-payment.service";
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Aktywna płatność</mat-label>
+            <mat-label>Czy aktywować ten sposób płatności?</mat-label>
             <mat-select formControlName="enabled">
                 <mat-option value="true">TAK</mat-option>
                 <mat-option value="false">NIE</mat-option>

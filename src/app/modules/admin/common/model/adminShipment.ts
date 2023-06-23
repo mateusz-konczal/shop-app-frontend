@@ -3,5 +3,6 @@ export interface AdminShipment {
     name: string,
     price: number,
     type: string,
-    defaultShipment: boolean
+    defaultShipment: boolean,
+    enabled: boolean
 }

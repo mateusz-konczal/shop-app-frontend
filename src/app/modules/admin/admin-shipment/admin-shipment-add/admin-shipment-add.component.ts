@@ -28,7 +28,8 @@ export class AdminShipmentAddComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       price: ['', [Validators.required, Validators.min(0)]],
       type: ['', Validators.required],
-      defaultShipment: ['false']
+      defaultShipment: ['false'],
+      enabled: ['true']
     });
   }
 
