@@ -26,6 +26,14 @@ export class AdminShipmentService {
     return this.http.put<AdminShipment>("/api/admin/shipments/" + id, shipment);
   }
 
+  enableShipment(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/shipments/${id}/enable`, '');
+  }
+
+  disableShipment(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/shipments/${id}/disable`, '');
+  }
+
   saveNewShipment(shipment: AdminShipment): Observable<AdminShipment> {
     return this.http.post<AdminShipment>("/api/admin/shipments", shipment);
   }

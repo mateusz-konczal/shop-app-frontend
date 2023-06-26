@@ -4,41 +4,43 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { FullpageComponent } from './layouts/fullpage/fullpage.component';
 import { FullpageadminComponent } from './layouts/fullpageadmin/fullpageadmin.component';
 import { FullpageadminemptyComponent } from './layouts/fullpageadminempty/fullpageadminempty.component';
+import { AccountComponent } from './modules/account/account.component';
+import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
 import { AdminCategoryAddComponent } from './modules/admin/admin-category/admin-category-add/admin-category-add.component';
 import { AdminCategoryUpdateComponent } from './modules/admin/admin-category/admin-category-update/admin-category-update.component';
 import { AdminCategoryComponent } from './modules/admin/admin-category/admin-category.component';
+import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.component';
+import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-order-export/admin-order-export.component';
+import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
+import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
+import { AdminOrderComponent } from './modules/admin/admin-order/admin-order.component';
+import { AdminPaymentAddComponent } from './modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
+import { AdminPaymentUpdateComponent } from './modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
+import { AdminPaymentComponent } from './modules/admin/admin-payment/admin-payment.component';
 import { AdminProductAddComponent } from './modules/admin/admin-product/admin-product-add/admin-product-add.component';
 import { AdminProductUpdateComponent } from './modules/admin/admin-product/admin-product-update/admin-product-update.component';
 import { AdminProductComponent } from './modules/admin/admin-product/admin-product.component';
-import { AdminComponent } from './modules/admin/admin.component';
-import { CategoryComponent } from './modules/category/category.component';
-import { HomeComponent } from './modules/home/home.component';
-import { LoginComponent } from './modules/login/login.component';
-import { ProductDetailsComponent } from './modules/product-details/product-details.component';
-import { ProductComponent } from './modules/product/product.component';
 import { AdminReviewComponent } from './modules/admin/admin-review/admin-review.component';
-import { CartComponent } from './modules/cart/cart.component';
-import { OrderComponent } from './modules/order/order.component';
-import { OrderNotificationComponent } from './modules/order/order-notification/order-notification.component';
-import { AdminShipmentComponent } from './modules/admin/admin-shipment/admin-shipment.component';
 import { AdminShipmentAddComponent } from './modules/admin/admin-shipment/admin-shipment-add/admin-shipment-add.component';
 import { AdminShipmentUpdateComponent } from './modules/admin/admin-shipment/admin-shipment-update/admin-shipment-update.component';
-import { AdminPaymentComponent } from './modules/admin/admin-payment/admin-payment.component';
-import { AdminPaymentAddComponent } from './modules/admin/admin-payment/admin-payment-add/admin-payment-add.component';
-import { AdminPaymentUpdateComponent } from './modules/admin/admin-payment/admin-payment-update/admin-payment-update.component';
-import { AdminOrderComponent } from './modules/admin/admin-order/admin-order.component';
-import { AdminOrderUpdateComponent } from './modules/admin/admin-order/admin-order-update/admin-order-update.component';
-import { AdminOrderExportComponent } from './modules/admin/admin-order/admin-order-export/admin-order-export.component';
-import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
-import { AdminLoginComponent } from './modules/admin/admin-login/admin-login.component';
-import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
-import { UserOrdersComponent } from './modules/user-orders/user-orders.component';
-import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
-import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
-import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
+import { AdminShipmentComponent } from './modules/admin/admin-shipment/admin-shipment.component';
 import { AdminUserAddComponent } from './modules/admin/admin-user/admin-user-add/admin-user-add.component';
-import { AdminAccountComponent } from './modules/admin/admin-account/admin-account.component';
-import { AccountComponent } from './modules/account/account.component';
+import { AdminUserComponent } from './modules/admin/admin-user/admin-user.component';
+import { AdminComponent } from './modules/admin/admin.component';
+import { adminAuthorizationGuard } from './modules/admin/common/guard/adminAuthorizationGuard';
+import { CartComponent } from './modules/cart/cart.component';
+import { CategoryComponent } from './modules/category/category.component';
+import { profileAuthorizationGuard } from './modules/common/guard/profileAuthorizationGuard';
+import { ContactComponent } from './modules/contact/contact.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LoginComponent } from './modules/login/login.component';
+import { LostPasswordComponent } from './modules/login/lost-password/lost-password.component';
+import { OrderNotificationComponent } from './modules/order/order-notification/order-notification.component';
+import { OrderComponent } from './modules/order/order.component';
+import { ProductDetailsComponent } from './modules/product-details/product-details.component';
+import { ProductComponent } from './modules/product/product.component';
+import { UserOrdersComponent } from './modules/user-orders/user-orders.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -51,7 +53,8 @@ const routes: Routes = [
       { path: 'order', component: OrderComponent },
       { path: 'order/notification/:orderHash', component: OrderNotificationComponent },
       { path: 'my-orders', component: UserOrdersComponent, canActivate: [profileAuthorizationGuard] },
-      { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] }
+      { path: 'account', component: AccountComponent, canActivate: [profileAuthorizationGuard] },
+      { path: 'contact', component: ContactComponent }
     ]
   },
   {
@@ -90,6 +93,9 @@ const routes: Routes = [
     path: '', component: FullpageadminemptyComponent, children: [
       { path: 'admin/login', component: AdminLoginComponent }
     ]
+  },
+  {
+    path: '**', pathMatch: 'full', component: PageNotFoundComponent
   }
 ];
 

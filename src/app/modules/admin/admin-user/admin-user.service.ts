@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Page } from '../../common/model/page';
-import { AdminUserReadDto } from './model/adminUserReadDto';
 import { AdminUser } from './model/adminUser';
+import { AdminUserReadDto } from './model/adminUserReadDto';
 
 @Injectable({
   providedIn: 'root'

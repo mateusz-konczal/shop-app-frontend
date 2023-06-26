@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DefaultComponent } from './default.component';
-import { HomeComponent } from 'src/app/modules/home/home.component';
-import { ProductComponent } from 'src/app/modules/product/product.component';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
-import { CategoryComponent } from 'src/app/modules/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CartComponent } from 'src/app/modules/cart/cart.component';
-import { OrderComponent } from 'src/app/modules/order/order.component';
-import { OrderNotificationComponent } from 'src/app/modules/order/order-notification/order-notification.component';
-import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
-import { UserOrdersComponent } from 'src/app/modules/user-orders/user-orders.component';
+import { RouterModule } from '@angular/router';
 import { AccountComponent } from 'src/app/modules/account/account.component';
+import { CartComponent } from 'src/app/modules/cart/cart.component';
+import { CategoryComponent } from 'src/app/modules/category/category.component';
 import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm-dialog/confirm-dialog.component';
+import { ReplacePipe } from 'src/app/modules/common/pipe/replacePipe';
+import { ContactComponent } from 'src/app/modules/contact/contact.component';
+import { HomeComponent } from 'src/app/modules/home/home.component';
+import { OrderNotificationComponent } from 'src/app/modules/order/order-notification/order-notification.component';
+import { OrderComponent } from 'src/app/modules/order/order.component';
+import { ProductDetailsComponent } from 'src/app/modules/product-details/product-details.component';
+import { ProductComponent } from 'src/app/modules/product/product.component';
+import { UserOrdersComponent } from 'src/app/modules/user-orders/user-orders.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DefaultComponent } from './default.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ConfirmDialogComponent } from 'src/app/modules/common/component/confirm
     ReplacePipe,
     UserOrdersComponent,
     AccountComponent,
+    ContactComponent,
     ConfirmDialogComponent
   ],
   imports: [

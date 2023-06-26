@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartCommonService } from '../common/service/cart-common.service';
-import { CartSummary } from '../common/model/cart/cartSummary';
 import { Observable } from 'rxjs';
-import { OrderSummary } from './model/orderSummary';
-import { Order } from './model/order';
+import { CartSummary } from '../common/model/cart/cartSummary';
+import { CartCommonService } from '../common/service/cart-common.service';
+import { CurrencyCommonService } from '../common/service/currency-common.service';
 import { InitOrder } from './model/initOrder';
+import { Order } from './model/order';
+import { OrderSummary } from './model/orderSummary';
 import { PaymentNotification } from './model/paymentNotification';
 
 @Injectable({
@@ -15,11 +16,16 @@ export class OrderService {
 
   constructor(
     private http: HttpClient,
-    private cartCommonService: CartCommonService
+    private cartCommonService: CartCommonService,
+    private currencyCommonService: CurrencyCommonService
   ) { }
 
   getCart(id: number): Observable<CartSummary> {
     return this.cartCommonService.getCart(id);
+  }
+
+  getProductCurrencies(): Observable<Array<string>> {
+    return this.currencyCommonService.getProductCurrencies();
   }
 
   placeOrder(order: Order): Observable<OrderSummary> {

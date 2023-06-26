@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { AdminShipmentService } from '../admin-shipment.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdminMessageService } from '../../common/service/admin-message.service';
+import { ActivatedRoute } from '@angular/router';
 import { AdminShipment } from '../../common/model/adminShipment';
+import { AdminMessageService } from '../../common/service/admin-message.service';
+import { AdminShipmentService } from '../admin-shipment.service';
 
 @Component({
   selector: 'app-admin-shipment-update',
@@ -30,7 +30,8 @@ export class AdminShipmentUpdateComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       price: ['', [Validators.required, Validators.min(0)]],
       type: ['', Validators.required],
-      defaultShipment: ['false']
+      defaultShipment: ['false'],
+      enabled: ['true']
     });
   }
 
@@ -59,7 +60,8 @@ export class AdminShipmentUpdateComponent implements OnInit {
       name: shipment.name,
       price: shipment.price,
       type: shipment.type,
-      defaultShipment: String(shipment.defaultShipment)
+      defaultShipment: String(shipment.defaultShipment),
+      enabled: String(shipment.enabled)
     });
   }
 }

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { JwtService } from '../common/service/jwt.service';
 import { ProductDetails } from './model/productDetails';
 import { Review } from './model/review';
 import { ProductDetailsService } from './product-details.service';
-import { JwtService } from '../common/service/jwt.service';
 
 @Component({
   selector: 'app-product-details',

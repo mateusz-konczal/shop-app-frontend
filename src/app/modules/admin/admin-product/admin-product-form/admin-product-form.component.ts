@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AdminFormCategoryService } from './admin-form-category.service';
 import { AdminCategoryName } from '../../common/dto/adminCategoryName';
+import { AdminFormCategoryService } from './admin-form-category.service';
+import { FormProductCurrencyService } from './form-product-currency.service';
 
 @Component({
     selector: 'app-admin-product-form',
@@ -79,8 +80,22 @@ import { AdminCategoryName } from '../../common/dto/adminCategoryName';
         </mat-form-field>
 
         <mat-form-field>
+            <mat-label>Cena promocyjna</mat-label>
+            <input type="number" min="0" matInput placeholder="Podaj cenę promocyjną produktu" formControlName="salePrice">
+            <div *ngIf="salePrice?.invalid && (salePrice?.dirty || salePrice?.touched)" class="errorMessages">
+                <div *ngIf="salePrice?.errors?.['min']">
+                    Cena musi być większa od zera
+                </div>
+            </div>
+        </mat-form-field>
+
+        <mat-form-field>
             <mat-label>Waluta</mat-label>
-            <input type="text" matInput placeholder="Podaj walutę" formControlName="currency">
+            <mat-select formControlName="currency">
+                <mat-option *ngFor="let currency of currencies" [value]="currency">
+                    {{currency}}
+                </mat-option>
+            </mat-select>
             <div *ngIf="currency?.invalid && (currency?.dirty || currency?.touched)" class="errorMessages">
                 <div *ngIf="currency?.errors?.['required']">
                     Waluta jest wymagana
@@ -101,16 +116,26 @@ export class AdminProductFormComponent implements OnInit {
 
     @Input() parentForm!: FormGroup;
     categories: Array<AdminCategoryName> = [];
+    currencies: Array<string> = [];
 
-    constructor(private adminFormCategoryService: AdminFormCategoryService) { }
+    constructor(
+        private adminFormCategoryService: AdminFormCategoryService,
+        private formProductCurrencyService: FormProductCurrencyService
+    ) { }
 
     ngOnInit(): void {
         this.getCategories();
+        this.getProductCurrencies();
     }
 
     getCategories() {
         this.adminFormCategoryService.getCategories()
             .subscribe(categories => this.categories = categories);
+    }
+
+    getProductCurrencies() {
+        this.formProductCurrencyService.getProductCurrencies()
+            .subscribe(currencies => this.currencies = currencies);
     }
 
     get name() {
@@ -131,6 +156,10 @@ export class AdminProductFormComponent implements OnInit {
 
     get price() {
         return this.parentForm.get("price");
+    }
+
+    get salePrice() {
+        return this.parentForm.get("salePrice");
     }
 
     get currency() {

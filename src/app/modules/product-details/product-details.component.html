@@ -10,7 +10,8 @@
                 {{product?.description}}
             </div>
             <div fxLayout="row" fxFlexAlign="end">
-                <span class="price">{{product?.price}} {{product?.currency}}</span>
+                <div class="price" [ngClass]="{'priceDisable': product?.salePrice}">{{product?.price}} {{product?.currency}}</div>
+                <div class="salePrice" *ngIf="product?.salePrice">{{product.salePrice}} {{product?.currency}}</div>
             </div>
             <button mat-flat-button color="warn" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
         </div>

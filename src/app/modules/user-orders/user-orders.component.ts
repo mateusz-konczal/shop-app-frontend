@@ -11,15 +11,22 @@ export class UserOrdersComponent implements OnInit {
 
   displayedColumns: string[] = ["id", "placeDate", "orderStatus", "totalValue"];
   orders: Array<OrderReadDto> = [];
+  currencies: Array<string> = [];
 
   constructor(private userOrdersService: UserOrdersService) { }
 
   ngOnInit(): void {
     this.getOrders();
+    this.getProductCurrencies();
   }
 
   getOrders() {
     this.userOrdersService.getOrders()
       .subscribe(orders => this.orders = orders);
+  }
+
+  getProductCurrencies() {
+    this.userOrdersService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 }

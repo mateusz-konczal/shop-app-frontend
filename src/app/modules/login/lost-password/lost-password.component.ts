@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../login.service';
-import { Email } from '../model/email';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResetPassword } from '../model/resetPassword';
 import { AppComponent } from 'src/app/app.component';
+import { LoginService } from '../login.service';
+import { Email } from '../model/email';
+import { ResetPassword } from '../model/resetPassword';
 
 @Component({
   selector: 'app-lost-password',

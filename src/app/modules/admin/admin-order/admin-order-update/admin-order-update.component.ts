@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AdminOrderService } from '../admin-order.service';
-import { AdminOrderUpdate } from '../model/adminOrderUpdate';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { AdminMessageService } from '../../common/service/admin-message.service';
+import { AdminOrderService } from '../admin-order.service';
+import { AdminOrderUpdate } from '../model/adminOrderUpdate';
 
 @Component({
   selector: 'app-admin-order-update',
@@ -16,6 +16,7 @@ export class AdminOrderUpdateComponent implements OnInit {
   order!: AdminOrderUpdate;
   orderStatusForm!: FormGroup;
   statuses!: Map<string, string>;
+  currencies: Array<string> = [];
 
   constructor(
     private router: ActivatedRoute,
@@ -27,7 +28,9 @@ export class AdminOrderUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrderStatuses();
+    this.getProductCurrencies();
     this.getOrder();
+
     this.orderStatusForm = this.formBuilder.group({
       orderStatus: ['', Validators.required]
     });
@@ -37,6 +40,11 @@ export class AdminOrderUpdateComponent implements OnInit {
     this.adminOrderService
       .getOrderStatuses()
       .subscribe(data => this.statuses = data.orderStatuses);
+  }
+
+  getProductCurrencies() {
+    this.adminOrderService.getProductCurrencies()
+      .subscribe(currencies => this.currencies = currencies);
   }
 
   getOrder() {

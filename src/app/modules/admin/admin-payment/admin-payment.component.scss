@@ -2,28 +2,34 @@
     width: 60px;
 }
 
-.mat-column-name {
-    width: 200px;
-}
-
 .mat-column-defaultPayment {
-    width: 200px;
+    width: 180px;
 
     &.mat-mdc-cell {
         text-transform: uppercase;
     }
 }
 
+.mat-column-enabled {
+    width: 180px;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+    }
+}
+
+.mat-column-name,
 .mat-column-note {
     padding: 10px 0;
 }
 
 .mat-column-actions {
-    width: 140px;
+    width: 260px;
 }
 
 .mat-column-type,
 .mat-column-defaultPayment,
+.mat-column-enabled,
 .mat-column-note,
 .mat-column-actions {
     text-align: center;

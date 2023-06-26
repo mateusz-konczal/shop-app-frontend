@@ -1,4 +1,5 @@
 <h1>Kategoria: {{categoryProducts?.category?.name}}</h1>
+
 <p>{{categoryProducts?.category?.description}}</p>
 <mat-card *ngFor="let product of categoryProducts?.products?.content">
     <div flexLayout="row" class="product">
@@ -15,9 +16,11 @@
             </div>
         </div>
         <div>
-            <div class="productPrice">{{product.price}} {{product.currency}}</div>
+            <div class="productPrice" [ngClass]="{'productPriceDisable': product.salePrice}">{{product.price}} {{product.currency}}</div>
+            <div class="productSalePrice" *ngIf="product.salePrice">{{product.salePrice}} {{product.currency}}</div>
         </div>
     </div>
+    
     <mat-card-actions align="end" fxLayoutGap="10">
         <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
         <button mat-flat-button color="primary" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { HeaderService } from './header.service';
 import { CartIconService } from 'src/app/modules/common/service/cart-icon.service';
 import { JwtService } from 'src/app/modules/common/service/jwt.service';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-header',

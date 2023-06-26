@@ -37,7 +37,7 @@
         </div>
         <div fxLayoutAlign="end start">
             <div class="summary"> Wartość: </div>
-            <div class="summary"> <b>{{cartSummary?.summary?.totalValue}} PLN</b></div>
+            <div class="summary"> <b>{{cartSummary?.summary?.totalValue}} {{currencies[0]}}</b></div>
         </div>
         <div>
             <button mat-flat-button color="warn" (click)="back()">Powrót do zakupów</button>

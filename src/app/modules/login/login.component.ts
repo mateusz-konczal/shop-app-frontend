@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { LoginCredentials } from '../common/model/security/loginCredentials';
+import { JwtService } from '../common/service/jwt.service';
+import { NavigationService } from '../common/service/navigation.service';
 import { LoginService } from './login.service';
 import { RegisterCredentials } from './model/registerCredentials';
-import { JwtService } from '../common/service/jwt.service';
-import { Router } from '@angular/router';
-import { LoginCredentials } from '../common/model/security/loginCredentials';
-import { NavigationService } from '../common/service/navigation.service';
-import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',

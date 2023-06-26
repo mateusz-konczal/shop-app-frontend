@@ -10,13 +10,22 @@
     }
 }
 
+.mat-column-enabled {
+    width: 200px;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+    }
+}
+
 .mat-column-actions {
-    width: 140px;
+    width: 260px;
 }
 
 .mat-column-price,
 .mat-column-type,
 .mat-column-defaultShipment,
+.mat-column-enabled,
 .mat-column-actions {
     text-align: center;
 }

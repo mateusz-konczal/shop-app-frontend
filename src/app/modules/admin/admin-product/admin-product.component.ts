@@ -2,9 +2,9 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { startWith, switchMap } from 'rxjs';
+import { AdminProduct } from '../common/model/adminProduct';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
 import { AdminProductService } from './admin-product.service';
-import { AdminProduct } from '../common/model/adminProduct';
 
 @Component({
   selector: 'app-admin-product',

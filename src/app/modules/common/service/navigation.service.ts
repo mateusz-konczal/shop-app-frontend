@@ -1,6 +1,6 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
-import { Location } from '@angular/common';
 import { filter, map, pairwise } from 'rxjs';
 
 @Injectable({

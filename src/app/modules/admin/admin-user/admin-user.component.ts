@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { AdminUserReadDto } from './model/adminUserReadDto';
 import { MatPaginator } from '@angular/material/paginator';
 import { startWith, switchMap } from 'rxjs';
-import { AdminUserService } from './admin-user.service';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminUserService } from './admin-user.service';
+import { AdminUserReadDto } from './model/adminUserReadDto';
 
 @Component({
   selector: 'app-admin-user',

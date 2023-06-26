@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from './account.service';
-import { JwtService } from '../common/service/jwt.service';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NewPassword } from './model/newPassword';
-import { ConfirmDialogService } from '../common/service/confirm-dialog.service';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { ConfirmDialogService } from '../common/service/confirm-dialog.service';
+import { JwtService } from '../common/service/jwt.service';
+import { AccountService } from './account.service';
+import { NewPassword } from './model/newPassword';
 
 @Component({
   selector: 'app-account',
