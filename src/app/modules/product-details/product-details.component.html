@@ -13,7 +13,8 @@
                 <div class="price" [ngClass]="{'priceDisable': product?.salePrice}">{{product?.price}} {{product?.currency}}</div>
                 <div class="salePrice" *ngIf="product?.salePrice">{{product.salePrice}} {{product?.currency}}</div>
             </div>
-            <button mat-flat-button color="warn" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
+            <button *ngIf="product?.enabled" mat-flat-button color="warn" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
+            <button *ngIf="!product?.enabled" mat-flat-button disabled>Do koszyka</button>
         </div>
     </div>
     <div class="fullDescription">

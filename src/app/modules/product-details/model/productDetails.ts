@@ -10,5 +10,6 @@ export interface ProductDetails {
     currency: string,
     image: string,
     slug: string,
+    enabled: boolean,
     reviews: Array<Review>
 }

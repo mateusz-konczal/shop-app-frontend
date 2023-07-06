@@ -39,7 +39,8 @@ export class AdminProductUpdateComponent implements OnInit {
       price: ['', [Validators.required, Validators.min(0)]],
       salePrice: ['', Validators.min(0)],
       currency: ['PLN', Validators.required],
-      slug: ['', [Validators.required, Validators.minLength(4)]]
+      slug: ['', [Validators.required, Validators.minLength(4)]],
+      enabled: ['true']
     });
 
     this.imageForm = this.formBuilder.group({
@@ -65,6 +66,7 @@ export class AdminProductUpdateComponent implements OnInit {
       salePrice: this.productForm.get('salePrice')?.value,
       currency: this.productForm.get('currency')?.value,
       slug: this.productForm.get('slug')?.value,
+      enabled: this.productForm.get('enabled')?.value,
       image: this.image
     } as AdminProductUpdate).subscribe({
       next: product => {
@@ -99,7 +101,8 @@ export class AdminProductUpdateComponent implements OnInit {
       price: product.price,
       salePrice: product.salePrice,
       currency: product.currency,
-      slug: product.slug
+      slug: product.slug,
+      enabled: String(product.enabled)
     });
     this.image = product.image;
   }
