@@ -16,20 +16,20 @@ export class CartService {
     private currencyCommonService: CurrencyCommonService
   ) { }
 
-  getCart(id: number): Observable<CartSummary> {
-    return this.cartCommonService.getCart(id);
+  getCart(uuid: string): Observable<CartSummary> {
+    return this.cartCommonService.getCart(uuid);
   }
 
   getProductCurrencies(): Observable<Array<string>> {
     return this.currencyCommonService.getProductCurrencies();
   }
 
-  addProductToCart(id: number, cartItem: any): Observable<CartSummary> {
-    return this.http.put<CartSummary>("/api/carts/" + id, cartItem);
+  addProductToCart(uuid: string, cartItem: any): Observable<CartSummary> {
+    return this.http.put<CartSummary>(`/api/carts?uuid=${uuid}`, cartItem);
   }
 
-  updateCart(id: number, cartItems: any[]): Observable<CartSummary> {
-    return this.http.put<CartSummary>(`/api/carts/${id}/update`, cartItems);
+  updateCart(uuid: string, cartItems: any[]): Observable<CartSummary> {
+    return this.http.put<CartSummary>(`/api/carts/${uuid}/update`, cartItems);
   }
 
   deleteCartItem(itemId: number): Observable<void> {

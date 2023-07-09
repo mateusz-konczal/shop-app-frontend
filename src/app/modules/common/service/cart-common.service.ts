@@ -10,7 +10,7 @@ export class CartCommonService {
 
   constructor(private http: HttpClient) { }
 
-  getCart(id: number): Observable<CartSummary> {
-    return this.http.get<CartSummary>("/api/carts/" + id);
+  getCart(uuid: string): Observable<CartSummary> {
+    return this.http.get<CartSummary>("/api/carts/" + uuid);
   }
 }

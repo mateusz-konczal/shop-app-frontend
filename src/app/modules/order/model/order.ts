@@ -8,7 +8,7 @@ export interface Order {
     city: string,
     email: string,
     phone: string,
-    cartId: number,
+    cartUuid: string,
     shipmentId: number,
     paymentId: number
 }
