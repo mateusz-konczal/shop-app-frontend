@@ -176,8 +176,8 @@
                         <mat-radio-group fxLayout="column" formControlName="shipment">
                             <mat-radio-button class="shipmentRadioButton" *ngFor="let shipment of initOrder?.shipments"
                                 [value]="shipment" [checked]="shipment.defaultShipment">
-                                <span class="shipmentName">{{shipment.name}}</span>
-                                <span class="shipmentPrice">{{shipment.price}} {{currencies[0]}}</span>
+                                <span class="shipmentName">{{shipment?.name}}</span>
+                                <span class="shipmentPrice">{{shipment?.price}} {{currencies[0]}}</span>
                             </mat-radio-button>
                         </mat-radio-group>
                     </div>
@@ -186,7 +186,7 @@
                         <mat-radio-group fxLayout="column" formControlName="payment">
                             <mat-radio-button class="paymentRadioButton" *ngFor="let payment of initOrder?.payments"
                                 [value]="payment" [checked]="payment.defaultPayment">
-                                <span class="paymentName">{{payment.name}}</span>
+                                <span class="paymentName">{{payment?.name}}</span>
                             </mat-radio-button>
                         </mat-radio-group>
                     </div>
