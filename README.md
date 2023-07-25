@@ -8,7 +8,7 @@ sales chart for the current month (using Chart.js). In the dashboard, the admin 
 the entire application. Admins and customers have dedicated login and password change pages. The customer 
 can also reset the password by providing an e-mail address and obtaining a special link valid for a 
 certain period of time. The online shop was integrated with the Przelewy24 online payment system.
-Currently, the project is being refined and then it will be deployed on a cloud platform.
+The application was containerized and deployed to the AWS cloud platform.
 - --
 ## Technologies
 * Node.js 18.15.0
@@ -18,6 +18,7 @@ Currently, the project is being refined and then it will be deployed on a cloud 
 * HTML
 * SCSS
 * Git
+* nginx 1.23.4
 * ngrok 3.3.1
 
 ## Usage
@@ -28,6 +29,29 @@ npm start (alias for command: ng serve --proxy-config proxy.config.json)
 ```
 * Access to the shop as a customer: [localhost:4200](http://localhost:4200/)
 * Access to the shop admin panel: [localhost:4200/admin](http://localhost:4200/admin) (default login: admin, password: test)
+
+## Deployment
+To build the application, run the command:
+```
+npm run build  
+```
+
+To create an image from a Dockerfile, use the command:
+```
+docker build . -t shop-frontend:v1
+```
+
+To create and run MySQL database, phpMyAdmin, backend and frontend in containers, use 
+the [backend](https://github.com/mateusz-konczal/shop-app-backend) repository and run the command:
+```
+docker-compose -p shop up
+```
+
+* Access to the shop as a customer: [localhost](http://localhost)
+* Access to the shop admin panel: [localhost/admin](http://localhost/admin) (default login: admin, password: test)
+
+* The application is also available on the AWS cloud platform: 
+[shop](http://ec2-3-121-239-240.eu-central-1.compute.amazonaws.com)
 
 ## Demo
 
