@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { AdminCategoryName } from '../common/dto/adminCategoryName';
 import { AdminConfirmDialogService } from '../common/service/admin-confirm-dialog.service';
+import { AdminInfoDialogService } from '../common/service/admin-info-dialog.service';
 import { AdminCategoryService } from './admin-category.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AdminCategoryComponent implements OnInit {
 
   constructor(
     private adminCategoryService: AdminCategoryService,
-    private dialogService: AdminConfirmDialogService
+    private confirmDialogService: AdminConfirmDialogService,
+    private infoDialogService: AdminInfoDialogService
   ) { }
 
   ngOnInit(): void {
@@ -31,18 +33,21 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   confirmDelete(element: AdminCategoryName) {
-    this.dialogService.openConfirmDialog("Czy na pewno chcesz usunąć tę kategorię?")
+    this.confirmDialogService.openConfirmDialog("Czy na pewno chcesz usunąć tę kategorię?")
       .afterClosed()
       .subscribe(result => {
         if (result) {
           this.adminCategoryService.deleteCategory(element.id)
-            .subscribe(() => {
-              this.dataSource.forEach((value, index) => {
-                if (element == value) {
-                  this.dataSource.splice(index, 1);
-                  this.table.renderRows();
-                }
-              });
+            .subscribe({
+              next: () => {
+                this.dataSource.forEach((value, index) => {
+                  if (element == value) {
+                    this.dataSource.splice(index, 1);
+                    this.table.renderRows();
+                  }
+                });
+              },
+              error: () => this.infoDialogService.openInfoDialog("Nie możesz usunąć kategorii zawierającej produkty.")
             });
         }
       });

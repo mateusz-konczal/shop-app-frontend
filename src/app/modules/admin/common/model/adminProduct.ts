@@ -4,5 +4,6 @@ export interface AdminProduct {
     price: number,
     salePrice: number,
     currency: string,
-    image: string
+    image: string,
+    enabled: boolean
 }

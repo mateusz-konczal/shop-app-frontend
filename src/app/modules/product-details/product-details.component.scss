@@ -1,6 +1,5 @@
 @import "../../../variables.scss";
 
-.description,
 .fullDescription {
     margin-top: 20px;
     margin-bottom: 25px;
@@ -8,6 +7,10 @@
 
 .errorMessages {
     color: red;
+}
+
+.image {
+    margin-top: 30px;
 }
 
 .loginInfo {

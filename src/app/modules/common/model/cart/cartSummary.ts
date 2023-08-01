@@ -2,7 +2,7 @@ import { CartItemSummary } from "./cartItemSummary";
 import { Summary } from "./summary";
 
 export interface CartSummary {
-    id: number,
+    uuid: string,
     items: Array<CartItemSummary>,
     summary: Summary
 }

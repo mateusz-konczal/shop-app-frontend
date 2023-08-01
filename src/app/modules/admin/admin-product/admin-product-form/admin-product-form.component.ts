@@ -103,6 +103,14 @@ import { FormProductCurrencyService } from './form-product-currency.service';
             </div>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+            <mat-label>Czy włączyć ten produkt do sprzedaży?</mat-label>
+            <mat-select formControlName="enabled">
+                <mat-option value="true">TAK</mat-option>
+                <mat-option value="false">NIE</mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <div fxLayoutAlign="end">
             <button mat-flat-button color="primary" [disabled]="!parentForm.valid">Zapisz</button>
         </div>
@@ -144,10 +152,6 @@ export class AdminProductFormComponent implements OnInit {
 
     get description() {
         return this.parentForm.get("description");
-    }
-
-    get fullDescription() {
-        return this.parentForm.get("fullDescription");
     }
 
     get categoryId() {

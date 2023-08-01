@@ -20,8 +20,8 @@ export class OrderService {
     private currencyCommonService: CurrencyCommonService
   ) { }
 
-  getCart(id: number): Observable<CartSummary> {
-    return this.cartCommonService.getCart(id);
+  getCart(uuid: string): Observable<CartSummary> {
+    return this.cartCommonService.getCart(uuid);
   }
 
   getProductCurrencies(): Observable<Array<string>> {

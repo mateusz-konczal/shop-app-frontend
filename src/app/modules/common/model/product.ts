@@ -6,5 +6,6 @@ export interface Product {
     salePrice: number,
     currency: string,
     image: string,
-    slug: string
+    slug: string,
+    enabled: boolean
 }

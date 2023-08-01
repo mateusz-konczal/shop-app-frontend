@@ -15,6 +15,14 @@ export class AdminService {
     return this.http.get<Page<AdminProduct>>(`/api/admin/dashboard/saleProducts?page=${page}&size=${size}`);
   }
 
+  enableProduct(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/products/${id}/enable`, '');
+  }
+
+  disableProduct(id: number): Observable<void> {
+    return this.http.put<void>(`/api/admin/products/${id}/disable`, '');
+  }
+
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>("/api/admin/products/" + id);
   }

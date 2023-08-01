@@ -9,7 +9,7 @@ export class HeaderService {
 
   constructor(private http: HttpClient) { }
 
-  getNumberOfProductsInCart(cartId: number): Observable<number> {
-    return this.http.get<number>("/api/cartItems/count/" + cartId);
+  getNumberOfProductsInCart(cartUuid: string): Observable<number> {
+    return this.http.get<number>("/api/cartItems/count/" + cartUuid);
   }
 }

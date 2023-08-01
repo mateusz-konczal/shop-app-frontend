@@ -30,9 +30,11 @@ export class HeaderComponent implements OnInit {
   }
 
   getNumberOfProductsInCart() {
-    let cartId = Number(this.cookieService.get("cartId"));
-    this.headerService.getNumberOfProductsInCart(cartId)
-      .subscribe(counter => this.cartProductCounter = String(counter > 0 ? counter : ""));
+    let cartUuid = this.cookieService.get("cartUuid");
+    if (cartUuid != "") {
+      this.headerService.getNumberOfProductsInCart(cartUuid)
+        .subscribe(counter => this.cartProductCounter = String(counter > 0 ? counter : ""));
+    }
   }
 
   logout() {

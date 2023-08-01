@@ -59,9 +59,9 @@ export class OrderComponent implements OnInit {
   }
 
   checkIfCartIsEmpty() {
-    let cartId = Number(this.cookieService.get("cartId"));
-    if (cartId > 0) {
-      this.orderService.getCart(cartId)
+    let cartUuid = this.cookieService.get("cartUuid");
+    if (cartUuid != "") {
+      this.orderService.getCart(cartUuid)
         .subscribe(cartSummary => this.cartSummary = cartSummary);
     }
   }
@@ -86,13 +86,13 @@ export class OrderComponent implements OnInit {
         city: this.orderForm.get('city')?.value,
         email: this.orderForm.get('email')?.value,
         phone: this.orderForm.get('phone')?.value,
-        cartId: Number(this.cookieService.get("cartId")),
+        cartUuid: this.cookieService.get("cartUuid"),
         shipmentId: Number(this.orderForm.get('shipment')?.value.id),
         paymentId: Number(this.orderForm.get('payment')?.value.id)
       } as Order).subscribe({
         next: orderSummary => {
           this.cartIconService.cartChanged(0);
-          this.cookieService.delete("cartId");
+          this.cookieService.delete("cartUuid");
           this.isErrorMessage = false;
           if (orderSummary.redirectUrl) {
             window.location.href = orderSummary.redirectUrl;

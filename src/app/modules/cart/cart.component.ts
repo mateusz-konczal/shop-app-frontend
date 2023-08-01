@@ -52,9 +52,9 @@ export class CartComponent implements OnInit {
   }
 
   getCart() {
-    let cartId = Number(this.cookieService.get("cartId"));
-    if (cartId > 0) {
-      this.cartService.getCart(cartId)
+    let cartUuid = this.cookieService.get("cartUuid");
+    if (cartUuid != "") {
+      this.cartService.getCart(cartUuid)
         .subscribe(cartSummary => {
           this.cartSummary = cartSummary;
           this.patchFormItems();
@@ -64,26 +64,29 @@ export class CartComponent implements OnInit {
   }
 
   getProductCurrencies() {
-    this.cartService.getProductCurrencies()
-      .subscribe(currencies => this.currencies = currencies);
+    let cartUuid = this.cookieService.get("cartUuid");
+    if (cartUuid != "") {
+      this.cartService.getProductCurrencies()
+        .subscribe(currencies => this.currencies = currencies);
+    }
   }
 
   addProductToCart(productId: number) {
-    let cartId = Number(this.cookieService.get("cartId"));
-    this.cartService.addProductToCart(cartId, { productId: productId, quantity: 1 })
+    let cartUuid = this.cookieService.get("cartUuid");
+    this.cartService.addProductToCart(cartUuid, { productId: productId, quantity: 1 })
       .subscribe(cartSummary => {
         this.cartSummary = cartSummary;
         this.patchFormItems();
         this.cartIconService.cartChanged(cartSummary.items.length);
-        this.cookieService.delete("cartId");
-        this.cookieService.set("cartId", cartSummary.id.toString(), this.expireCartAfterDays(3));
+        this.cookieService.delete("cartUuid");
+        this.cookieService.set("cartUuid", cartSummary.uuid, this.expireCartAfterDays(3));
         this.router.navigate(["/cart"]);
       });
   }
 
   submit() {
-    let cartId = Number(this.cookieService.get("cartId"));
-    this.cartService.updateCart(cartId, this.mapToRequestListDto())
+    let cartUuid = this.cookieService.get("cartUuid");
+    this.cartService.updateCart(cartUuid, this.mapToRequestListDto())
       .subscribe(cartSummary => {
         this.cartSummary = cartSummary;
         this.cartForm.get("items")?.setValue(cartSummary.items);

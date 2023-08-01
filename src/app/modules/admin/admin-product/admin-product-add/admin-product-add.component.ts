@@ -37,7 +37,8 @@ export class AdminProductAddComponent {
       price: ['', [Validators.required, Validators.min(0)]],
       salePrice: ['', Validators.min(0)],
       currency: ['PLN', Validators.required],
-      slug: ['', [Validators.required, Validators.minLength(4)]]
+      slug: ['', [Validators.required, Validators.minLength(4)]],
+      enabled: ['true']
     });
 
     this.imageForm = this.formBuilder.group({
@@ -55,6 +56,7 @@ export class AdminProductAddComponent {
       salePrice: this.productForm.get('salePrice')?.value,
       currency: this.productForm.get('currency')?.value,
       slug: this.productForm.get('slug')?.value,
+      enabled: this.productForm.get('enabled')?.value,
       image: this.image
     } as AdminProductUpdate).subscribe({
       next: product => {

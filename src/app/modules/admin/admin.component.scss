@@ -2,17 +2,30 @@
     width: 60px;
 }
 
-.mat-column-actions {
-    width: 140px;
-    text-align: center;
-}
-
 .mat-column-image {
     width: 155px;
-    text-align: center;
 }
 
 .mat-column-price {
+    width: 120px;
+}
+
+.mat-column-enabled {
+    width: 220px;
+
+    &.mat-mdc-cell {
+        text-transform: uppercase;
+    }
+}
+
+.mat-column-actions {
+    width: 260px;
+}
+
+.mat-column-image,
+.mat-column-price,
+.mat-column-enabled,
+.mat-column-actions {
     text-align: center;
 }
 
