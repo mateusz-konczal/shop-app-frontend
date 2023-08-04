@@ -14,11 +14,15 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.getHomepage();
+    this.getHomepage("");
   }
 
-  getHomepage() {
-    this.homeService.getHomepage()
+  getSortedSaleProducts(sort: string) {
+    this.getHomepage(sort);
+  }
+
+  private getHomepage(sort: string) {
+    this.homeService.getHomepage(sort)
       .subscribe(homepage => this.homepage = homepage);
   }
 }

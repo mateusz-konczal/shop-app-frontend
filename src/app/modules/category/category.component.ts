@@ -13,6 +13,14 @@ import { CategoryProducts } from './model/categoryProducts';
 export class CategoryComponent implements OnInit, OnDestroy {
 
   categoryProducts!: CategoryProducts;
+  sort = "";
+  initialPageIndex = 0;
+  initialPageSize = 10;
+  event: PageEvent = {
+    pageIndex: this.initialPageIndex,
+    pageSize: this.initialPageSize,
+    length: this.initialPageSize
+  }
   private subscription!: Subscription;
 
   constructor(
@@ -24,22 +32,28 @@ export class CategoryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd))
-      .subscribe(() => this.getCategoryWithProducts(0, 10));
+      .subscribe(() => this.getCategoryWithProducts(this.initialPageIndex, this.initialPageSize, this.sort));
 
-    this.getCategoryWithProducts(0, 10);
+    this.getCategoryWithProducts(this.initialPageIndex, this.initialPageSize, "");
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onPageEvent(event: PageEvent) {
-    this.getCategoryWithProducts(event.pageIndex, event.pageSize);
+  getCategoryWithSortedProducts(sort: string) {
+    this.sort = sort;
+    this.getCategoryWithProducts(this.event.pageIndex, this.event.pageSize, sort);
   }
 
-  getCategoryWithProducts(page: number, size: number) {
+  onPageEvent(event: PageEvent) {
+    this.event = event;
+    this.getCategoryWithProducts(event.pageIndex, event.pageSize, this.sort);
+  }
+
+  private getCategoryWithProducts(page: number, size: number, sort: string) {
     let slug = this.route.snapshot.params['slug'];
-    this.categoryService.getCategoryWithProducts(slug, page, size)
+    this.categoryService.getCategoryWithProducts(slug, page, size, sort)
       .subscribe(categoryProducts => this.categoryProducts = categoryProducts);
   }
 }

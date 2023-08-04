@@ -1,4 +1,14 @@
-<h1>Kategoria: {{categoryProducts?.category?.name}}</h1>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Kategoria: {{categoryProducts?.category?.name}}</h1>
+    <mat-form-field>
+        <mat-label>Sortuj</mat-label>
+        <mat-select>
+            <mat-option (click)="getCategoryWithSortedProducts('')">Domyślnie</mat-option>
+            <mat-option value="productNameAsc" (click)="getCategoryWithSortedProducts('name,asc')">Nazwa A-Z</mat-option>
+            <mat-option value="productNameDesc" (click)="getCategoryWithSortedProducts('name,desc')">Nazwa Z-A</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 
 <p>{{categoryProducts?.category?.description}}</p>
 <mat-card *ngFor="let product of categoryProducts?.products?.content">

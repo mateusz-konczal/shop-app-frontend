@@ -12,23 +12,33 @@ import { ProductService } from './product.service';
 export class ProductComponent implements OnInit {
 
   page!: Page<Product>;
+  sort = "";
+  initialPageIndex = 0;
+  initialPageSize = 10;
+  event: PageEvent = {
+    pageIndex: this.initialPageIndex,
+    pageSize: this.initialPageSize,
+    length: this.initialPageSize
+  }
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProductPage(this.initialPageIndex, this.initialPageSize, "");
   }
 
-  getProducts() {
-    this.getProductPage(0, 10);
+  getSortedProducts(sort: string) {
+    this.sort = sort;
+    this.getProductPage(this.event.pageIndex, this.event.pageSize, sort);
   }
 
   onPageEvent(event: PageEvent) {
-    this.getProductPage(event.pageIndex, event.pageSize);
+    this.event = event;
+    this.getProductPage(event.pageIndex, event.pageSize, this.sort);
   }
 
-  private getProductPage(page: number, size: number) {
-    this.productService.getProducts(page, size)
+  private getProductPage(page: number, size: number, sort: string) {
+    this.productService.getProducts(page, size, sort)
       .subscribe(page => this.page = page);
   }
 }

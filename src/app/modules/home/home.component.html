@@ -1,4 +1,14 @@
-<h1>Promowane produkty</h1>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Promowane produkty</h1>
+    <mat-form-field>
+        <mat-label>Sortuj</mat-label>
+        <mat-select>
+            <mat-option (click)="getSortedSaleProducts('')">Domyślnie</mat-option>
+            <mat-option value="productNameAsc" (click)="getSortedSaleProducts('name,asc')">Nazwa A-Z</mat-option>
+            <mat-option value="productNameDesc" (click)="getSortedSaleProducts('name,desc')">Nazwa Z-A</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 
 <mat-card *ngFor="let product of homepage?.saleProducts">
     <div flexLayout="row" class="product">
