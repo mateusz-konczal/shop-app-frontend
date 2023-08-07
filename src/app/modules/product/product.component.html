@@ -6,6 +6,8 @@
       <mat-option (click)="getSortedProducts('')">Domyślnie</mat-option>
       <mat-option value="nameAsc" (click)="getSortedProducts('name,asc')">Nazwa A-Z</mat-option>
       <mat-option value="nameDesc" (click)="getSortedProducts('name,desc')">Nazwa Z-A</mat-option>
+      <mat-option value="priceAsc" (click)="getSortedProducts('price,asc')">Cena - rosnąco</mat-option>
+      <mat-option value="priceDesc" (click)="getSortedProducts('price,desc')">Cena - malejąco</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
