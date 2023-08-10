@@ -5,11 +5,30 @@
     padding: 20px;
 }
 
-.logo {
+.logoIcon,
+.shoppongBasket {
+    font-size: 30px;
+}
+
+.logoTitle {
     font-size: 22px;
     color: white;
 }
 
-.logoIcon, .shoppongBasket {
-    font-size: 30px;
+.searchForm {
+    min-width: 150px;
+    max-width: 440px;
+    width: 100%;
+}
+
+.searchField {
+    width: 100%;
+    margin-bottom: -1.25em;
+    font-size: 16px;
+}
+
+::ng-deep .searchField .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    min-height: 48px;
 }

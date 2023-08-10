@@ -1,9 +1,17 @@
-<header fxLayoutAlign="start center">
+<header fxLayoutAlign="start center" fxLayoutGap="45">
     <div fxFlex fxLayoutAlign="start end" fxLayoutGap="15">
         <mat-icon color="accent" class="logoIcon">store</mat-icon>
-        <span class="logo">{{title}}</span>
+        <span class="logoTitle">{{title}}</span>
     </div>
-    <div fxLayoutGap="15" fxLayoutAlign="start center">
+    <form [formGroup]="filterForm" (submit)="getFilteredProducts()" class="searchForm">
+        <mat-form-field class="searchField">
+            <input type="search" matInput placeholder="Wyszukaj produkt" formControlName="phrase">
+            <button matSuffix mat-icon-button>
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </form>
+    <div fxLayoutAlign="start center" fxLayoutGap="15">
         <button mat-flat-button routerLink="">Strona główna</button>
         <button mat-flat-button routerLink="/products">Produkty</button>
         <button mat-flat-button routerLink="/contact">Kontakt</button>
