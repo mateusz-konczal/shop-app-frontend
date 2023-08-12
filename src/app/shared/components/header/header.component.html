@@ -3,7 +3,7 @@
         <mat-icon color="accent" class="logoIcon">store</mat-icon>
         <span class="logoTitle">{{title}}</span>
     </div>
-    <form [formGroup]="filterForm" (submit)="getFilteredProducts()" class="searchForm">
+    <form [formGroup]="filterForm" (submit)="filterProducts()" class="searchForm">
         <mat-form-field class="searchField">
             <input type="search" matInput placeholder="Wyszukaj produkt" formControlName="phrase">
             <button matSuffix mat-icon-button>

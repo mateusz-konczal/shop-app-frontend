@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
   <h1>Produkty</h1>
-  <mat-form-field>
+  <mat-form-field *ngIf="page && page.totalElements > 0">
     <mat-label>Sortuj</mat-label>
     <mat-select>
       <mat-option (click)="getSortedProducts('')">Domyślnie</mat-option>
@@ -12,29 +12,35 @@
   </mat-form-field>
 </div>
 
-<mat-card *ngFor="let product of page?.content">
-  <div flexLayout="row" class="product">
-    <div flexLayout="column" fxFlex>
-      <mat-card-title><a routerLink="{{'/products/' + product.slug}}">{{product.name}}</a></mat-card-title>
-      <div flexLayout="row">
-        <a routerLink="{{'/products/' + product.slug}}">
-          <img *ngIf="!product.image" src="/assets/image-placeholder.png" class="productImage">
-          <img *ngIf="product.image" src="{{'/api/products/productImage/' + product.image}}" class="productImage">
-        </a>
-        <mat-card-content fxFlex class="productContent" [innerHTML]="product.description | replace: '\n': '\<br />'"></mat-card-content>
+<div *ngIf="page && page.totalElements > 0">
+  <mat-card *ngFor="let product of page?.content">
+    <div flexLayout="row" class="product">
+      <div flexLayout="column" fxFlex>
+        <mat-card-title><a routerLink="{{'/products/' + product.slug}}">{{product.name}}</a></mat-card-title>
+        <div flexLayout="row">
+          <a routerLink="{{'/products/' + product.slug}}">
+            <img *ngIf="!product.image" src="/assets/image-placeholder.png" class="productImage">
+            <img *ngIf="product.image" src="{{'/api/products/productImage/' + product.image}}" class="productImage">
+          </a>
+          <mat-card-content fxFlex class="productContent" [innerHTML]="product.description | replace: '\n': '\<br />'"></mat-card-content>
+        </div>
+      </div>
+      <div>
+        <div class="productPrice" [ngClass]="{'productPriceDisable': product.salePrice}">{{product.price}} {{product.currency}}</div>
+        <div class="productSalePrice" *ngIf="product.salePrice">{{product.salePrice}} {{product.currency}}</div>
       </div>
     </div>
-    <div>
-      <div class="productPrice" [ngClass]="{'productPriceDisable': product.salePrice}">{{product.price}} {{product.currency}}</div>
-      <div class="productSalePrice" *ngIf="product.salePrice">{{product.salePrice}} {{product.currency}}</div>
-    </div>
-  </div>
-  
-  <mat-card-actions align="end" fxLayoutGap="10">
-    <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
-    <button mat-flat-button color="primary" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
-  </mat-card-actions>
-</mat-card>
+    
+    <mat-card-actions align="end" fxLayoutGap="10">
+      <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
+      <button mat-flat-button color="primary" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="page?.totalElements == 0">
+  Brak produktów dla podanej frazy
+</div>
 
 <mat-paginator *ngIf="page && page.totalElements > 0" 
   [length]="page.totalElements"

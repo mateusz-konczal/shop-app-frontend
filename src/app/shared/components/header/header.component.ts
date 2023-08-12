@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Page } from 'src/app/modules/common/model/page';
 import { Product } from 'src/app/modules/common/model/product';
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   page!: Page<Product>;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private headerService: HeaderService,
     private cookieService: CookieService,
@@ -47,9 +49,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  getFilteredProducts() {
-    this.headerService.getFilteredProducts(this.filterForm.get('phrase')?.value)
-      .subscribe(page => this.page = page);
+  filterProducts() {
+    this.router.navigate(["/products"], { queryParams: { phrase: this.filterForm.get('phrase')?.value } });
   }
 
   logout() {
