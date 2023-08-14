@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Page } from 'src/app/modules/common/model/page';
 import { Product } from 'src/app/modules/common/model/product';
@@ -18,10 +18,11 @@ export class HeaderComponent implements OnInit {
   title = "Shop";
   cartProductCounter = "";
   isLoggedIn = false;
-  filterForm!: FormGroup;
   page!: Page<Product>;
+  filteringForm!: FormGroup;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private headerService: HeaderService,
@@ -31,9 +32,16 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.filterForm = this.formBuilder.group({
-      phrase: ['']
-    });
+    let phrase = this.route.snapshot.queryParams['phrase'];
+    if (phrase === undefined) {
+      this.filteringForm = this.formBuilder.group({
+        phrase: ['']
+      });
+    } else {
+      this.filteringForm = this.formBuilder.group({
+        phrase: [phrase]
+      });
+    }
 
     this.getNumberOfProductsInCart();
     this.cartIconService.subject
@@ -50,7 +58,7 @@ export class HeaderComponent implements OnInit {
   }
 
   filterProducts() {
-    this.router.navigate(["/products"], { queryParams: { phrase: this.filterForm.get('phrase')?.value } });
+    this.router.navigate(["/products"], { queryParams: { phrase: this.filteringForm.get('phrase')?.value } });
   }
 
   logout() {

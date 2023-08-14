@@ -1,15 +1,17 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
     <h1>Kategoria: {{categoryProducts?.category?.name}}</h1>
-    <mat-form-field>
-        <mat-label>Sortuj</mat-label>
-        <mat-select>
-            <mat-option (click)="getCategoryWithSortedProducts('')">Domyślnie</mat-option>
-            <mat-option value="productNameAsc" (click)="getCategoryWithSortedProducts('name,asc')">Nazwa A-Z</mat-option>
-            <mat-option value="productNameDesc" (click)="getCategoryWithSortedProducts('name,desc')">Nazwa Z-A</mat-option>
-            <mat-option value="productPriceAsc" (click)="getCategoryWithSortedProducts('price,asc')">Cena - rosnąco</mat-option>
-            <mat-option value="productPriceDesc" (click)="getCategoryWithSortedProducts('price,desc')">Cena - malejąco</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form [formGroup]="sortingForm" *ngIf="categoryProducts?.products && categoryProducts.products.totalElements > 0">
+        <mat-form-field>
+            <mat-label>Sortuj</mat-label>
+            <mat-select formControlName="sorting">
+                <mat-option (click)="getCategoryWithSortedProducts('')">Domyślnie</mat-option>
+                <mat-option value="name,asc" (click)="getCategoryWithSortedProducts('name,asc')">Nazwa A-Z</mat-option>
+                <mat-option value="name,desc" (click)="getCategoryWithSortedProducts('name,desc')">Nazwa Z-A</mat-option>
+                <mat-option value="price,asc" (click)="getCategoryWithSortedProducts('price,asc')">Cena - rosnąco</mat-option>
+                <mat-option value="price,desc" (click)="getCategoryWithSortedProducts('price,desc')">Cena - malejąco</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 </div>
 
 <p>{{categoryProducts?.category?.description}}</p>
@@ -37,10 +39,16 @@
     </mat-card-actions>
 </mat-card>
 
-<mat-paginator *ngIf="categoryProducts?.products && categoryProducts.products.totalElements > 0" 
-    [length]="categoryProducts.products.totalElements"
-    [pageSize]="10"
+<div *ngIf="categoryProducts?.products?.totalElements == 0">
+    Brak produktów dla podanej kategorii
+</div>
+
+<mat-paginator
+    [length]="categoryProducts?.products?.totalElements"
+    [pageIndex]="event.pageIndex"
+    [pageSize]="event.pageSize"
     [pageSizeOptions]="[10, 25, 50, 100]"
+    showFirstLastButtons
     aria-label="Wybierz stronę"
     (page)="onPageEvent($event)">
 </mat-paginator>
