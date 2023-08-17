@@ -4,18 +4,26 @@
     height: 100%
 }
 
-.content {
-    background: #f9f9f9;
-}
-
 header {
     background: #292b31;
     padding: 20px;
     color: #fff;
 }
 
+.arrowIcon {
+    vertical-align: sub;
+}
+
+.content {
+    background: #f9f9f9;
+}
+
 .logo {
     font-size: 22px;
+}
+
+.mat-mdc-list-base {
+    --mdc-list-list-item-focus-state-layer-color: #a9a9a9;
 }
 
 .orders {
@@ -24,14 +32,19 @@ header {
 
 .sidebar {
     background: #292b31;
-    padding: 20px;
+    padding: 15px;
 
     a {
+        text-decoration: none;
         color: #fff;
+    }
+
+    a:hover {
+        color: #bfbfbf;
     }
 }
 
 .subMenuLink {
-    color: gray;
+    color: #fff;
     margin-top: 5px;
 }
