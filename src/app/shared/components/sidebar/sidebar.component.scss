@@ -13,3 +13,19 @@ a {
 a:hover {
     color: #777;
 }
+
+.activeLink {
+    background-color: #d3d3d3;
+
+    a {
+        font-weight: bold;
+    }
+}
+
+.arrowIcon {
+    vertical-align: sub;
+}
+
+.mat-mdc-list-base {
+    --mdc-list-list-item-focus-state-layer-color: none;
+}

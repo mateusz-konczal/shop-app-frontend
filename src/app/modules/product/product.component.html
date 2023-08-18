@@ -1,4 +1,18 @@
-<h1>Produkty</h1>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Produkty</h1>
+  <form [formGroup]="sortingForm" *ngIf="page && page.totalElements > 0">
+    <mat-form-field>
+      <mat-label>Sortuj</mat-label>
+      <mat-select formControlName="sorting">
+        <mat-option (click)="getSortedProducts('')">Domyślnie</mat-option>
+        <mat-option value="name,asc" (click)="getSortedProducts('name,asc')">Nazwa A-Z</mat-option>
+        <mat-option value="name,desc" (click)="getSortedProducts('name,desc')">Nazwa Z-A</mat-option>
+        <mat-option value="price,asc" (click)="getSortedProducts('price,asc')">Cena - rosnąco</mat-option>
+        <mat-option value="price,desc" (click)="getSortedProducts('price,desc')">Cena - malejąco</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
 
 <mat-card *ngFor="let product of page?.content">
   <div flexLayout="row" class="product">
@@ -17,17 +31,23 @@
       <div class="productSalePrice" *ngIf="product.salePrice">{{product.salePrice}} {{product.currency}}</div>
     </div>
   </div>
-  
+    
   <mat-card-actions align="end" fxLayoutGap="10">
     <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
     <button mat-flat-button color="primary" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
   </mat-card-actions>
 </mat-card>
 
-<mat-paginator *ngIf="page && page.totalElements > 0" 
-  [length]="page.totalElements"
-  [pageSize]="10"
+<div *ngIf="page?.totalElements == 0">
+  Brak produktów dla podanej frazy
+</div>
+
+<mat-paginator
+  [length]="page?.totalElements"
+  [pageIndex]="event.pageIndex"
+  [pageSize]="event.pageSize"
   [pageSizeOptions]="[10, 25, 50, 100]"
+  showFirstLastButtons
   aria-label="Wybierz stronę"
   (page)="onPageEvent($event)">
 </mat-paginator>

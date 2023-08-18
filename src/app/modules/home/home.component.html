@@ -1,4 +1,18 @@
-<h1>Promowane produkty</h1>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Promowane produkty</h1>
+    <form [formGroup]="sortingForm" *ngIf="homepage?.saleProducts && homepage.saleProducts.length > 0">
+        <mat-form-field>
+            <mat-label>Sortuj</mat-label>
+            <mat-select formControlName="sorting">
+                <mat-option (click)="getSortedSaleProducts('')">Domyślnie</mat-option>
+                <mat-option value="name,asc" (click)="getSortedSaleProducts('name,asc')">Nazwa A-Z</mat-option>
+                <mat-option value="name,desc" (click)="getSortedSaleProducts('name,desc')">Nazwa Z-A</mat-option>
+                <mat-option value="salePrice,asc" (click)="getSortedSaleProducts('salePrice,asc')">Cena - rosnąco</mat-option>
+                <mat-option value="salePrice,desc" (click)="getSortedSaleProducts('salePrice,desc')">Cena - malejąco</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
 
 <mat-card *ngFor="let product of homepage?.saleProducts">
     <div flexLayout="row" class="product">
@@ -23,3 +37,7 @@
         <button mat-flat-button color="primary" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
     </mat-card-actions>
 </mat-card>
+
+<div *ngIf="homepage?.saleProducts?.length == 0">
+    Brak promowanych produktów
+</div>

@@ -7,20 +7,46 @@
 <div fxLayout="row" fxFlex>
     <div class="sidebar">
         <mat-selection-list [multiple]="false">
-            <mat-list-option><a routerLink="/admin">Dashboard</a></mat-list-option>
-            <mat-list-option class="orders">
-                <a routerLink="/admin/orders">Zamówienia</a>
-                <div class="subMenuLink"> | <a routerLink="/admin/orders/export">Eksport</a></div>
-                <div class="subMenuLink"> | <a routerLink="/admin/orders/stats">Statystyki</a></div>
+            <mat-list-option routerLink="/admin" selected>
+                <a>Dashboard</a>
             </mat-list-option>
-            <mat-list-option><a routerLink="/admin/payments">Płatności</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/shipments">Dostawy</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/products">Produkty</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/categories">Kategorie</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/reviews">Opinie</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/users">Użytkownicy</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/account">Moje konto</a></mat-list-option>
-            <mat-list-option><a routerLink="/admin/login">Wyloguj się</a></mat-list-option>
+            <mat-list-option class="orders">
+                <div routerLink="/admin/orders">
+                    <a>Zamówienia</a>
+                </div>
+                <div routerLink="/admin/orders/export" class="subMenuLink">
+                    <mat-icon class="arrowIcon">arrow_right</mat-icon>
+                    <a>Eksport</a>
+                </div>
+                <div routerLink="/admin/orders/stats" class="subMenuLink">
+                    <mat-icon class="arrowIcon">arrow_right</mat-icon>
+                    <a>Statystyki</a>
+                </div>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/payments">
+                <a>Płatności</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/shipments">
+                <a>Dostawy</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/products">
+                <a>Produkty</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/categories">
+                <a>Kategorie</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/reviews">
+                <a>Opinie</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/users">
+                <a>Użytkownicy</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/account">
+                <a>Moje konto</a>
+            </mat-list-option>
+            <mat-list-option routerLink="/admin/login">
+                <a>Wyloguj się</a>
+            </mat-list-option>
         </mat-selection-list>
     </div>
     <div fxFlex class="content">

@@ -10,7 +10,7 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  getHomepage(): Observable<Homepage> {
-    return this.http.get<Homepage>("/api/homepage");
+  getHomepage(sort: string): Observable<Homepage> {
+    return this.http.get<Homepage>(`/api/homepage?sort=${sort}`);
   }
 }
