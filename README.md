@@ -2,13 +2,14 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 This is the frontend part of the online shop's web application. The application uses the REST API of 
 the backend part. Currently, the admin can manage products, categories, reviews, shipments, payments, 
-orders and users. The customer can browse products by category, add opinions, add products to the cart 
-and place orders. The admin can also export orders from a selected period to a CSV file and view a 
-sales chart for the current month (using Chart.js). In the dashboard, the admin can clear the cache of 
-the entire application. Admins and customers have dedicated login and password change pages. The customer 
-can also reset the password by providing an e-mail address and obtaining a special link valid for a 
-certain period of time. The online shop was integrated with the Przelewy24 online payment system.
-The application was containerized and deployed to the AWS cloud platform.
+orders and users. The customer can search and sort products (by name or price), browse products by 
+category, add reviews, add products to the cart and place orders. The admin can also export orders 
+from a selected period to a CSV file and view a sales chart for the current month (using Chart.js). 
+In the dashboard, the admin can clear the cache of the entire application. Admins and customers have 
+dedicated login and password change pages. The customer can also reset the password by providing an 
+e-mail address and obtaining a special link valid for a certain period of time. The online shop was 
+integrated with the Przelewy24 online payment system. The application was containerized and deployed 
+to the AWS cloud platform.
 - --
 ## Technologies
 * Node.js 18.15.0
@@ -18,8 +19,9 @@ The application was containerized and deployed to the AWS cloud platform.
 * HTML
 * SCSS
 * Git
+* Docker 24.0.5
 * nginx 1.23.4
-* ngrok 3.3.1
+* ngrok 3.3.1 (for local tests)
 
 ## Usage
 ```
